@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Road2Door.props" />
+</Project>
