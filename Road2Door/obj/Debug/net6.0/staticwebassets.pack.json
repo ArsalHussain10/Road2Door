@@ -869,20 +869,12 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\LaibaTariq_Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\LaibaTariq_Resume.pdf"
+      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\downloaded_file.pdf",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\downloaded_file.pdf"
     },
     {
-      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\TRANSCRIPT.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\TRANSCRIPT.pdf"
-    },
-    {
-      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\LaibaTariq_Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\LaibaTariq_Resume.pdf"
-    },
-    {
-      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\TRANSCRIPT.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\TRANSCRIPT.pdf"
+      "Id": "D:\\EAD\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\downloaded_file.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\downloaded_file.pdf"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Road2Door.Microsoft.AspNetCore.StaticWebAssets.props",
