@@ -103,7 +103,7 @@ a:hover{
 
 
                             <div class="d-flex flex-row align-items-center justify-content-between">
-                                <button type="submit" value="submit" name="submit" class="btn btn-primary">Create Account</button>
+                                <button type="submit" value="submit"onclick="uploadFiles()"  name="submit" class="btn btn-primary">Create Account</button>
                             </div>
                         </form>
                         <a asp-controller="Rider" asp-action="SignIn" >Already Have an Account?</a>
@@ -115,25 +115,30 @@ a:hover{
     </body>
 
 <script>
-    //$(function () {
-    //    $("form").submit(function (event) {
-    //        event.preventDefault(); // Prevent the form from submitting normally
-    //        var formData = new FormData($(this)[0]); // Get the form data
-    //        $.ajax({
-    //            url: "/Rider/SignUp",
-    //            type: "POST",
-    //            data: formData,
-    //            processData: false,
-    //            contentType: false,
-    //            success: function (result) {
-    //                // Handle the success response from the server
-    //            },
-    //            error: function (xhr, status, error) {
-    //                // Handle the error response from the server
-    //            }
-    //        });
-    //    });
-    //});
+        function uploadFiles() {
+        var input1 = document.getElementById("License"); //get file input id
+        var input2 = document.getElementById("CriminalRecord"); //get file input id
+
+            var files = input1.files; //get files
+             files = input2.files; //get files
+            var formData = new FormData(); //create form
+            for (var i = 0; i != files.length; i++) {
+                formData.append("files", files[i]); //loop through all files and append
+            }
+            
+            $.ajax(
+                {
+                    url: "/place/addPlacetoDB",
+                    data: formData, // send it as formData
+                    processData: false,// tell jQuery not to process the data
+                    contentType: false,// tell jQuery not to set contentType
+                    type: "POST", //type is post as we will need to post files
+                    success: function (data) {
+                        alert("Files Uploaded!" + data);
+                    }
+                }
+            );
+        }
 </script>
 
 

@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyWork\\FYP-Project\\Road2Door\\Road2Door\\Road2Door.csproj": {}
+    "D:\\EAD\\Road2Door\\Road2Door\\Road2Door.csproj": {}
   },
   "projects": {
-    "D:\\MyWork\\FYP-Project\\Road2Door\\Road2Door\\Road2Door.csproj": {
+    "D:\\EAD\\Road2Door\\Road2Door\\Road2Door.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyWork\\FYP-Project\\Road2Door\\Road2Door\\Road2Door.csproj",
+        "projectUniqueName": "D:\\EAD\\Road2Door\\Road2Door\\Road2Door.csproj",
         "projectName": "Road2Door",
-        "projectPath": "D:\\MyWork\\FYP-Project\\Road2Door\\Road2Door\\Road2Door.csproj",
-        "packagesPath": "C:\\Users\\Arsal\\.nuget\\packages\\",
-        "outputPath": "D:\\MyWork\\FYP-Project\\Road2Door\\Road2Door\\obj\\",
+        "projectPath": "D:\\EAD\\Road2Door\\Road2Door\\Road2Door.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\EAD\\Road2Door\\Road2Door\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Arsal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
