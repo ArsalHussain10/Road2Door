@@ -16,6 +16,8 @@ public partial class Road2DoorContext : DbContext
     {
     }
 
+    public virtual DbSet<Consumer> Consumers { get; set; }
+
     public virtual DbSet<Rider> Riders { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,6 +26,30 @@ public partial class Road2DoorContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Consumer>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC07DE46406F");
+
+            entity.ToTable("Consumer");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Name)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+        });
+
         modelBuilder.Entity<Rider>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC071B53E1F5");
@@ -39,7 +65,7 @@ public partial class Road2DoorContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("email");
             entity.Property(e => e.License)
-                .HasMaxLength(15)
+                .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("license");
             entity.Property(e => e.Name)
@@ -55,7 +81,7 @@ public partial class Road2DoorContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("phone");
             entity.Property(e => e.PoliceRecord)
-                .HasMaxLength(15)
+                .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("police_record");
             entity.Property(e => e.Status)
