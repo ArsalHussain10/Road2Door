@@ -27,5 +27,22 @@ namespace Road2Door.Controllers
             consumerRepository.SignUp(consumer);
             return View();
         }
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignIn(string email, string password)
+        {
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            if (consumerRepository.CheckAccount(email, password))
+            {
+                return View("HomePage");
+            }
+            return View();
+
+        }
+
     }
 }

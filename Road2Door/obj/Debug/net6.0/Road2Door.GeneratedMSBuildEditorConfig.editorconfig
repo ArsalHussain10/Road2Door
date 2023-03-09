@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\MyWork\semester8\FYP\Road2Door\Road2Door
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/HomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcSG9tZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2lnbkluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

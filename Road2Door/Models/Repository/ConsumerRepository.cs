@@ -10,4 +10,11 @@ public class ConsumerRepository
         road2Door.SaveChanges();
 
     }
+    public bool CheckAccount(string email, string password)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        bool hasConsumer = road2DoorContext.Consumers.Any(c => c.Email == email && c.Password == password);
+        return hasConsumer;
+
+    }
 }
