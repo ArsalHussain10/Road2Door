@@ -133,5 +133,11 @@ namespace Road2Door.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Snapshots()
+        {
+            return View();
+        }
+
     }
 }
