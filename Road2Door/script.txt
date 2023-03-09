@@ -1,0 +1,25 @@
+CREATE TABLE [dbo].[Consumer]
+(
+[Id]            INT          IDENTITY (1, 1) NOT NULL,
+    [name]          VARCHAR (30) NOT NULL,
+    [email]         VARCHAR (30) NOT NULL,
+    [password]      VARCHAR (30) NOT NULL,
+    [phone]         VARCHAR (15) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+
+)
+
+
+CREATE TABLE [dbo].[Rider] (
+    [Id]            INT          IDENTITY (1, 1) NOT NULL,
+    [name]          VARCHAR (30) NOT NULL,
+    [email]         VARCHAR (30) NOT NULL,
+    [password]      VARCHAR (30) NOT NULL,
+    [cnic]          VARCHAR (15) NOT NULL,
+    [phone]         VARCHAR (15) NULL,
+    [status]        INT          DEFAULT ((0)) NULL,
+    [license]       VARCHAR (30) NOT NULL,
+    [police_record] VARCHAR (30) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
