@@ -5,7 +5,53 @@
 /Road2Door.sln
 *.dll
 *.suo
-/gitignore
-*.vs
-.vs
-.vs/Road2Door/v17/.suo
+.gitignore
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.csproj.user
+*.obj
+*.pdb
+
+# Compiled code
+/bin/
+/obj/
+
+# Log files
+*.log
+logs/
+
+# Node.js files
+node_modules/
+
+# Package files
+*.nupkg
+*.snupkg
+*.zip
+*.rar
+*.7z
+
+# Test result files
+TestResults/
+
+# macOS-specific files
+.DS_Store
+
+# Resharper files
+_ReSharper*/
+
+# JetBrains Rider files
+.idea/
+*.sln.iml
+*.ipr.iml
+*.iws
+
+# GhostDoc files
+GhostDoc/
+
+# NuGet files
+packages/
+
+# User-specific files
+*.sln.docstates
