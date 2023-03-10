@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\apple-touch-icon.png"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\asifsohail.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\asifsohail.jpg"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\blog\\blog-1.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\blog\\blog-1.jpg"
     },
@@ -159,6 +163,18 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\hero-carousel\\c-4.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\hero-carousel\\c-4.jpg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\komal.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\komal.jpeg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\komalvector.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\komalvector.jpeg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\laibavector.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\laibavector.jpeg"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\projects\\construction-1.jpg",
