@@ -6,3 +6,4 @@
 *.dll
 *.suo
 /gitignore
+*.vs
