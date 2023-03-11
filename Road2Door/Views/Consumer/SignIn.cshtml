@@ -8,8 +8,65 @@
 <html>
 
 <head>
-
     <style>
+        body {
+            background-color: #f7f5f5;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+        }
+        /* .riderConsumerGif
+                {
+                    height: 400px;
+                    width: 595px;
+                }*/
+        .height {
+            height: 100vh;
+        }
+
+        .card {
+            border: none;
+            padding: 20px;
+            background-color: #333333;
+            color: #fff;
+        }
+
+        .form-input {
+            position: relative;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+            .form-input i {
+                position: absolute;
+                font-size: 18px;
+                top: 15px;
+                left: 10px;
+            }
+
+        .form-control {
+            height: 50px;
+            background-color: #333333;
+            text-indent: 24px;
+            font-size: 15px;
+        }
+
+            .form-control:focus {
+                background-color: #333333;
+                box-shadow: none;
+                color: #fff;
+                border-color: #ffc107;
+            }
+
+        .signup {
+            height: 45px;
+            width: 130px;
+            font-size: 18px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @*<style>
 
         body {
             background: #fff;
@@ -60,12 +117,53 @@
             border-color: #df8c96;
             transition: .3s;
         }
-    </style>
+    </style>*@
 
 </head>
-
-
 <body>
+<div class="container mt-5 mb-6">
+    @*        <img src="/assets/img/delivery.gif" alt="Image" class="riderConsumerGif" />
+    *@
+    <div class="row d-flex align-items-center justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card px-5 py-5">
+                <h2 class="text-center">Consumer SignIn</h2>
+
+                <form method="post" asp-controller="Consumer" asp-action="SignIn">
+                    <div class="form-input">
+
+                        <i class="fa fa-envelope"></i>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+
+                    </div>
+
+                    <div class="form-input">
+
+                        <i class="fa fa-lock"></i>
+                            <input type="password" class="form-control" name="password" id="Password" placeholder="password" required>
+
+                    </div>
+
+                    <button class="mx-auto btn rounded-pill btn-warning mt-4 signup">Sign in</button>
+
+                </form>
+                <div class="text-center mt-4">
+
+                    <span>Don't have an Account?</span>
+                    <a href="@Url.Action("SignUp", "Consumer")" class="text-decoration-none text-warning">Sign Up</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@*<body>
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-5 order-md-last">
@@ -89,6 +187,6 @@
 
         </div>
     </div>
-
+*@
 </body>
 </html>

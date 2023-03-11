@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6bNGHAF1nDc4QvDHVPsTUbO5pYO1PLbbE8udFHQ6aes=",
+  "Hash": "fflqwayLMwrmb0YfDIlW/UNgcE6OEsu0QArfvVh+kQY=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\asifsohail.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\bg.jfif",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "assets/img/bg.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\bg.jfif"
     },
     {
       "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\blog\\blog-1.jpg",
@@ -559,6 +576,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\consumer.gif"
+    },
+    {
+      "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\delivery.gif",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "assets/img/delivery.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\delivery.gif"
     },
     {
       "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\favicon.png",
@@ -3910,6 +3944,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
+      "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\banner-img-1.jpg",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/banner-img-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\banner-img-1.jpg"
+    },
+    {
       "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\downloaded_file.pdf",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -3925,6 +3976,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\downloaded_file.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\about.jpg",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/about.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\about.jpg"
     },
     {
       "Identity": "C:\\Users\\komal afzaal\\source\\repos\\ArsalHussain10\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
