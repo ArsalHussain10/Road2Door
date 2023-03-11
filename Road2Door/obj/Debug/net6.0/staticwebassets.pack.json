@@ -5,6 +5,30 @@
       "PackagePath": "staticwebassets\\Road2Door.bundle.scp.css"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_Account1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_Account1.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_Areas1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_Areas1.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_HomePage.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_HomePage.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_Message.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_Message.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_Receipt.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_Receipt.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\Rider_menu.png",
+      "PackagePath": "staticwebassets\\assets\\img\\Rider_menu.png"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\about.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\about.jpg"
     },
