@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\asifsohail.jpg"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\bg.jfif",
+      "PackagePath": "staticwebassets\\assets\\img\\bg.jfif"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\blog\\blog-1.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\blog\\blog-1.jpg"
     },
@@ -147,6 +151,10 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\consumer.gif",
       "PackagePath": "staticwebassets\\assets\\img\\consumer.gif"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\delivery.gif",
+      "PackagePath": "staticwebassets\\assets\\img\\delivery.gif"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\favicon.png",
@@ -299,6 +307,14 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\testimonials\\testimonials-5.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\testimonials\\testimonials-5.jpg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\usama.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\usama.jpg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\wahab.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\wahab.jpg"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\main.js",
@@ -913,16 +929,8 @@
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
-      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\downloaded_file.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\downloaded_file.pdf"
-    },
-    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume.pdf"
-    },
-    {
-      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\downloaded_file.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\downloaded_file.pdf"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Road2Door.Microsoft.AspNetCore.StaticWebAssets.props",
