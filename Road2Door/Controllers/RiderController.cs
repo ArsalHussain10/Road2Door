@@ -21,15 +21,18 @@ namespace Road2Door.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp(IFormCollection form)
+        public IActionResult SignUp([FromForm] Rider r)
         {
-            string name = form["name"];
-            string email = form["email"];
-            string password = form["password"];
-            string cnic = form["cnic"];
-            string phone = form["phoneNumber"];
-            List<IFormFile> files = new List<IFormFile>();
-            files = Request.Form.Files.ToList();
+
+            var name = r.Name;
+            var email = r.Email;
+            var password = r.Password;
+            var cnic = r.Cnic;
+            var phone = r.Phone;
+            var file1 = Request.Form.Files.GetFile("License");
+            var file2 = Request.Form.Files.GetFile("CriminalRecord");
+
+
             //IFormFile license = form.Files.FirstOrDefault(x => x.Name == "License");
             //IFormFile policeRecord = form.Files.FirstOrDefault(x => x.Name == "CriminalRecord");
 
@@ -39,7 +42,7 @@ namespace Road2Door.Controllers
             string path1 = Path.Combine(wwwPath, subPath1);
             string path2 = Path.Combine(wwwPath, subPath2);
 
-            
+
             if (!Directory.Exists(path1))
             {
                 Directory.CreateDirectory(path1);
@@ -51,34 +54,30 @@ namespace Road2Door.Controllers
             int i = 0;
             var license = "";
             var policeRecord = "";
-            foreach (var file in files)
+            license = Path.GetFileName(file1.FileName);
+
+            var pathWithFileName = Path.Combine(path1, license);
+            i++;
+            using (FileStream stream = new
+                FileStream(pathWithFileName,
+                FileMode.Create))
             {
-                if (i == 0)
-                {
-                     license = Path.GetFileName(file.FileName);
-
-                    var pathWithFileName = Path.Combine(path1, license);
-                    i++;
-                    using (FileStream stream = new
-                        FileStream(pathWithFileName,
-                        FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                }
-                else
-                {
-                    policeRecord = Path.GetFileName(file.FileName);
-
-                    var pathWithFileName = Path.Combine(path2, policeRecord);
-                    using (FileStream stream = new
-                        FileStream(pathWithFileName,
-                        FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                }
+                file1.CopyTo(stream);
             }
+
+
+
+            policeRecord = Path.GetFileName(file2.FileName);
+
+            var pathWithFileName2 = Path.Combine(path2, policeRecord);
+            using (FileStream stream = new
+                FileStream(pathWithFileName2,
+                FileMode.Create))
+            {
+                file2.CopyTo(stream);
+            }
+
+
             Rider rider = new Rider();
             rider.Name = name;
             rider.Email = email;
@@ -89,28 +88,22 @@ namespace Road2Door.Controllers
             rider.PoliceRecord = policeRecord;
             rider.Status = 0;
 
-         /*   Rider rider1 = new Rider {
-                Name = name,
-                Email = email,
-                Password = password,
-                Cnic = cnic,
-                Phone = phone,
-                License = license,
-                PoliceRecord = policeRecord,
-                Status = 0
-                
-            };
+            /*   Rider rider1 = new Rider {
+                   Name = name,
+                   Email = email,
+                   Password = password,
+                   Cnic = cnic,
+                   Phone = phone,
+                   License = license,
+                   PoliceRecord = policeRecord,
+                   Status = 0
 
-         */  
-            RiderRepository riderRepository= new RiderRepository();
+               };
+
+            */
+            RiderRepository riderRepository = new RiderRepository();
             riderRepository.SignUp(rider);
-            
-         
-            
 
-
-            // Do something with the form data and return a response
-            // For example, you can store the data in a database or send an email
 
             return View();
         }
@@ -125,7 +118,7 @@ namespace Road2Door.Controllers
         public IActionResult SignIn(string email, string password)
         {
             RiderRepository riderRepository = new RiderRepository();
-            if(riderRepository.CheckAccount(email,password))
+            if (riderRepository.CheckAccount(email, password))
             {
                 return View("HomePage");
             }
