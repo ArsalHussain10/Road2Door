@@ -22,4 +22,6 @@ public partial class Rider
     public string License { get; set; } = null!;
 
     public string PoliceRecord { get; set; } = null!;
+
+    public virtual ICollection<MenueMaster> MenueMasters { get; } = new List<MenueMaster>();
 }
