@@ -40,4 +40,14 @@ CREATE TABLE [dbo].[Menue_Master] (
     PRIMARY KEY CLUSTERED ([MenueId] ASC)
 );
 
+CREATE TABLE [dbo].[Inventory_Items]
+(
+	[RiderId] INT NOT NULL , 
+    [ItemId] INT NOT NULL, 
+    CONSTRAINT [FK_Inventory_Items_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [Rider]([Id]),
+	CONSTRAINT [FK_Inventory_Items_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [Item]([itemId]), 
+    PRIMARY KEY ([RiderId], [ItemId])
+
+)
+
 

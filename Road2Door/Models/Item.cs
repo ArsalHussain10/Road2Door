@@ -14,4 +14,6 @@ public partial class Item
     public double Price { get; set; }
 
     public string? Description { get; set; }
+
+    public virtual ICollection<Rider> Riders { get; } = new List<Rider>();
 }

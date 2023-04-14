@@ -15,7 +15,7 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult SignUp(string name, string email, string password, string phoneNumber)
         {
-           
+
             Consumer consumer = new Consumer
             {
                 Name = name,

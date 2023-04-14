@@ -128,6 +128,23 @@ public partial class Road2DoorContext : DbContext
             entity.Property(e => e.Status)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("status");
+
+            entity.HasMany(d => d.Items).WithMany(p => p.Riders)
+                .UsingEntity<Dictionary<string, object>>(
+                    "InventoryItem",
+                    r => r.HasOne<Item>().WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_Inventory_Items_ItemId_To_ItemTable"),
+                    l => l.HasOne<Rider>().WithMany()
+                        .HasForeignKey("RiderId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable"),
+                    j =>
+                    {
+                        j.HasKey("RiderId", "ItemId").HasName("PK__Inventor__DA55845812519A99");
+                        j.ToTable("Inventory_Items");
+                    });
         });
 
         OnModelCreatingPartial(modelBuilder);

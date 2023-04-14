@@ -4,12 +4,12 @@
     {
         public RiderRepository() { }
 
-       public void SignUp(Rider rider) 
+        public void SignUp(Rider rider)
         {
             Road2DoorContext road2Door = new Road2DoorContext();
-           road2Door.Riders.Add(rider);
+            road2Door.Riders.Add(rider);
             road2Door.SaveChanges();
-            
+
         }
         public bool CheckAccount(string email, string password)
         {
