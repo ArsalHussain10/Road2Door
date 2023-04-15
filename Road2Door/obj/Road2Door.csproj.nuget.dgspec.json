@@ -58,6 +58,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "React.Web.Mvc4": {
+              "target": "Package",
+              "version": "[5.2.12, )"
+            },
+            "System.Web.Optimization.React": {
+              "target": "Package",
+              "version": "[5.2.12, )"
             }
           },
           "imports": [

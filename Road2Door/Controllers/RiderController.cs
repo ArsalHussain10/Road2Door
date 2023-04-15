@@ -132,5 +132,10 @@ namespace Road2Door.Controllers
             return View();
         }
 
+        public IActionResult Inventory()
+        {
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,171 @@
+﻿
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    .close {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Item Quantity</th>
+            <th>Item Description</th>
+            <th>Button 1</th>
+            <th>Button 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Widget</td>
+            <td>10</td>
+            <td>A small, handheld device for measuring widgets.</td>
+            <td><button class="edit-btn" data-item-id="1">Edit</button></td>
+            <td><button class="delete-btn" data-item-id="1">Delete</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Gizmo</td>
+            <td>5</td>
+            <td>A small machine used to make gizmos.</td>
+            <td><button class="edit-btn" data-item-id="2">Edit</button></td>
+            <td><button class="delete-btn" data-item-id="2">Delete</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Thingamabob</td>
+            <td>15</td>
+            <td>A device used for organizing thingamabobs.</td>
+            <td><button class="edit-btn" data-item-id="3">Edit</button></td>
+            <td><button class="delete-btn" data-item-id="3">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<button id="create-btn">Create a new item</button>
+
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+            <label for="name">Item Name:</label>
+            <input type="text" id="name" name="name"><br>
+
+            <label for="description">Item Description:</label>
+            <input type="text" id="description" name="description"><br>
+
+            <label for="quantity">Item Quantity:</label>
+            <input type="number" id="quantity" name="quantity"><br>
+
+            <label for="price">Item Price:</label>
+            <input type="number" id="price" name="price"><br>
+
+            <input type="submit" value="Create">
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description"><br><br>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price"><br><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity"><br><br>
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    
+    $(document).ready(function () {
+        // Add click event listener to edit buttons
+        $('.edit-btn').click(function () {
+            // Get item ID from data attribute
+            const itemId = $(this).data('item-id');
+
+            // Populate modal fields with existing item data
+            const itemName = $(`tr[data-item-id=${itemId}] td:nth-child(2)`).text();
+            const itemQuantity = $(`tr[data-item-id=${itemId}] td:nth-child(3)`).text();
+            const itemDescription = $(`tr[data-item-id=${itemId}] td:nth-child(4)`).text();
+            $('#description').val(itemDescription);
+            $('#price').val('');
+            $('#quantity').val(itemQuantity);
+
+            // Show modal
+            $('#edit-modal').css('display', 'block');
+        });
+
+        // Add click event listener to close button in modal
+        $('.close').click(function () {
+            $('#edit-modal').css('display', 'none');
+        });
+
+        // Add click event listener to submit button in modal
+        $('#submit-btn').click(function () {
+            // TODO: Update item data in table and close modal
+        });
+    });
+
+
+    const createBtn = document.getElementById("create-btn");
+    const modal = document.getElementById("modal");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    createBtn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+
+        </script>
