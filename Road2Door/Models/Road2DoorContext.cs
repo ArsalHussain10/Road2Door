@@ -17,6 +17,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<Consumer> Consumers { get; set; }
 
+    public virtual DbSet<InventoryItem> InventoryItems { get; set; }
+
     public virtual DbSet<Item> Items { get; set; }
 
     public virtual DbSet<MenueMaster> MenueMasters { get; set; }
@@ -51,6 +53,23 @@ public partial class Road2DoorContext : DbContext
                 .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("phone");
+        });
+
+        modelBuilder.Entity<InventoryItem>(entity =>
+        {
+            entity.HasKey(e => e.Srno);
+
+            entity.ToTable("Inventory_Items");
+
+            entity.HasOne(d => d.Item).WithMany(p => p.InventoryItems)
+                .HasForeignKey(d => d.ItemId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Inventory_Items_ItemId_To_ItemTable");
+
+            entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
+                .HasForeignKey(d => d.RiderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable");
         });
 
         modelBuilder.Entity<Item>(entity =>
@@ -128,23 +147,6 @@ public partial class Road2DoorContext : DbContext
             entity.Property(e => e.Status)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("status");
-
-            entity.HasMany(d => d.Items).WithMany(p => p.Riders)
-                .UsingEntity<Dictionary<string, object>>(
-                    "InventoryItem",
-                    r => r.HasOne<Item>().WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Inventory_Items_ItemId_To_ItemTable"),
-                    l => l.HasOne<Rider>().WithMany()
-                        .HasForeignKey("RiderId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable"),
-                    j =>
-                    {
-                        j.HasKey("RiderId", "ItemId").HasName("PK__Inventor__DA55845812519A99");
-                        j.ToTable("Inventory_Items");
-                    });
         });
 
         OnModelCreatingPartial(modelBuilder);

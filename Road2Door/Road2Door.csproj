@@ -7,17 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\React\R.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\React\R.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\assets\img\Arsal.jpg" />
-    <None Include="wwwroot\React\R.js" />
-    <None Include="wwwroot\React\RiderHomePage.jsx" />
   </ItemGroup>
 
   <ItemGroup>

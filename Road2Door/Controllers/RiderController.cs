@@ -120,6 +120,8 @@ namespace Road2Door.Controllers
             RiderRepository riderRepository = new RiderRepository();
             if (riderRepository.CheckAccount(email, password))
             {
+                HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
+
                 return View("HomePage");
             }
             return View();
@@ -132,10 +134,74 @@ namespace Road2Door.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Inventory()
         {
-            return View();
+            string riderEmail = Request.Cookies["email"];
+            RiderRepository riderRepository = new RiderRepository();
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            List<int> itemIds = riderRepository.GetItemIds(riderId);
+            List<Item> items = riderRepository.GetItems(itemIds);
+            return View(items);
         }
+
+        [HttpPost]
+        public IActionResult Inventory(string name, string description, string quantity, string price)
+        {
+            Item item = new Item
+            {
+                Description = description,
+                Name = name,
+                Quantity = int.Parse(quantity),
+                Price = Double.Parse(price),
+
+            };
+
+            RiderRepository riderRepository = new RiderRepository();
+            int itemId = riderRepository.CreateItem(item);
+
+            string riderEmail = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(riderEmail);
+
+            InventoryItem inventoryItem = new InventoryItem
+            {
+                RiderId = riderId,
+                ItemId = itemId,
+            };
+
+            riderRepository.StoreInventoryItem(inventoryItem);
+
+
+
+            return RedirectToAction("Inventory");
+
+        }
+        [HttpPost]
+        public IActionResult EditItem(int itemId, string description, int quantity, double price)
+        {
+            //// Retrieve the item from the database based on itemId
+            //RiderRepository riderRepository = new RiderRepository();
+            //Item item = riderRepository.GetItemById(itemId);
+
+            //if (item == null)
+            //{
+            //    // Handle error: Item not found
+            //    return NotFound();
+            //}
+
+            //// Update the properties of the item with the new values
+            //item.Name = name;
+            //item.Description = description;
+            //item.Quantity = quantity;
+            //item.Price = price;
+
+            //// Save changes to the database
+            //riderRepository.UpdateItem(item);
+
+            //// Redirect to the inventory view or perform other actions as needed
+            return RedirectToAction("Inventory");
+        }
+
 
     }
 }

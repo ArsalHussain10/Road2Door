@@ -15,5 +15,5 @@ public partial class Item
 
     public string? Description { get; set; }
 
-    public virtual ICollection<Rider> Riders { get; } = new List<Rider>();
+    public virtual ICollection<InventoryItem> InventoryItems { get; } = new List<InventoryItem>();
 }

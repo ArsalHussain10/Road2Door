@@ -1,5 +1,5 @@
 ﻿
-
+@model List<Item>
 <style>
     .modal {
         display: none;
@@ -48,30 +48,26 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Widget</td>
-            <td>10</td>
-            <td>A small, handheld device for measuring widgets.</td>
-            <td><button class="edit-btn" data-item-id="1">Edit</button></td>
-            <td><button class="delete-btn" data-item-id="1">Delete</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Gizmo</td>
-            <td>5</td>
-            <td>A small machine used to make gizmos.</td>
-            <td><button class="edit-btn" data-item-id="2">Edit</button></td>
-            <td><button class="delete-btn" data-item-id="2">Delete</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Thingamabob</td>
-            <td>15</td>
-            <td>A device used for organizing thingamabobs.</td>
-            <td><button class="edit-btn" data-item-id="3">Edit</button></td>
-            <td><button class="delete-btn" data-item-id="3">Delete</button></td>
-        </tr>
+
+        @if(Model!=null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+
+                    <td><button class="edit-btn" data-item-id="@item.ItemId">Edit</button></td>
+
+                </tr>
+            }
+        }
+
+        
+      
     </tbody>
 </table>
 
@@ -81,7 +77,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form>
+        <form asp-action="Inventory" asp-controller="Rider" >
             <label for="name">Item Name:</label>
             <input type="text" id="name" name="name"><br>
 
@@ -104,17 +100,21 @@
 <div id="edit-modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form>
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description"><br><br>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price"><br><br>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity"><br><br>
-            <button type="submit" id="submit-btn">Submit</button>
+        <form id="edit-form" asp-action="EditItem" asp-controller="Rider" method="post">
+            <!-- Your form fields go here -->
+            <label>Description</label>
+            <input type="text" id="description" name="description"><br>
+            
+            <input type="number" id="quantity" name="quantity"><br>
+            <input type="number" id="price" name="price"><br>
+
+            <input type="hidden" id="itemId" name="itemId" /> <!-- Add a hidden input field for itemId -->
+            <input type="submit" value="Edit">
         </form>
     </div>
 </div>
+<div id="edit-form-container"></div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -166,6 +166,24 @@
             modal.style.display = "none";
         }
     };
+
+
+        $(document).ready(function () {
+            
+            $('.edit-btn').click(function () {
+                var itemId = $(this).data('item-id');
+                // Dynamically create and show the edit form with the itemId as a hidden field
+                var formHtml = '<form id="edit-form" method="post" action="/Rider/EditItem">' +
+                    '<input type="hidden" name="itemId" value="' + itemId + '">' +
+                    // Add your form fields here
+                    '<label for="name">Item Name:</label>' +
+                    '<input type="text" id="name" name="name"><br>' +
+                    // ... add other form fields as needed
+                    '<input type="submit" value="Update">' +
+                    '</form>';
+                $('#edit-form-container').html(formHtml);
+            });
+        });
 
 
         </script>

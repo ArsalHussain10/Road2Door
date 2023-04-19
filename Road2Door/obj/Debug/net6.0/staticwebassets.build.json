@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/7UddEvQBuBbDOdIR4TSL0MDke38YffaCwXsgTFn7Y4=",
+  "Hash": "p1NRIVCh7le3al6QSOHFdWp1Ceyhar1ZGXOpbaaEeDk=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -3976,23 +3976,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\React\\RiderHomePage.jsx",
-      "SourceId": "Road2Door",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
-      "BasePath": "_content/Road2Door",
-      "RelativePath": "React/RiderHomePage.jsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\React\\RiderHomePage.jsx"
     },
     {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal_Resume.pdf",
