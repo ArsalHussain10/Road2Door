@@ -1,4 +1,7 @@
-﻿namespace Road2Door.Models.Repository
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Road2Door.Models.Repository
 {
     public class RiderRepository
     {
@@ -68,5 +71,31 @@
             return items;
 
         }
+        public void UpdateItem(int itemId, string description, double price, int quantity)
+        {
+
+            Console.WriteLine(itemId);
+            using (Road2DoorContext road2DoorContext = new Road2DoorContext())
+            {
+                // Get the item from the database using the itemId
+                Item originalItem = road2DoorContext.Items.Find(itemId);
+
+                if (originalItem != null)
+                {
+                    // Update only the attributes that are not null or empty
+                    originalItem.Description = description ?? originalItem.Description;
+                    originalItem.Price = (price > 0) ? price : originalItem.Price;
+                    originalItem.Quantity = (quantity > 0) ? quantity : originalItem.Quantity;
+
+                    road2DoorContext.SaveChanges();
+                }
+                else
+                {
+                    // Handle the case where the item is not found in the database
+                    throw new Exception($"Item with ID {itemId} not found.");
+                }
+            }
+        }
+
     }
 }

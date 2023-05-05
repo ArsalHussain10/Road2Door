@@ -103,13 +103,13 @@
         <form id="edit-form" asp-action="EditItem" asp-controller="Rider" method="post">
             <!-- Your form fields go here -->
             <label>Description</label>
-            <input type="text" id="description" name="description"><br>
+            <input type="text" id="edit-description" name="description"><br>
             
-            <input type="number" id="quantity" name="quantity"><br>
-            <input type="number" id="price" name="price"><br>
+            <input type="number" id="edit-quantity" name="quantity"><br>
+            <input type="number" id="edit-price" name="price"><br>
 
-            <input type="hidden" id="itemId" name="itemId" /> <!-- Add a hidden input field for itemId -->
-            <input type="submit" value="Edit">
+            <input type="hidden" id="itemId" value="" name="itemId" /> <!-- Add a hidden input field for itemId -->
+            <input type="submit" id="edit-submit" value="Edit">
         </form>
     </div>
 </div>
@@ -118,20 +118,16 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    var itemId;
+
     
     $(document).ready(function () {
         // Add click event listener to edit buttons
         $('.edit-btn').click(function () {
             // Get item ID from data attribute
-            const itemId = $(this).data('item-id');
+             itemId = $(this).data('item-id');
 
-            // Populate modal fields with existing item data
-            const itemName = $(`tr[data-item-id=${itemId}] td:nth-child(2)`).text();
-            const itemQuantity = $(`tr[data-item-id=${itemId}] td:nth-child(3)`).text();
-            const itemDescription = $(`tr[data-item-id=${itemId}] td:nth-child(4)`).text();
-            $('#description').val(itemDescription);
-            $('#price').val('');
-            $('#quantity').val(itemQuantity);
+            console.log(itemId);
 
             // Show modal
             $('#edit-modal').css('display', 'block');
@@ -143,8 +139,19 @@
         });
 
         // Add click event listener to submit button in modal
-        $('#submit-btn').click(function () {
-            // TODO: Update item data in table and close modal
+        $('#edit-submit').click(function () {
+            const description=document.getElementById("edit-description");
+            const price=document.getElementById("edit-price");
+            const quantity=document.getElementById("edit-quantity");
+
+            console.log(itemId);
+
+
+
+            window.location.href = "/Rider/EditItem?itemId=" + itemId + "&description=" +description + "&price=" + price + "&quantity=" + quantity;
+
+
+
         });
     });
 
@@ -168,22 +175,7 @@
     };
 
 
-        $(document).ready(function () {
-            
-            $('.edit-btn').click(function () {
-                var itemId = $(this).data('item-id');
-                // Dynamically create and show the edit form with the itemId as a hidden field
-                var formHtml = '<form id="edit-form" method="post" action="/Rider/EditItem">' +
-                    '<input type="hidden" name="itemId" value="' + itemId + '">' +
-                    // Add your form fields here
-                    '<label for="name">Item Name:</label>' +
-                    '<input type="text" id="name" name="name"><br>' +
-                    // ... add other form fields as needed
-                    '<input type="submit" value="Update">' +
-                    '</form>';
-                $('#edit-form-container').html(formHtml);
-            });
-        });
+        
 
 
         </script>

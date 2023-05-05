@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Road2Door.Models;
 using Road2Door.Models.Repository;
 using System.IO;
@@ -176,31 +178,14 @@ namespace Road2Door.Controllers
             return RedirectToAction("Inventory");
 
         }
-        [HttpPost]
-        public IActionResult EditItem(int itemId, string description, int quantity, double price)
+
+        public IActionResult EditItem(int itemId, string description, double price, int quantity)
         {
-            //// Retrieve the item from the database based on itemId
-            //RiderRepository riderRepository = new RiderRepository();
-            //Item item = riderRepository.GetItemById(itemId);
 
-            //if (item == null)
-            //{
-            //    // Handle error: Item not found
-            //    return NotFound();
-            //}
-
-            //// Update the properties of the item with the new values
-            //item.Name = name;
-            //item.Description = description;
-            //item.Quantity = quantity;
-            //item.Price = price;
-
-            //// Save changes to the database
-            //riderRepository.UpdateItem(item);
-
-            //// Redirect to the inventory view or perform other actions as needed
             return RedirectToAction("Inventory");
+
         }
+        
 
 
     }
