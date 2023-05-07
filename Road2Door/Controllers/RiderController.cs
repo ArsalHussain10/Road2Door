@@ -179,8 +179,25 @@ namespace Road2Door.Controllers
 
         }
 
-        public IActionResult EditItem(int itemId, string description, double price, int quantity)
+        public IActionResult EditItem(int quantity, string description, double price, int itemId)
         {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Item originalItem = road2DoorContext.Items.Find(itemId);
+
+            if (originalItem != null)
+            {
+                // Update only the attributes that are not null or empty
+                originalItem.Description = description ?? originalItem.Description;
+                originalItem.Price = (price > 0) ? price : originalItem.Price;
+                originalItem.Quantity = (quantity > 0) ? quantity : originalItem.Quantity;
+
+                road2DoorContext.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where the item is not found in the database
+                throw new Exception($"Item with ID {itemId} not found.");
+            }
 
             return RedirectToAction("Inventory");
 

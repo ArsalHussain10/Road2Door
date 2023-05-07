@@ -60,7 +60,9 @@
                     <td>@item.Quantity</td>
                     <td>@item.Price</td>
 
+                   
                     <td><button class="edit-btn" data-item-id="@item.ItemId">Edit</button></td>
+
 
                 </tr>
             }
@@ -108,7 +110,7 @@
             <input type="number" id="edit-quantity" name="quantity"><br>
             <input type="number" id="edit-price" name="price"><br>
 
-            <input type="hidden" id="itemId" value="" name="itemId" /> <!-- Add a hidden input field for itemId -->
+            <input type="text" id="itemId" value="" name="itemId" /> <!-- Add a hidden input field for itemId -->
             <input type="submit" id="edit-submit" value="Edit">
         </form>
     </div>
@@ -118,15 +120,15 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var itemId;
+    let itemId;
 
     
     $(document).ready(function () {
         // Add click event listener to edit buttons
         $('.edit-btn').click(function () {
             // Get item ID from data attribute
-             itemId = $(this).data('item-id');
-
+            itemId = $(this).data('item-id');
+            
             console.log(itemId);
 
             // Show modal
@@ -143,12 +145,13 @@
             const description=document.getElementById("edit-description");
             const price=document.getElementById("edit-price");
             const quantity=document.getElementById("edit-quantity");
+            const itemId1 = document.querySelector('#itemId');
+            itemId1.value=itemId;
+            console.log(itemId1);
 
-            console.log(itemId);
 
 
-
-            window.location.href = "/Rider/EditItem?itemId=" + itemId + "&description=" +description + "&price=" + price + "&quantity=" + quantity;
+            window.location.href = "/Rider/EditItem?itemId=" + itemId1 + "&description=" +description + "&price=" + price + "&quantity=" + quantity;
 
 
 
