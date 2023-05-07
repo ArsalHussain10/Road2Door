@@ -34,6 +34,44 @@
             cursor: pointer;
         }
 
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+    }
+
+        .edit-btn:hover,
+        .delete-btn:hover {
+            background-color: #3e8e41;
+        }
+
 </style>
 
 <table>
@@ -41,8 +79,9 @@
         <tr>
             <th>Item ID</th>
             <th>Item Name</th>
-            <th>Item Quantity</th>
             <th>Item Description</th>
+            <th>Item Quantity</th>
+            <th>Item Price</th>
             <th>Button 1</th>
             <th>Button 2</th>
         </tr>
@@ -107,9 +146,12 @@
             <!-- Your form fields go here -->
             <label>Description</label>
             <input type="text" id="edit-description" name="description"><br>
+
+            <label>Quantity</label>
+            <input type="number" id="edit-quantity" step="1" onkeydown="return event.keyCode !== 190;" name="quantity"><br>
             
-            <input type="number" id="edit-quantity" name="quantity"><br>
-            <input type="number" id="edit-price" name="price"><br>
+            <label>Price</label>
+            <input type="number" id="edit-price" step="0.01" name="price"><br>
 
             <input type="text" id="itemId" value="" name="itemId" /> <!-- Add a hidden input field for itemId -->
             <input type="submit" id="edit-submit" value="Edit">
@@ -179,12 +221,12 @@
     };
 
 
-    function deleteItem( itemId)
-    {
-        console.log(itemId);
-        window.location.href="/Rider/DeleteItem?itemId="+itemId;
-
+    function deleteItem(itemId) {
+        if (confirm("Are you sure you want to delete this item?")) {
+            window.location.href = "/Rider/DeleteItem?itemId=" + itemId;
+        }
     }
+
         
 
 
