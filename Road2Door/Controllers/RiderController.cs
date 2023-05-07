@@ -116,6 +116,11 @@ namespace Road2Door.Controllers
             return View();
         }
 
+        public IActionResult HomePage()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult SignIn(string email, string password)
         {
@@ -179,7 +184,7 @@ namespace Road2Door.Controllers
 
         }
 
-        public IActionResult EditItem(int quantity, string description, double price, int itemId)
+        public IActionResult EditItem(int itemId, string description, double price, int quantity)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             Item originalItem = road2DoorContext.Items.Find(itemId);
@@ -209,6 +214,7 @@ namespace Road2Door.Controllers
             riderRepository.DeleteItem(itemId);
             return RedirectToAction("Inventory");
         }
+        
         
 
 

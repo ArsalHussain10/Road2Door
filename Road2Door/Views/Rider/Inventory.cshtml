@@ -114,6 +114,7 @@
 </table>
 
 <button id="create-btn">Create a new item</button>
+<a asp-action="HomePage" asp-controller="Rider" >Back to Home Page</a>
 
 
 <div id="modal" class="modal">
@@ -151,7 +152,7 @@
             <input type="number" id="edit-quantity" step="1" onkeydown="return event.keyCode !== 190;" name="quantity"><br>
             
             <label>Price</label>
-            <input type="number" id="edit-price" step="0.01" name="price"><br>
+            <input type="number" id="edit-price"  step="0.01" name="price"><br>
 
             <input type="text" id="itemId" value="" name="itemId" /> <!-- Add a hidden input field for itemId -->
             <input type="submit" id="edit-submit" value="Edit">
