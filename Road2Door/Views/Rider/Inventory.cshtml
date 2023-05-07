@@ -62,6 +62,7 @@
 
                    
                     <td><button class="edit-btn" data-item-id="@item.ItemId">Edit</button></td>
+                    <td><button class="delete-btn" onclick="deleteItem('@item.ItemId')"  data-item-id="@item.ItemId">Delete</button></td>
 
 
                 </tr>
@@ -178,6 +179,12 @@
     };
 
 
+    function deleteItem( itemId)
+    {
+        console.log(itemId);
+        window.location.href="/Rider/DeleteItem?itemId="+itemId;
+
+    }
         
 
 

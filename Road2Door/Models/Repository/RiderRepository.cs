@@ -96,6 +96,19 @@ namespace Road2Door.Models.Repository
                 }
             }
         }
+        public void DeleteItem(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Item itemToDelete= road2DoorContext.Items.SingleOrDefault(i => i.ItemId == itemId);
+           // InventoryItem inventoryItem=road2DoorContext.InventoryItems.SingleOrDefault()
+
+            if (itemToDelete != null)
+            {
+                road2DoorContext.Items.Remove(itemToDelete);
+                road2DoorContext.SaveChanges();
+            }
+               
+        }
 
     }
 }

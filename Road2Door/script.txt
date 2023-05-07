@@ -40,14 +40,17 @@ CREATE TABLE [dbo].[Menue_Master] (
     PRIMARY KEY CLUSTERED ([MenueId] ASC)
 );
 
-CREATE TABLE [dbo].[Inventory_Items]
-(
-	[RiderId] INT NOT NULL , 
-    [ItemId] INT NOT NULL, 
-    CONSTRAINT [FK_Inventory_Items_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [Rider]([Id]),
-	CONSTRAINT [FK_Inventory_Items_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [Item]([itemId]), 
-    PRIMARY KEY ([RiderId], [ItemId])
+CREATE TABLE [dbo].[Inventory_Items] (
+    [RiderId] INT NOT NULL,
+    [ItemId]  INT NOT NULL,
+    [Srno]    INT IDENTITY (1, 1) NOT NULL,
+    CONSTRAINT [PK_Inventory_Items] PRIMARY KEY CLUSTERED ([Srno] ASC),
+    CONSTRAINT [FK_Inventory_Items_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [dbo].[Rider] ([Id]),
+    CONSTRAINT [FK_Inventory_Items_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) ON DELETE CASCADE
+	
 
-)
+);
+
+
 
 

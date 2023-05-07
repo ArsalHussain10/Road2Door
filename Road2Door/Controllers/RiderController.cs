@@ -202,6 +202,13 @@ namespace Road2Door.Controllers
             return RedirectToAction("Inventory");
 
         }
+
+        public IActionResult DeleteItem(int itemId)
+        {
+            RiderRepository riderRepository = new RiderRepository();
+            riderRepository.DeleteItem(itemId);
+            return RedirectToAction("Inventory");
+        }
         
 
 
