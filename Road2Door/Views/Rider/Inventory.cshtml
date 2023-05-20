@@ -1,78 +1,8 @@
 ﻿
 @model List<Item>
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 50%;
-    }
 
-    .close {
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    table {
-        border-collapse: collapse;
-        margin: 0 auto;
-        width: 80%;
-    }
-
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-
-    .edit-btn,
-    .delete-btn {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 8px 16px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-    }
-
-        .edit-btn:hover,
-        .delete-btn:hover {
-            background-color: #3e8e41;
-        }
-
-</style>
+    <link href="/css/rider/inventory.css" rel="stylesheet" />
 
 <table>
     <thead>
@@ -162,73 +92,6 @@
 <div id="edit-form-container"></div>
 
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    let itemId;
-
-    
-    $(document).ready(function () {
-        // Add click event listener to edit buttons
-        $('.edit-btn').click(function () {
-            // Get item ID from data attribute
-            itemId = $(this).data('item-id');
-            
-            console.log(itemId);
-
-            // Show modal
-            $('#edit-modal').css('display', 'block');
-        });
-
-        // Add click event listener to close button in modal
-        $('.close').click(function () {
-            $('#edit-modal').css('display', 'none');
-        });
-
-        // Add click event listener to submit button in modal
-        $('#edit-submit').click(function () {
-            const description=document.getElementById("edit-description");
-            const price=document.getElementById("edit-price");
-            const quantity=document.getElementById("edit-quantity");
-            const itemId1 = document.querySelector('#itemId');
-            itemId1.value=itemId;
-            console.log(itemId1);
-
-
-
-            window.location.href = "/Rider/EditItem?itemId=" + itemId1 + "&description=" +description + "&price=" + price + "&quantity=" + quantity;
-
-
-
-        });
-    });
-
-
-    const createBtn = document.getElementById("create-btn");
-    const modal = document.getElementById("modal");
-    const closeBtn = document.getElementsByClassName("close")[0];
-
-    createBtn.onclick = function () {
-        modal.style.display = "block";
-    };
-
-    closeBtn.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
-
-
-    function deleteItem(itemId) {
-        if (confirm("Are you sure you want to delete this item?")) {
-            window.location.href = "/Rider/DeleteItem?itemId=" + itemId;
-        }
-    }
-
-        
-
-
-        </script>
+<script src="/js/rider/inventory.js"></script>
