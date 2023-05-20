@@ -18,5 +18,11 @@ public class ConsumerRepository
 
     }
 
+    public Consumer GetConsumer(string email)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+       return road2DoorContext.Consumers.FirstOrDefault(c => c.Email == email);
+    }
+
 
 }
