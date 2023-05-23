@@ -59,6 +59,7 @@ CREATE TABLE [dbo].[Menu_Details] (
     CONSTRAINT [FK_Menu_Details_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) ON DELETE CASCADE
 );
 
-
-
+//SCAFFOLD COMMAND
+Scaffold-DbContext "connstring" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
+replace connstring with DB connection string
 
