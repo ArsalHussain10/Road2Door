@@ -63,3 +63,6 @@ CREATE TABLE [dbo].[Menu_Details] (
 Scaffold-DbContext "connstring" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
 replace connstring with DB connection string
 
+//Alter Item Table for adding constraint 
+ALTER TABLE Item
+ADD CONSTRAINT CHK_Quantity_NonNegative CHECK (Quantity >= 0);
