@@ -214,9 +214,184 @@ namespace Road2Door.Controllers
             riderRepository.DeleteItem(itemId);
             return RedirectToAction("Inventory");
         }
-        
-        
+
+        public IActionResult Menu()
+        {
+            RiderRepository riderRepository = new RiderRepository();
+            string riderEmail = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            int menuId = riderRepository.GetMenuId(riderId);
+            List<int> itemIds = riderRepository.GetItemIds(riderId);
+            List<Item> items = riderRepository.GetItems(itemIds);
+            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
+
+            ViewBag.menuId = menuId;
+            ViewBag.items= items;
+            ViewBag.menuItems = menuitem;
+
+            if (menuId!=-1)
+            {
+                return View("MenuPage");
+            }
+            else
+            {
+                string creationDate = DateTime.Now.ToString("yyyy-MM-dd");
+                MenueMaster record = new MenueMaster { 
+                    RiderId=riderId,
+                    CreationDate=creationDate,  
+
+                };
+                riderRepository.AddToMenuMaster(record);
+                return RedirectToAction("Menu");
+
+            }
+
+        }
+        public IActionResult AddToMenu(int itemId,int quantity)
+        {
+
+            RiderRepository riderRepository = new RiderRepository();
+            string riderEmail = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            int menuId = riderRepository.GetMenuId(riderId);
+            Item itemFound=riderRepository.GetItem(itemId);
+            if(itemFound!=null)
+            {
+                ViewBag.maxQuantity = itemFound.Quantity;
+                int newQuantity= itemFound.Quantity - quantity;
+                riderRepository.updateQuantity(itemId, newQuantity);
+            }
+            List<int> itemIds = riderRepository.GetItemIds(riderId);
+            List<Item> items = riderRepository.GetItems(itemIds);
+            ViewBag.items = items;
+            MenuDetail mItem=riderRepository.CheckMenuItemExist(itemId);
+            if (mItem != null)
+            {
+                int updateQuantity = mItem.Quantity + quantity;
+                riderRepository.updateQuantityMenuItem(itemId, updateQuantity);
+
+            }
+            else
+            {
+                MenuDetail menuItem = new MenuDetail
+                {
+                    MenueId = menuId,
+                    ItemId = itemId,
+                    Quantity = quantity,
+                };
+                riderRepository.AddToMenuDetails(menuItem);
+            }
+            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
+            ViewBag.menuItems= menuitem;
+            ViewBag.menuId = menuId;
+           
+            return View("MenuPage");
+        }
+
+
+        public IActionResult DeleteItemFromMenu(int itemId, int quantity)
+        {
+            RiderRepository riderRepository = new RiderRepository();
+
+            Item itemFound = riderRepository.GetItem(itemId);
+            if (itemFound != null)
+            {
+                int newQuantity = itemFound.Quantity + quantity;
+                riderRepository.addQuantitytoInventoryOnDelete(itemId, newQuantity);
+            }
+            riderRepository.DeleteItemFromMenu(itemId);
+
+            return RedirectToAction("Menu");
+        }
+        [HttpPost]
+        public IActionResult UpdateMenuItemQuantity(int itemId, int menuItemQuantity, int updatedQuantity)
+        {
+            RiderRepository riderRepository = new RiderRepository();
+            string riderEmail = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            int menuId = riderRepository.GetMenuId(riderId);
+            List<int> itemIds = riderRepository.GetItemIds(riderId);
+            List<Item> items = riderRepository.GetItems(itemIds);
+            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
+            
+            ViewBag.menuId = menuId;
+            ViewBag.items = items;
+            ViewBag.menuItems = menuitem;
+            if (updatedQuantity>menuItemQuantity)
+            {
+                int newQuantity1 = 0, newQuantity2 = 0;
+                int decrementQuantity = updatedQuantity- menuItemQuantity ;
+
+                Item itemFound = riderRepository.GetItem(itemId);
+                if (itemFound != null && itemFound.Quantity!=0)
+                {
+                     newQuantity1 = itemFound.Quantity - decrementQuantity;
+                    if (newQuantity1 > 0)
+                    {
+                        riderRepository.updateQuantity(itemId, newQuantity1);
+                    }
+                    else
+                    {
+                        newQuantity1 = 0;
+                        riderRepository.updateQuantity(itemId, newQuantity1);
+
+                    }
+                }
+                MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId);
+                if (mItem != null)
+                {
+                     newQuantity2 = mItem.Quantity + decrementQuantity;
+                    riderRepository.updateQuantityMenuItem(itemId, newQuantity2);
+
+                }
+                var response = new
+                {
+                    updatedInventoryQuantity = newQuantity1,
+                    updatedMenuQuantity = newQuantity2
+                };
+
+                return Json(response);
+               /* return RedirectToAction("Menu");*/
+            }
+            else if (updatedQuantity<menuItemQuantity)
+            {
+                int newQuantity1 = 0, newQuantity2 = 0;
+                int Updatequantity = menuItemQuantity - updatedQuantity;
+                Item itemFound = riderRepository.GetItem(itemId);
+                if (itemFound != null)
+                {
+                     newQuantity1 = itemFound.Quantity + Updatequantity;
+                    riderRepository.updateQuantity(itemId, newQuantity1);
+                }
+                MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId);
+                if (mItem != null)
+                {
+                     newQuantity2 = mItem.Quantity - Updatequantity;
+                    if (newQuantity2 >0)
+                    {
+                        riderRepository.updateQuantityMenuItem(itemId, newQuantity2);
+                    }
+                    else
+                    {
+                        newQuantity2 = 0;
+                        riderRepository.updateQuantityMenuItem(itemId, newQuantity2);
+                    }
+
+                }
+                var response = new
+                {
+                    updatedInventoryQuantity = newQuantity1,
+                    updatedMenuQuantity = newQuantity2
+                };
+
+                return Json(response);
+/*                return RedirectToAction("Menu");
+*/            }
+            return RedirectToAction("Menu");
+        }
+
 
 
     }
 }
+

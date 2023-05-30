@@ -1,0 +1,139 @@
+﻿
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    List<Item> Items = ViewBag.items as List<Item>;
+    List<MenuDetail> menuItems = ViewBag.menuItems as List<MenuDetail>;
+  
+}
+
+<link href="/css/rider/inventory.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Item Description</th>
+            <th>Item Quantity</th>
+            <th>Item Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Items != null)
+        {
+            @foreach (var item in Items)
+            {
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+
+
+                    <td><button class="edit-btn" data-item-id="@item.ItemId">Add to Menu</button></td>
+
+
+                </tr>
+            }
+        }
+
+
+
+    </tbody>
+</table>
+
+
+<a asp-action="HomePage" asp-controller="Rider">Back to Home Page</a>
+
+
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        @*        <h2>Add Item to Menu</h2>
+        *@
+        <p>Item ID: <span id="modal-item-id" name="itemId"></span></p>
+        <p>Item Name: <span id="modal-item-name" name="itemName"></span></p>
+        <p>Item Quantity: <span id="modal-item-quantity" name="itemQuantity"></span></p>
+
+        <form id="add-to-menu-form" asp-action="AddToMenu" asp-controller="Rider" method="post">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max= @ViewBag.maxQuantity required ><br>
+            <input type="hidden" id="itemId" name="itemId">
+            <input type="submit" id="add-menuItem" value="Add to Menu">
+        </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="edit-form-container"></div>
+<h5>Your Menu: M-@ViewBag.menuId</h5>
+<table id="menu-table">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Quantity</th>
+            <th>Action</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="menu-table-body">
+        @if (menuItems != null)
+        {
+            @foreach (var item in menuItems)
+            {
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>
+                        <span class="item-quantity">@item.Quantity</span>
+                    </td>
+                    <td><button class="IncreaseDecreaseMenuItem" data-item-id="@item.ItemId">Update</button></td>
+                    <td><button class="delete-btn" onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId">Delete</button></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+<div id="edit-menu-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Item ID: <span id="modal-itemid" name="itemId"></span></p>
+        <p>Item Name: <span id="modal-itemname" name="itemName"></span></p>
+        <p>Inventory Item Quantity: <span id="modal-itemquantity" name="itemQuantity"></span></p>
+        <p>Menu Item Quantity: <span id="modal-menu-itemquantity" name="menuItemQuantity"></span></p>
+
+        <form id="update-menu" asp-action="UpdateMenuItemQuantity" asp-controller="Rider" method="post">
+            <label for="quantity">Quantity:</label>
+            <div class="quantity-input">
+                <button type="button" class="quantity-btn minus-btn" >-</button>
+@*                <span id="modal-menu-quantity" name="menuItemQuantity"></span>
+
+*@
+                <span type="number" id="modal-menu-quantity" name="menuItemQuantity"></span>
+                <button type="button" class="quantity-btn plus-btn">+</button>
+            </div>
+            <input type="hidden" id="itemId" name="itemId">
+            <input type="submit" id="update-MenuInventory" value="Update">
+        </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/rider/Menu.js"></script>
+
+
+

@@ -321,6 +321,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\wahab.jpg"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\Menu.js",
+      "PackagePath": "staticwebassets\\assets\\js\\Menu.js"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\main.js",
       "PackagePath": "staticwebassets\\assets\\js\\main.js"
     },
@@ -701,6 +705,18 @@
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\inventory.css",
+      "PackagePath": "staticwebassets\\css\\rider\\inventory.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\signin.css",
+      "PackagePath": "staticwebassets\\css\\rider\\signin.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\signup.css",
+      "PackagePath": "staticwebassets\\css\\rider\\signup.css"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -711,6 +727,14 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\consumer\\settings.js",
       "PackagePath": "staticwebassets\\js\\consumer\\settings.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\inventory.js",
+      "PackagePath": "staticwebassets\\js\\rider\\inventory.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\signup.js",
+      "PackagePath": "staticwebassets\\js\\rider\\signup.js"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\site.js",

@@ -5,6 +5,7 @@ namespace Road2Door.Models.Repository
 {
     public class RiderRepository
     {
+
         public RiderRepository() { }
 
         public void SignUp(Rider rider)
@@ -109,6 +110,103 @@ namespace Road2Door.Models.Repository
             }
                
         }
+        public int GetMenuId(int id)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenueMaster menuId = road2DoorContext.MenueMasters.FirstOrDefault(r => r.RiderId == id);
+            if (menuId == null)
+            {
+                return -1;
+            }
+            else
+            {
+                return menuId.MenueId;
+            }
+        }
+        public Item GetItem(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Item item = road2DoorContext.Items.FirstOrDefault(i => i.ItemId == itemId);
+            return item;
+        }
+        
+        public void updateQuantity(int itemId,int newQuantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Item item = road2DoorContext.Items.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null) {
+                item.Quantity = newQuantity;
+                road2DoorContext.SaveChanges();
+            }
 
+        }
+        public MenuDetail CheckMenuItemExist(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+            return item;
+        }
+
+        public void updateQuantityMenuItem(int itemId, int newQuantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity = newQuantity;
+                road2DoorContext.SaveChanges();
+            }
+        }
+
+        public void AddToMenuMaster(MenueMaster menuRecord)
+        {
+
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            road2DoorContext.MenueMasters.Add(menuRecord);
+            road2DoorContext.SaveChanges();
+
+        }
+        public void AddToMenuDetails(MenuDetail menuItem)
+        {
+
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            road2DoorContext.MenuDetails.Add(menuItem);
+            road2DoorContext.SaveChanges();
+
+        }
+        public List<MenuDetail> GetMenuItem(int menuId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+
+            List<MenuDetail> items = road2DoorContext.MenuDetails.Where(mItem=>mItem.MenueId==menuId).Select(i=>i).ToList();
+          
+            return items;
+
+        }
+
+        public void DeleteItemFromMenu(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail itemToDelete = road2DoorContext.MenuDetails.SingleOrDefault(i => i.ItemId == itemId);
+
+            if (itemToDelete != null)
+            {
+                road2DoorContext.MenuDetails.Remove(itemToDelete);
+                road2DoorContext.SaveChanges();
+            }
+
+        }
+
+        public void addQuantitytoInventoryOnDelete(int itemId, int quantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Item item = road2DoorContext.Items.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity = quantity;
+                road2DoorContext.SaveChanges();
+            }
+        }
     }
+    
 }

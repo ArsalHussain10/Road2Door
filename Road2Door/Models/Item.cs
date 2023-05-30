@@ -17,22 +17,5 @@ public partial class Item
 
     public virtual ICollection<InventoryItem> InventoryItems { get; } = new List<InventoryItem>();
 
-    public void Update(Item updatedItem)
-    {
-        // Update only the attributes that are not null or empty in the updated item
-        if (!string.IsNullOrEmpty(updatedItem.Description))
-        {
-            this.Description = updatedItem.Description;
-        }
-
-        if (updatedItem.Price != 0)
-        {
-            this.Price = updatedItem.Price;
-        }
-
-        if (updatedItem.Quantity != 0)
-        {
-            this.Quantity = updatedItem.Quantity;
-        }
-    }
+    public virtual ICollection<MenuDetail> MenuDetails { get; } = new List<MenuDetail>();
 }

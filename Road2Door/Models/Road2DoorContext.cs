@@ -21,6 +21,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<Item> Items { get; set; }
 
+    public virtual DbSet<MenuDetail> MenuDetails { get; set; }
+
     public virtual DbSet<MenueMaster> MenueMasters { get; set; }
 
     public virtual DbSet<Rider> Riders { get; set; }
@@ -63,7 +65,6 @@ public partial class Road2DoorContext : DbContext
 
             entity.HasOne(d => d.Item).WithMany(p => p.InventoryItems)
                 .HasForeignKey(d => d.ItemId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Items_ItemId_To_ItemTable");
 
             entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
@@ -89,6 +90,22 @@ public partial class Road2DoorContext : DbContext
                 .HasColumnName("name");
             entity.Property(e => e.Price).HasColumnName("price");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
+        });
+
+        modelBuilder.Entity<MenuDetail>(entity =>
+        {
+            entity.HasKey(e => e.Srno);
+
+            entity.ToTable("Menu_Details");
+
+            entity.HasOne(d => d.Item).WithMany(p => p.MenuDetails)
+                .HasForeignKey(d => d.ItemId)
+                .HasConstraintName("FK_Menu_Details_ItemId_To_ItemTable");
+
+            entity.HasOne(d => d.Menue).WithMany(p => p.MenuDetails)
+                .HasForeignKey(d => d.MenueId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Menu_Details_MenuId_To_MenuMasterTable");
         });
 
         modelBuilder.Entity<MenueMaster>(entity =>
