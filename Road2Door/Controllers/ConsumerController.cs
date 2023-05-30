@@ -45,6 +45,15 @@ namespace Road2Door.Controllers
             return View();
 
         }
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            foreach (var cookie in HttpContext.Request.Cookies.Keys)
+            {
+                HttpContext.Response.Cookies.Delete(cookie);
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
         public IActionResult Settings()
         {

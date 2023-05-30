@@ -16,6 +16,17 @@ namespace Road2Door.Controllers
 
             Environment = environment;
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            foreach (var cookie in HttpContext.Request.Cookies.Keys)
+            {
+                HttpContext.Response.Cookies.Delete(cookie);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpGet]
         public IActionResult SignUp()
         {

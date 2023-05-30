@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XvN+a518eYBOeO1jru2NepyZD/Gbei+owMPJwa9nYkk=",
+  "Hash": "7l91oAx4Ra82De+bd90g+bZuEItC3eHC1yhJDXUzMxM=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -1409,23 +1409,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\main.js"
-    },
-    {
-      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\Menu.js",
-      "SourceId": "Road2Door",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
-      "BasePath": "_content/Road2Door",
-      "RelativePath": "assets/js/Menu.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\js\\Menu.js"
     },
     {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\scss\\Readme.txt",
@@ -3143,6 +3126,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\rider\\inventory.js"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\Menu.js",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "js/rider/Menu.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\rider\\Menu.js"
     },
     {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\signup.js",

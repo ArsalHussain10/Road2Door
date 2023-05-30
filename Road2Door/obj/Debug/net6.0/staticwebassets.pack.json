@@ -321,10 +321,6 @@
       "PackagePath": "staticwebassets\\assets\\img\\wahab.jpg"
     },
     {
-      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\Menu.js",
-      "PackagePath": "staticwebassets\\assets\\js\\Menu.js"
-    },
-    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\js\\main.js",
       "PackagePath": "staticwebassets\\assets\\js\\main.js"
     },
@@ -727,6 +723,10 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\consumer\\settings.js",
       "PackagePath": "staticwebassets\\js\\consumer\\settings.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\Menu.js",
+      "PackagePath": "staticwebassets\\js\\rider\\Menu.js"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\inventory.js",
