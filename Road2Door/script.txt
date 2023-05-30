@@ -44,13 +44,25 @@ CREATE TABLE [dbo].[Inventory_Items] (
     [RiderId] INT NOT NULL,
     [ItemId]  INT NOT NULL,
     [Srno]    INT IDENTITY (1, 1) NOT NULL,
-    CONSTRAINT [PK_Inventory_Items] PRIMARY KEY CLUSTERED ([Srno] ASC),
+    PRIMARY KEY CLUSTERED ([Srno] ASC),
     CONSTRAINT [FK_Inventory_Items_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [dbo].[Rider] ([Id]),
-    CONSTRAINT [FK_Inventory_Items_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) ON DELETE CASCADE
-	
-
+    CONSTRAINT [FK_Inventory_Items_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) on delete cascade
 );
 
+CREATE TABLE [dbo].[Menu_Details] (
+    [Srno]     INT NOT NULL IDENTITY,
+    [MenueId]  INT NOT NULL,
+    [ItemId]   INT NOT NULL,
+    [Quantity] INT NOT NULL,
+    CONSTRAINT [PK_Menu_Details] PRIMARY KEY CLUSTERED ([Srno] ASC),
+    CONSTRAINT [FK_Menu_Details_MenuId_To_MenuMasterTable] FOREIGN KEY ([MenueId]) REFERENCES [dbo].[Menue_Master] ([MenueId]),
+    CONSTRAINT [FK_Menu_Details_ItemId_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) ON DELETE CASCADE
+);
 
+//SCAFFOLD COMMAND
+Scaffold-DbContext "connstring" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
+replace connstring with DB connection string
 
-
+//Alter Item Table for adding constraint 
+ALTER TABLE Item
+ADD CONSTRAINT CHK_Quantity_NonNegative CHECK (Quantity >= 0);

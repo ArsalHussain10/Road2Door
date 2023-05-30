@@ -13,7 +13,7 @@
 *.csproj.user
 *.obj
 *.pdb
-
+/script.txt
 # Compiled code
 /bin/
 /obj/
