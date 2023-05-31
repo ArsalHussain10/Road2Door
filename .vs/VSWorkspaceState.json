@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Road2Door",
+    "\\Road2Door\\bin",
+    "\\Road2Door\\bin\\Debug",
+    "\\Road2Door\\bin\\Release",
     "\\Road2Door\\Controllers",
-    "\\Road2Door\\Models",
-    "\\Road2Door\\Snapshots"
+    "\\Road2Door\\Models"
   ],
   "SelectedNode": "\\Road2Door",
   "PreviewInSolutionExplorer": false
