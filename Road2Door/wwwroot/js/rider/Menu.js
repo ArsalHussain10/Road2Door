@@ -90,10 +90,10 @@ $(document).ready(function () {
         });
         // Minus button click event
         $(".minus-btn").click(function () {
-            count = 0;
+            
             if (updatedVal > 0) {
                 updatedVal = updatedVal - 1;
-                count = count + 1;
+                count = count -1;
 
                 console.log(typeof (updatedVal));
                 $("#modal-menu-quantity").text(updatedVal.toString());
