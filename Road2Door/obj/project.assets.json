@@ -4046,23 +4046,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arsal\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\usama\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\Road2Door.csproj",
+      "projectUniqueName": "C:\\Users\\usama\\Source\\Repos\\Road2Door\\Road2Door\\Road2Door.csproj",
       "projectName": "Road2Door",
-      "projectPath": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\Road2Door.csproj",
-      "packagesPath": "C:\\Users\\Arsal\\.nuget\\packages\\",
-      "outputPath": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\obj\\",
+      "projectPath": "C:\\Users\\usama\\Source\\Repos\\Road2Door\\Road2Door\\Road2Door.csproj",
+      "packagesPath": "C:\\Users\\usama\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\usama\\Source\\Repos\\Road2Door\\Road2Door\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Arsal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\usama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
