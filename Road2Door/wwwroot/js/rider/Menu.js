@@ -58,15 +58,11 @@ $(document).ready(function () {
     });
 
     $('.IncreaseDecreaseMenuItem').click(function () {
-        // Show modal
-        console.log("inside update button click function");
-      
 
         var itemId = $(this).data('item-id');
         var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
         var itemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
         var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-        console.log(itemQuantityOfMenu)
         // Update modal content with item details
         $("#modal-itemid").text(itemId);
         $("#modal-itemname").text(itemName);
@@ -74,20 +70,28 @@ $(document).ready(function () {
         $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
         $("#modal-menu-quantity").text(itemQuantityOfMenu);
         var updatedVal = parseInt(itemQuantityOfMenu);
-        // Plus button click event
-        if (itemQuantity > 0) {
-            $(".plus-btn").click(function () {
+        var count = 0;
+
+        $(".plus-btn").click(function () {
+
+            if (parseInt(count) < itemQuantity) {
                 updatedVal = updatedVal + 1;
-                // Increment itemQuantityOfMenu by 1
-                console.log(typeof (updatedVal));
+                count = count + 1;
+                console.log("here is the count" + count);
+
                 $("#modal-menu-quantity").text(updatedVal.toString()); // Update displayed quantity
-            });
-        }
+
+            }
+
+
+            if (count > itemQuantityOfMenu) {
+                $(".plus-btn").prop("disabled", true); // Disable plus button
+            }
+        });
         // Minus button click event
         $(".minus-btn").click(function () {
             if (updatedVal > 0) {
                 updatedVal = updatedVal - 1;
-                // Increment itemQuantityOfMenu by 1
                 console.log(typeof (updatedVal));
                 $("#modal-menu-quantity").text(updatedVal.toString());
             }
@@ -100,7 +104,7 @@ $(document).ready(function () {
             $('#edit-menu-modal').css('display', 'none');
         });
         // Function to submit the form and update the item quantity in the menu
-       $(document).on("submit", "#update-menu", function (e) {
+        $(document).on("submit", "#update-menu", function (e) {
             console.log("inside update button click function2");
 
             e.preventDefault();
@@ -143,11 +147,11 @@ $(document).ready(function () {
 
             });
         });
-   });
+    });
 
 
 
-  
+
 
 
 });
