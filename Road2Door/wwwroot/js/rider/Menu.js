@@ -73,8 +73,8 @@ $(document).ready(function () {
         var count = 0;
 
         $(".plus-btn").click(function () {
-
-            if (parseInt(count) < itemQuantity) {
+            console.log(count + itemQuantity)
+            if (parseInt(count) < itemQuantity || updatedVal < itemQuantityOfMenu) {
                 updatedVal = updatedVal + 1;
                 count = count + 1;
                 console.log("here is the count" + count);
@@ -82,19 +82,24 @@ $(document).ready(function () {
                 $("#modal-menu-quantity").text(updatedVal.toString()); // Update displayed quantity
 
             }
-
-
-            if (count > itemQuantityOfMenu) {
+            else if (count > itemQuantityOfMenu) {
                 $(".plus-btn").prop("disabled", true); // Disable plus button
             }
+
+
         });
         // Minus button click event
         $(".minus-btn").click(function () {
+            count = 0;
             if (updatedVal > 0) {
                 updatedVal = updatedVal - 1;
+                count = count + 1;
+
                 console.log(typeof (updatedVal));
                 $("#modal-menu-quantity").text(updatedVal.toString());
+                $(".plus-btn").prop("disabled", false);
             }
+
         });
 
         $('#edit-menu-modal').css('display', 'block');
@@ -148,6 +153,7 @@ $(document).ready(function () {
             });
         });
     });
+
 
 
 
