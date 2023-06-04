@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            width: 100%;
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+            .box p {
+                margin: 0;
+            }
+
+            .box a {
+                display: block;
+                margin-top: 10px;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    @foreach (Rider r in Model)
+    {
+
+        <div class="box">
+            <p>Rider ID: <span id="riderId"> @r.Id </span></p>
+            <p>Name: <span id="name">  @r.Name  </span></p>
+            <p>Email: <span id="email">  @r.Email </span></p>
+            <p>CNIC: <span id="cnic">  @r.Cnic </span></p>
+            <p>Phone: <span id="phone">  @r.Phone </span></p>
+            <p>Account Status: <span id="accountStatus">@r.Status</span></p>
+            <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
+            <a href="link2.html">Police Record</a>
+        </div>
+
+    }
+
+
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideLicenseModal()">&times;</span>
+            <h3>Driving License</h3>
+            <img id="licenseImage" src="" alt="Driving License Image">
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function showLicenseModal(license) {
+        var imageUrl = license;
+        console.log(imageUrl);
+        document.getElementById("licenseModal").style.display = "block";
+        document.getElementById("licenseImage").src = imageUrl;
+    }
+
+    function hideLicenseModal() {
+        document.getElementById("licenseModal").style.display = "none";
+    }
+</script>
+</html>
