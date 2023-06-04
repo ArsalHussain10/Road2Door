@@ -39,8 +39,9 @@ namespace Road2Door.Controllers
             if (consumerRepository.CheckAccount(email, password))
             {
                 HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
+                Consumer consumer = consumerRepository.GetConsumer(email);
 
-                return View("HomePage");
+                return View("HomePage",consumer);
             }
             return View();
 
@@ -87,9 +88,14 @@ namespace Road2Door.Controllers
             return RedirectToAction("HomePage");
 
         }
+
+
         public IActionResult HomePage()
         {
-            return View();
+            string email = Request.Cookies["email"];
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            Consumer consumer=consumerRepository.GetConsumer(email);
+            return View(consumer);
 
         }
 

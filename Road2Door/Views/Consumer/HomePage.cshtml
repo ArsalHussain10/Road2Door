@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Consumer
+
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -81,7 +83,7 @@
                 </a>
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Arsal
+                        @Model.Name
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" asp-action="Settings" asp-controller="Consumer">Settings</a></li>
