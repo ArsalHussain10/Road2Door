@@ -38,5 +38,20 @@ namespace Road2Door.Controllers
             return RedirectToAction("ShowRiders");
 
         }
+
+        [HttpGet]
+
+        public IActionResult RiderAccountRequest()
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            List<Rider> riders=adminRepository.GetRidersRequest();
+            return View(riders);
+        }
+        public IActionResult AccountRequest(int riderId, int accountRequest)
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            adminRepository.AccountRequest(riderId,accountRequest);
+            return RedirectToAction("RiderAccountRequest");
+        }
     }
 }

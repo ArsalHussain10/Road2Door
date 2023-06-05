@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7l91oAx4Ra82De+bd90g+bZuEItC3eHC1yhJDXUzMxM=",
+  "Hash": "chJkG04ihjr/ZGgn2Ys/5yMnqt7c+94HTBX7wNJQSP8=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -2941,6 +2941,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\vendor\\swiper\\swiper-bundle.min.js.map"
     },
     {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\admin\\riderAccountRequest.css",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "css/admin/riderAccountRequest.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin\\riderAccountRequest.css"
+    },
+    {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\consumer\\settings.css",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -3092,6 +3109,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\admin\\riderAccountRequest.js",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "js/admin/riderAccountRequest.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin\\riderAccountRequest.js"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\admin\\showRiders.js",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "js/admin/showRiders.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin\\showRiders.js"
     },
     {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\consumer\\settings.js",

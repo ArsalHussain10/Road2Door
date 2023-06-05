@@ -685,6 +685,10 @@
       "PackagePath": "staticwebassets\\assets\\vendor\\swiper\\swiper-bundle.min.js.map"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\admin\\riderAccountRequest.css",
+      "PackagePath": "staticwebassets\\css\\admin\\riderAccountRequest.css"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\consumer\\settings.css",
       "PackagePath": "staticwebassets\\css\\consumer\\settings.css"
     },
@@ -719,6 +723,14 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\admin\\riderAccountRequest.js",
+      "PackagePath": "staticwebassets\\js\\admin\\riderAccountRequest.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\admin\\showRiders.js",
+      "PackagePath": "staticwebassets\\js\\admin\\showRiders.js"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\consumer\\settings.js",

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Road2Door.Models.Repository
 {
@@ -9,7 +10,7 @@ namespace Road2Door.Models.Repository
         public List<Rider> GetRiders()
         {
             Road2DoorContext road2DoorContext= new Road2DoorContext();
-            return road2DoorContext.Riders.ToList();
+            return road2DoorContext.Riders.Where(r => r.Status != 2).ToList();
 
         }
         public List<Consumer> GetConsumers()
@@ -28,6 +29,28 @@ namespace Road2Door.Models.Repository
                 rider.Status = accountStatus;
                 road2DoorContext.SaveChanges();
                 // Account status updated successfully
+            }
+        }
+        public List<Rider> GetRidersRequest()
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.Riders.Where(r => r.Status == 2).ToList();
+
+        }
+
+        public void AccountRequest(int riderId, int accountRequest)
+        {
+            if(accountRequest==0)
+            {
+                Road2DoorContext road2DoorContext = new Road2DoorContext();
+                Rider rider = road2DoorContext.Riders.Find(riderId);
+                road2DoorContext.Riders.Remove(rider);
+                road2DoorContext.SaveChanges();
+
+            }
+            else
+            {
+                ChangeAccountStatusRider(riderId, 1);
             }
         }
 
