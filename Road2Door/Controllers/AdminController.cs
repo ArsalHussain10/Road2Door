@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNetCore.Mvc;
 using Road2Door.Models;
 using Road2Door.Models.Repository;
 
@@ -27,6 +28,15 @@ namespace Road2Door.Controllers
 
             
             return View(consumers);
+        }
+
+        [HttpGet]
+        public IActionResult ChangeAccountStatusRider(int riderId, int accountStatus)
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            adminRepository.ChangeAccountStatusRider(riderId, accountStatus);
+            return RedirectToAction("ShowRiders");
+
         }
     }
 }
