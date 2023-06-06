@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "chJkG04ihjr/ZGgn2Ys/5yMnqt7c+94HTBX7wNJQSP8=",
+  "Hash": "uGg4b1sIJAnxrZEHFPUFKi/3zIYHwmw6YWPFPZMNkNI=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -4216,6 +4216,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/Arsal-Resume (1).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf"
+    },
+    {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -4231,6 +4248,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\software houses.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/software houses.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\software houses.pdf"
     }
   ]
 }

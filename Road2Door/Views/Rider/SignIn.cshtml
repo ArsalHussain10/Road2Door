@@ -13,11 +13,17 @@
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head>
 
+    
 
     <body>
+
+        <div id="displayVewBag">
+        <h1>@ViewBag.message</h1>
+    </div>
 
     <div class="container mt-5 mb-6">
 @*        <img src="/assets/img/delivery.gif" alt="Image" class="riderConsumerGif" />
@@ -65,4 +71,14 @@
 
 
     </body>
+<script>
+    $(document).ready(function () {
+        var displayElement = $("#displayVewBag");
+
+        // Show the value for 3 seconds
+        setTimeout(function () {
+            displayElement.fadeOut(1000); // 1000 milliseconds = 1 second
+        }, 3000); // 3000 milliseconds = 3 seconds
+    });
+</script>
 </html>
