@@ -87,3 +87,13 @@ CREATE TABLE [dbo].[ConsumerLocation]
     [longitude] DECIMAL(18, 4) NOT NULL, 
     CONSTRAINT [FK_ConsumerLocation_ToConsumer] FOREIGN KEY ([consumerId]) REFERENCES [Consumer]([Id]) ON DELETE CASCADE
 )
+CREATE TABLE [dbo].[Notification]
+(
+    [riderId] INT NOT NULL,
+    [consumerId] INT NOT NULL,
+    [insertionTime] DATETIME DEFAULT GETDATE() NOT NULL,
+    CONSTRAINT [PK_Notification] PRIMARY KEY ([riderId], [consumerId]),
+    CONSTRAINT [FK_Notification_ToRider] FOREIGN KEY ([riderId]) REFERENCES [Rider]([Id]),
+    CONSTRAINT [FK_Notification_Consumer] FOREIGN KEY ([consumerId]) REFERENCES [Consumer]([Id])
+)
+

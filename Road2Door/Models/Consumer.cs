@@ -16,4 +16,6 @@ public partial class Consumer
     public string? Phone { get; set; }
 
     public virtual ConsumerLocation? ConsumerLocation { get; set; }
+
+    public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 }

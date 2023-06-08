@@ -45,6 +45,12 @@ namespace Road2Door.Models.Repository
             Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email);
             return rider.Id;
         }
+
+        public RiderLocation GetRiderLocation(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.RiderLocations.FirstOrDefault(r => r.RiderId == riderId);
+        }
         public void StoreInventoryItem(InventoryItem inventoryItem)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
@@ -225,6 +231,68 @@ namespace Road2Door.Models.Repository
             riderLocation.Longitude = longitude;
             road2DoorContext.RiderLocations.Update(riderLocation);
             road2DoorContext.SaveChanges();
+        }
+
+        public void sendMenu(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            List<ConsumerLocation> consumerLocations = consumerRepository.GetAllConsumersLocation();
+            RiderLocation riderLocation = GetRiderLocation(riderId);
+
+            foreach( ConsumerLocation consumerLocation in consumerLocations )
+            {
+                double distance = CalculateDistance(consumerLocation, riderLocation);
+                if(distance<5000)  //5 km
+                {
+                    if(!CheckIfNotificationAlreadySend(consumerLocation.ConsumerId, riderId))
+                    {
+                        Notification notification = new Notification()
+                        {
+                            RiderId = riderId,
+                            ConsumerId=consumerLocation.ConsumerId,
+
+                        };
+                        road2DoorContext.Notifications.Add(notification);
+                        road2DoorContext.SaveChanges();
+                        // send notification to consumer
+                    }
+
+                }
+            }
+
+        }
+        
+
+        public double CalculateDistance(ConsumerLocation consumerLocation, RiderLocation riderLocation)
+        {
+            const double EarthRadius = 6371;
+
+            double dLat = ToRadians( (double) consumerLocation.Latitude - (double)riderLocation.Latitude);
+            double dLon = ToRadians((double)consumerLocation.Longitude - (double)riderLocation.Longitude);
+
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Cos(ToRadians((double)consumerLocation.Latitude)) * Math.Cos(ToRadians((double)riderLocation.Latitude)) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            double distance = EarthRadius * c * 1000; // Convert distance to meters
+
+            return distance;
+
+
+        }
+        private static double ToRadians(double degree)
+        {
+            return degree * (Math.PI / 180);
+        }
+
+        public bool CheckIfNotificationAlreadySend(int consumerId, int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            bool rowExists = road2DoorContext.Notifications.Any(n => n.RiderId == riderId && n.ConsumerId == consumerId);
+            return rowExists;
         }
     }
     

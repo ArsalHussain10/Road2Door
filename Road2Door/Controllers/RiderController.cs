@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Road2Door.Models;
 using Road2Door.Models.Repository;
+using System.Diagnostics;
 using System.IO;
 
 namespace Road2Door.Controllers
@@ -432,8 +433,41 @@ namespace Road2Door.Controllers
             return Content("Location stored successfully!");
         }
 
+        [HttpPost]
+        public ActionResult SendMenu()
+        {
+            string riderEmail = Request.Cookies["email"];
+            RiderRepository riderRepository = new RiderRepository();
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            riderRepository.sendMenu(riderId);
+            Console.WriteLine("inside send menu function");
+
+            return Content("hehe");
+        }
+
+        [HttpPost]
+        public ActionResult NotificationCleanup()
+        {
+            Console.WriteLine("inside cleanup");
+            DateTime threshold = DateTime.Now.AddMinutes(-1);
+
+            using (var road2DoorContext = new Road2DoorContext())
+            {
+                var expiredNotifications = road2DoorContext.Notifications
+                    .Where(n => n.InsertionTime < threshold)
+                    .ToList();
+
+                road2DoorContext.Notifications.RemoveRange(expiredNotifications);
+                road2DoorContext.SaveChanges();
+            }
+
+            return Content("hehe");
+
+        }
+
 
 
     }
+
 }
 

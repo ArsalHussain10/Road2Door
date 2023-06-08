@@ -27,6 +27,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<MenueMaster> MenueMasters { get; set; }
 
+    public virtual DbSet<Notification> Notifications { get; set; }
+
     public virtual DbSet<Rider> Riders { get; set; }
 
     public virtual DbSet<RiderLocation> RiderLocations { get; set; }
@@ -149,6 +151,30 @@ public partial class Road2DoorContext : DbContext
                 .HasForeignKey(d => d.RiderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Menue_Master_ToRider");
+        });
+
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasKey(e => new { e.RiderId, e.ConsumerId });
+
+            entity.ToTable("Notification");
+
+            entity.Property(e => e.RiderId).HasColumnName("riderId");
+            entity.Property(e => e.ConsumerId).HasColumnName("consumerId");
+            entity.Property(e => e.InsertionTime)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("insertionTime");
+
+            entity.HasOne(d => d.Consumer).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.ConsumerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Notification_Consumer");
+
+            entity.HasOne(d => d.Rider).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.RiderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Notification_ToRider");
         });
 
         modelBuilder.Entity<Rider>(entity =>

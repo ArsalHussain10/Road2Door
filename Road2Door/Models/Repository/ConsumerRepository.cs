@@ -30,6 +30,17 @@ public class ConsumerRepository
         Road2DoorContext road2DoorContext = new Road2DoorContext();
        return road2DoorContext.Consumers.FirstOrDefault(c => c.Email == email);
     }
+    public List<ConsumerLocation> GetAllConsumersLocation()
+    {
+        decimal targetValue = 0.0000m; // Replace with the desired non-zero value
+
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        return road2DoorContext.ConsumerLocations
+            .Where(cl => cl.Latitude != targetValue)
+            .ToList();
+    }
+
+
     public void updateConsumerLocation(int consumerId, decimal latitude, decimal longitude)
     {
         Road2DoorContext road2DoorContext = new Road2DoorContext();

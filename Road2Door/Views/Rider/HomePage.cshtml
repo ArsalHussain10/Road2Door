@@ -1,13 +1,16 @@
 ﻿
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <a asp-controller="Rider" asp-action="Inventory">Manage your inventory</a>
 
 <a asp-action="Menu" asp-controller="Rider" >Your Menu</a>
 <a asp-action="Logout" asp-controller="Rider" >Logout</a>
 <button onclick="getLocation()">Get Location</button>
+<button onclick="sendMenu()">Make your menu public</button>
 
 
 <script>
+
     function getLocation() {
         if (navigator.geolocation) {
             // Retrieve the location initially
@@ -15,11 +18,12 @@
             // Set an interval to retrieve the location periodically (e.g., every 10 seconds)
             setInterval(function () {
                 navigator.geolocation.getCurrentPosition(sendPosition);
-            }, 10000); // 10,000 milliseconds = 10 seconds
+            }, 1000); // 10,000 milliseconds = 10 seconds
         } else {
             alert("Geolocation is not supported by this browser.");
         }
     }
+
 
     function sendPosition(position) {
         var latitude = position.coords.latitude;
@@ -32,5 +36,50 @@
         xhr.send("latitude=" + latitude + "&longitude=" + longitude);
 
     }
+
+    function sendMenu()
+    {
+        setInterval(function(){
+            
+            sendMenuToConsumers();
+        },1000)
+    }
+
+    function sendMenuToConsumers() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Rider/SendMenu", true); // Replace "Rider" with your controller name
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send();
+
+    }
+
+
+
+    function performCleanup() {
+        //$.ajax({
+        //    url: '/Rider/NotificationCleanup', // Replace 'Controller' with the actual name of your controller
+        //    type: 'POST',
+        //    success: function (response) {
+        //        // Handle the success response if needed
+        //        console.log('Cleanup operation successful');
+        //    },
+        //    error: function (xhr, status, error) {
+        //        // Handle the error if needed
+        //        console.log('Cleanup operation failed:', error);
+        //    }
+        //});
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Rider/NotificationCleanup", true); // Replace "Rider" with your controller name
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send();
+    }
+    $(document).ready(function () {
+        // Call performCleanup immediately when the page loads
+        performCleanup();
+
+        // Call performCleanup every 5 minutes (300,000 milliseconds)
+        setInterval(performCleanup, 5000);
+    });
+
 </script>
 
