@@ -27,6 +27,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<Rider> Riders { get; set; }
 
+    public virtual DbSet<RiderLocation> RiderLocations { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Road2Door;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
@@ -69,7 +71,6 @@ public partial class Road2DoorContext : DbContext
 
             entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
                 .HasForeignKey(d => d.RiderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable");
         });
 
@@ -164,6 +165,27 @@ public partial class Road2DoorContext : DbContext
             entity.Property(e => e.Status)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("status");
+        });
+
+        modelBuilder.Entity<RiderLocation>(entity =>
+        {
+            entity.HasKey(e => e.RiderId).HasName("PK__tmp_ms_x__DB1C01CD181797B7");
+
+            entity.ToTable("RiderLocation");
+
+            entity.Property(e => e.RiderId)
+                .ValueGeneratedNever()
+                .HasColumnName("riderId");
+            entity.Property(e => e.Latitude)
+                .HasColumnType("decimal(18, 4)")
+                .HasColumnName("latitude");
+            entity.Property(e => e.Longitude)
+                .HasColumnType("decimal(18, 4)")
+                .HasColumnName("longitude");
+
+            entity.HasOne(d => d.Rider).WithOne(p => p.RiderLocation)
+                .HasForeignKey<RiderLocation>(d => d.RiderId)
+                .HasConstraintName("FK_RiderLocation_ToRider");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -40,9 +40,10 @@ namespace Road2Door.Models.Repository
 
         public void AccountRequest(int riderId, int accountRequest)
         {
-            if(accountRequest==0)
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+
+            if (accountRequest==0)
             {
-                Road2DoorContext road2DoorContext = new Road2DoorContext();
                 Rider rider = road2DoorContext.Riders.Find(riderId);
                 road2DoorContext.Riders.Remove(rider);
                 road2DoorContext.SaveChanges();
@@ -50,6 +51,15 @@ namespace Road2Door.Models.Repository
             }
             else
             {
+                RiderLocation riderLocation = new RiderLocation
+                {
+                    RiderId = riderId,
+                    Latitude = 0,
+                    Longitude = 0
+                };
+                road2DoorContext.RiderLocations.Add(riderLocation);
+                road2DoorContext.SaveChanges();
+                
                 ChangeAccountStatusRider(riderId, 1);
             }
         }

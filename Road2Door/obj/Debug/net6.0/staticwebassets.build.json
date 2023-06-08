@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uGg4b1sIJAnxrZEHFPUFKi/3zIYHwmw6YWPFPZMNkNI=",
+  "Hash": "yIAYB+xVMbRBG7HDZ74Nr4B7MG9RBgJ6cAoZLCdOhEM=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -4233,6 +4233,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf"
     },
     {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/Arsal-Resume (1).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf"
+    },
+    {
       "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -4265,6 +4282,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\software houses.pdf"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\transcript.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/transcript.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\transcript.pdf"
     }
   ]
 }

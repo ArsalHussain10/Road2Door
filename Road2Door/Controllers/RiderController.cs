@@ -415,6 +415,23 @@ namespace Road2Door.Controllers
             return RedirectToAction("Menu");
         }
 
+        [HttpPost]
+        public ActionResult UpdateLocation(decimal latitude, decimal longitude)
+        {
+            // Store the latitude and longitude in your database
+            // You can use Entity Framework or any other data access method
+
+            // Return a response if needed
+            string riderEmail = Request.Cookies["email"];
+            RiderRepository riderRepository= new RiderRepository();
+            int riderId = riderRepository.GetRiderId(riderEmail);
+
+            riderRepository.updateRiderLocation(riderId, latitude, longitude);
+            Console.WriteLine(latitude);
+            Console.WriteLine(longitude);
+            return Content("Location stored successfully!");
+        }
+
 
 
     }

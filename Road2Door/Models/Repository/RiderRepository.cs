@@ -216,6 +216,16 @@ namespace Road2Door.Models.Repository
                 road2DoorContext.SaveChanges();
             }
         }
+
+        public void updateRiderLocation(int riderId, decimal latitude, decimal longitude)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            RiderLocation riderLocation=road2DoorContext.RiderLocations.FirstOrDefault(r => r.RiderId == riderId);
+            riderLocation.Latitude = latitude;
+            riderLocation.Longitude = longitude;
+            road2DoorContext.RiderLocations.Update(riderLocation);
+            road2DoorContext.SaveChanges();
+        }
     }
     
 }

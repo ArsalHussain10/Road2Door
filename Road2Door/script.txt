@@ -68,3 +68,13 @@ replace connstring with DB connection string
 //Alter Item Table for adding constraint 
 ALTER TABLE Item
 ADD CONSTRAINT CHK_Quantity_NonNegative CHECK (Quantity >= 0);
+
+
+
+CREATE TABLE [dbo].[RiderLocation]
+(
+	[riderId] INT NOT NULL PRIMARY KEY , 
+    [latitude] DECIMAL(18, 4) NOT NULL, 
+    [longitude] DECIMAL(18, 4) NOT NULL, 
+    CONSTRAINT [FK_RiderLocation_ToRider] FOREIGN KEY ([riderId]) REFERENCES [Rider]([Id]) ON DELETE CASCADE
+)

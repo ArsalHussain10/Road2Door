@@ -989,12 +989,20 @@
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume (1).pdf"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume.pdf"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\software houses.pdf",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\software houses.pdf"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\transcript.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\transcript.pdf"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Road2Door.Microsoft.AspNetCore.StaticWebAssets.props",
