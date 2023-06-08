@@ -14,4 +14,6 @@ public partial class Consumer
     public string Password { get; set; } = null!;
 
     public string? Phone { get; set; }
+
+    public virtual ConsumerLocation? ConsumerLocation { get; set; }
 }

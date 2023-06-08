@@ -17,6 +17,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<Consumer> Consumers { get; set; }
 
+    public virtual DbSet<ConsumerLocation> ConsumerLocations { get; set; }
+
     public virtual DbSet<InventoryItem> InventoryItems { get; set; }
 
     public virtual DbSet<Item> Items { get; set; }
@@ -57,6 +59,27 @@ public partial class Road2DoorContext : DbContext
                 .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("phone");
+        });
+
+        modelBuilder.Entity<ConsumerLocation>(entity =>
+        {
+            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C811EA7D0EB");
+
+            entity.ToTable("ConsumerLocation");
+
+            entity.Property(e => e.ConsumerId)
+                .ValueGeneratedNever()
+                .HasColumnName("consumerId");
+            entity.Property(e => e.Latitude)
+                .HasColumnType("decimal(18, 4)")
+                .HasColumnName("latitude");
+            entity.Property(e => e.Longitude)
+                .HasColumnType("decimal(18, 4)")
+                .HasColumnName("longitude");
+
+            entity.HasOne(d => d.Consumer).WithOne(p => p.ConsumerLocation)
+                .HasForeignKey<ConsumerLocation>(d => d.ConsumerId)
+                .HasConstraintName("FK_ConsumerLocation_ToConsumer");
         });
 
         modelBuilder.Entity<InventoryItem>(entity =>

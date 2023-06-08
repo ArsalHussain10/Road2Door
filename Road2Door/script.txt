@@ -78,3 +78,12 @@ CREATE TABLE [dbo].[RiderLocation]
     [longitude] DECIMAL(18, 4) NOT NULL, 
     CONSTRAINT [FK_RiderLocation_ToRider] FOREIGN KEY ([riderId]) REFERENCES [Rider]([Id]) ON DELETE CASCADE
 )
+
+
+CREATE TABLE [dbo].[ConsumerLocation]
+(
+	[consumerId] INT NOT NULL PRIMARY KEY , 
+    [latitude] DECIMAL(18, 4) NOT NULL, 
+    [longitude] DECIMAL(18, 4) NOT NULL, 
+    CONSTRAINT [FK_ConsumerLocation_ToConsumer] FOREIGN KEY ([consumerId]) REFERENCES [Consumer]([Id]) ON DELETE CASCADE
+)

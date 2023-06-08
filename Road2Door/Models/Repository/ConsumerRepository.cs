@@ -7,6 +7,13 @@ public class ConsumerRepository
     {
         Road2DoorContext road2Door = new Road2DoorContext();
         road2Door.Consumers.Add(consumer);
+
+        road2Door.SaveChanges();
+        ConsumerLocation consumerLocation = new ConsumerLocation();
+        consumerLocation.ConsumerId = consumer.Id;
+        consumerLocation.Latitude = 0;
+        consumerLocation.Longitude = 0;
+        road2Door.ConsumerLocations.Add(consumerLocation);
         road2Door.SaveChanges();
 
     }
@@ -23,6 +30,14 @@ public class ConsumerRepository
         Road2DoorContext road2DoorContext = new Road2DoorContext();
        return road2DoorContext.Consumers.FirstOrDefault(c => c.Email == email);
     }
-
+    public void updateConsumerLocation(int consumerId, decimal latitude, decimal longitude)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        ConsumerLocation consumerLocation = road2DoorContext.ConsumerLocations.FirstOrDefault(c => c.ConsumerId == consumerId);
+        consumerLocation.Latitude = latitude;
+        consumerLocation.Longitude = longitude;
+        road2DoorContext.ConsumerLocations.Update(consumerLocation);
+        road2DoorContext.SaveChanges();
+    }
 
 }
