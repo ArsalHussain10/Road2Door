@@ -88,7 +88,7 @@ namespace Road2Door.Controllers
             rider.Phone = phone;
             rider.License = license;
             rider.PoliceRecord = policeRecord;
-            rider.Status = 0;
+            rider.Status = 2;   //request will be send to admin
 
             /*   Rider rider1 = new Rider {
                    Name = name,
@@ -127,13 +127,28 @@ namespace Road2Door.Controllers
             RiderRepository riderRepository = new RiderRepository();
             if (riderRepository.CheckAccount(email, password))
             {
+                int accountStatus = riderRepository.CheckAccountStatus(email, password);
+                if (accountStatus == 2)
+                {
+                    ViewBag.message = "your account has yet not been approved by the admin";
+                    return View();
+                }
+                else if (accountStatus == 0)
+                {
+                    ViewBag.message = "your account has been deactivated by the admin";
+                    return View();
+
+                }
+
                 HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
 
                 return View("HomePage");
             }
+
             return View();
 
         }
+
 
         [HttpGet]
         public IActionResult Snapshots()

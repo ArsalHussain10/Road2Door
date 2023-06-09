@@ -128,4 +128,20 @@
         xhr.send("latitude=" + latitude + "&longitude=" + longitude);
 
     }
+    function checkForNotification() {
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Consumer/CheckForNotification", true); // Replace "Rider" with your controller name
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send();
+    }
+
+        $(document).ready(function () {
+            // Call performCleanup immediately when the page loads
+            checkForNotification();
+
+            // Call performCleanup every 5 minutes (300,000 milliseconds)
+            setInterval(ch
+                , 5000);
+        });
 </script>

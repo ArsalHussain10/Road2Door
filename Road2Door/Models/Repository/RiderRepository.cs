@@ -25,7 +25,7 @@ namespace Road2Door.Models.Repository
         public int CheckAccountStatus(string email, string password)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
-            Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email && r.Password == password );
+            Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email && r.Password == password);
 
             int riderStatus = (int)rider.Status;
             return riderStatus;

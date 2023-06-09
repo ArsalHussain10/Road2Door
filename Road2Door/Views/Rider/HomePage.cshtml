@@ -146,7 +146,7 @@
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="" class="nav-item nav-link active">Home</a>
                         <a href="/Rider/Menu" class="nav-item nav-link">Menu</a>
-                        <a href="/Rider/Inventory" class="nav-item nav-link">Manage Inventory</a>
+                        <a  href="/Rider/Inventory" class="nav-item nav-link">Manage Inventory</a>
                         <!-- <a href="" class="nav-item nav-link">Get Location</a> -->
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -158,7 +158,7 @@
                         </div> -->
                         <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
-                    <a href="/Rider/Logout" class="btn btn-primary py-2 px-4">Logout</a>
+                    <a asp-action="Logout" asp-controller="Rider" class="btn btn-primary py-2 px-4">Logout</a>
                 </div>
             </nav>
 
@@ -168,7 +168,7 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Delivering Delight</h1>
                             <p class="text-white animated slideInLeft mb-4 pb-2">"Road2Door Riders On the Move, Bringing Convenience to Your Doorstep"</p>
-                            <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Set Location</a>
+                            <button onclick="getLocation()">  <a class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Set Location</a> </button>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                             <img class="img-fluid" src="/assets/img/delivery.gif" alt="">   
