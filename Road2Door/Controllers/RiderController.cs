@@ -395,7 +395,7 @@ namespace Road2Door.Controllers
             }
             return RedirectToAction("Menu");
         }
-        [HttpPost]
+        //[HttpPost]
         public ActionResult UpdateLocation(decimal latitude, decimal longitude)
         {
             // Store the latitude and longitude in your database
