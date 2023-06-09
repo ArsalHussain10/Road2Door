@@ -5,8 +5,8 @@
 
 <a asp-action="Menu" asp-controller="Rider" >Your Menu</a>
 <a asp-action="Logout" asp-controller="Rider" >Logout</a>
-<button onclick="getLocation()">Get Location</button>
-<button onclick="sendMenu()">Make your menu public</button>*@
+<button onclick="getLocation()">Get Location</button>*@
+<button onclick="sendMenu()">Make your menu public</button>
 
 
 <script>
@@ -39,10 +39,18 @@
 
     function sendMenu()
     {
+
+        setInterval(function () {
+
+            performCleanup();
+        }, 1000)
+
         setInterval(function(){
             
             sendMenuToConsumers();
         },1000)
+
+
     }
 
     function sendMenuToConsumers() {
@@ -73,13 +81,13 @@
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send();
     }
-    $(document).ready(function () {
-        // Call performCleanup immediately when the page loads
-        performCleanup();
+    //$(document).ready(function () {
+    //    // Call performCleanup immediately when the page loads
+    //    performCleanup();
 
-        // Call performCleanup every 5 minutes (300,000 milliseconds)
-        setInterval(performCleanup, 5000);
-    });
+    //    // Call performCleanup every 5 minutes (300,000 milliseconds)
+    //    setInterval(performCleanup, 5000);
+    //});
 
 </script>
 

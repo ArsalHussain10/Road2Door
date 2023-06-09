@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\asifsohail.jpg"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\bg-hero.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\bg-hero.jpg"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\bg.jfif",
       "PackagePath": "staticwebassets\\assets\\img\\bg.jfif"
     },
@@ -199,10 +203,6 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\hero-carousel\\c-4.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\hero-carousel\\c-4.jpg"
-    },
-    {
-      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\komal.jpeg",
-      "PackagePath": "staticwebassets\\assets\\img\\komal.jpeg"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\komalvector.jpeg",
@@ -705,6 +705,14 @@
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\Home.css",
+      "PackagePath": "staticwebassets\\css\\rider\\Home.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\rider\\bootstrap.min.css"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\inventory.css",
       "PackagePath": "staticwebassets\\css\\rider\\inventory.css"
     },
@@ -737,6 +745,10 @@
       "PackagePath": "staticwebassets\\js\\consumer\\settings.js"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\Home.js",
+      "PackagePath": "staticwebassets\\js\\rider\\Home.js"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\rider\\Menu.js",
       "PackagePath": "staticwebassets\\js\\rider\\Menu.js"
     },
@@ -751,6 +763,14 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\animate\\animate.css",
+      "PackagePath": "staticwebassets\\lib\\animate\\animate.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\animate\\animate.min.css",
+      "PackagePath": "staticwebassets\\lib\\animate\\animate.min.css"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -933,6 +953,18 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\counterup\\counterup.min.js",
+      "PackagePath": "staticwebassets\\lib\\counterup\\counterup.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\easing\\easing.js",
+      "PackagePath": "staticwebassets\\lib\\easing\\easing.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\easing\\easing.min.js",
+      "PackagePath": "staticwebassets\\lib\\easing\\easing.min.js"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
@@ -981,6 +1013,90 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\ajax-loader.gif"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.carousel.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.carousel.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.default.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.default.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.green.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.green.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.green.min.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\assets\\owl.video.play.png",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.video.play.png"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\owl.carousel.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\owlcarousel\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.css",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.min.css",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.min.css"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\js\\moment-timezone.min.js",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\js\\moment-timezone.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\js\\moment.min.js",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\js\\moment.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.js",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.min.js",
+      "PackagePath": "staticwebassets\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\waypoints\\links.php",
+      "PackagePath": "staticwebassets\\lib\\waypoints\\links.php"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\waypoints\\waypoints.min.js",
+      "PackagePath": "staticwebassets\\lib\\waypoints\\waypoints.min.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\wow\\wow.js",
+      "PackagePath": "staticwebassets\\lib\\wow\\wow.js"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\lib\\wow\\wow.min.js",
+      "PackagePath": "staticwebassets\\lib\\wow\\wow.min.js"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf",
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf"
     },
@@ -989,12 +1105,52 @@
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal.pdf",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Komal Afzaal.pdf"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\SQL- Practice Problem1-Sol.docx",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\SQL- Practice Problem1-Sol.docx"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\WhatsApp Image 2023-05-02 at 7.25.34 PM.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\WhatsApp Image 2023-05-02 at 7.25.34 PM.jpeg"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\educateme (3).sql",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\educateme (3).sql"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\pdfresizer.com-pdf-crop.pdf",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\pdfresizer.com-pdf-crop.pdf"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume (1).pdf"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume.pdf"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\FINAL_ERD.drawio",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\FINAL_ERD.drawio"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\Komal Afzaal.pdf"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\SQL- Practice Problem2-Sol.docx",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\SQL- Practice Problem2-Sol.docx"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\educateme (2).sql",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\educateme (2).sql"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\pdfresizer.com-pdf-crop (1).pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\pdfresizer.com-pdf-crop (1).pdf"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\software houses.pdf",

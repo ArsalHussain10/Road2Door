@@ -426,16 +426,22 @@ namespace Road2Door.Controllers
         public ActionResult NotificationCleanup()
         {
             Console.WriteLine("inside cleanup");
-            DateTime threshold = DateTime.Now.AddMinutes(-1);
+            DateTime threshold = DateTime.Now.AddMinutes(-1); //jis notification ko 1 min se zada hogya delete that.
 
             using (var road2DoorContext = new Road2DoorContext())
             {
                 var expiredNotifications = road2DoorContext.Notifications
                     .Where(n => n.InsertionTime < threshold)
                     .ToList();
-
-                road2DoorContext.Notifications.RemoveRange(expiredNotifications);
-                road2DoorContext.SaveChanges();
+                if (expiredNotifications.Count >= 1)
+                {
+                    road2DoorContext.Notifications.RemoveRange(expiredNotifications);
+                    road2DoorContext.SaveChanges();
+                    Console.WriteLine("A notification has been deleted");
+                    // Only a single row has been returned
+                    // Perform your desired actions here
+                }
+                
             }
 
             return Content("hehe");
