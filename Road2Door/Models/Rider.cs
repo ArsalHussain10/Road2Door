@@ -25,8 +25,6 @@ public partial class Rider
 
     public virtual ICollection<InventoryItem> InventoryItems { get; } = new List<InventoryItem>();
 
-    public virtual ICollection<MenueMaster> MenueMasters { get; } = new List<MenueMaster>();
-
     public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 
     public virtual RiderLocation? RiderLocation { get; set; }

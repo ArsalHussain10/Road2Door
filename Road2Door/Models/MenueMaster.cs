@@ -14,6 +14,4 @@ public partial class MenueMaster
     public string? ExpirationDate { get; set; }
 
     public virtual ICollection<MenuDetail> MenuDetails { get; } = new List<MenuDetail>();
-
-    public virtual Rider Rider { get; set; } = null!;
 }

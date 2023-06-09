@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Road2Door.Models;
 using Road2Door.Models.Repository;
-using System.Diagnostics;
 using System.IO;
 
 namespace Road2Door.Controllers
@@ -17,17 +16,6 @@ namespace Road2Door.Controllers
 
             Environment = environment;
         }
-
-        [HttpGet]
-        public IActionResult Logout()
-        {
-            foreach (var cookie in HttpContext.Request.Cookies.Keys)
-            {
-                HttpContext.Response.Cookies.Delete(cookie);
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -100,7 +88,7 @@ namespace Road2Door.Controllers
             rider.Phone = phone;
             rider.License = license;
             rider.PoliceRecord = policeRecord;
-            rider.Status = 2;   //request will be send to admin
+            rider.Status = 0;
 
             /*   Rider rider1 = new Rider {
                    Name = name,
@@ -139,24 +127,10 @@ namespace Road2Door.Controllers
             RiderRepository riderRepository = new RiderRepository();
             if (riderRepository.CheckAccount(email, password))
             {
-                int accountStatus = riderRepository.CheckAccountStatus(email, password);
-                if (accountStatus == 2)
-                {
-                    ViewBag.message = "your account has yet not been approved by the admin";
-                    return View();
-                }
-                else if (accountStatus == 0)
-                {
-                    ViewBag.message = "your account has been deactivated by the admin";
-                    return View();
-
-                }
-
                 HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
 
                 return View("HomePage");
             }
-            
             return View();
 
         }
@@ -252,19 +226,20 @@ namespace Road2Door.Controllers
             List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
 
             ViewBag.menuId = menuId;
-            ViewBag.items= items;
+            ViewBag.items = items;
             ViewBag.menuItems = menuitem;
 
-            if (menuId!=-1)
+            if (menuId != -1)
             {
                 return View("MenuPage");
             }
             else
             {
                 string creationDate = DateTime.Now.ToString("yyyy-MM-dd");
-                MenueMaster record = new MenueMaster { 
-                    RiderId=riderId,
-                    CreationDate=creationDate,  
+                MenueMaster record = new MenueMaster
+                {
+                    RiderId = riderId,
+                    CreationDate = creationDate,
 
                 };
                 riderRepository.AddToMenuMaster(record);
@@ -273,24 +248,24 @@ namespace Road2Door.Controllers
             }
 
         }
-        public IActionResult AddToMenu(int itemId,int quantity)
+        public IActionResult AddToMenu(int itemId, int quantity)
         {
 
             RiderRepository riderRepository = new RiderRepository();
             string riderEmail = Request.Cookies["email"];
             int riderId = riderRepository.GetRiderId(riderEmail);
             int menuId = riderRepository.GetMenuId(riderId);
-            Item itemFound=riderRepository.GetItem(itemId);
-            if(itemFound!=null)
+            Item itemFound = riderRepository.GetItem(itemId);
+            if (itemFound != null)
             {
                 ViewBag.maxQuantity = itemFound.Quantity;
-                int newQuantity= itemFound.Quantity - quantity;
+                int newQuantity = itemFound.Quantity - quantity;
                 riderRepository.updateQuantity(itemId, newQuantity);
             }
             List<int> itemIds = riderRepository.GetItemIds(riderId);
             List<Item> items = riderRepository.GetItems(itemIds);
             ViewBag.items = items;
-            MenuDetail mItem=riderRepository.CheckMenuItemExist(itemId);
+            MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId);
             if (mItem != null)
             {
                 int updateQuantity = mItem.Quantity + quantity;
@@ -308,9 +283,9 @@ namespace Road2Door.Controllers
                 riderRepository.AddToMenuDetails(menuItem);
             }
             List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
-            ViewBag.menuItems= menuitem;
+            ViewBag.menuItems = menuitem;
             ViewBag.menuId = menuId;
-           
+
             return View("MenuPage");
         }
 
@@ -339,19 +314,19 @@ namespace Road2Door.Controllers
             List<int> itemIds = riderRepository.GetItemIds(riderId);
             List<Item> items = riderRepository.GetItems(itemIds);
             List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
-            
+
             ViewBag.menuId = menuId;
             ViewBag.items = items;
             ViewBag.menuItems = menuitem;
-            if (updatedQuantity>menuItemQuantity)
+            if (updatedQuantity > menuItemQuantity) //25>32
             {
                 int newQuantity1 = 0, newQuantity2 = 0;
-                int decrementQuantity = updatedQuantity- menuItemQuantity ;
+                int decrementQuantity = updatedQuantity - menuItemQuantity; //18-0
 
-                Item itemFound = riderRepository.GetItem(itemId);
-                if (itemFound != null && itemFound.Quantity!=0)
+                Item itemFound = riderRepository.GetItem(itemId); //2
+                if (itemFound != null && itemFound.Quantity != 0)
                 {
-                     newQuantity1 = itemFound.Quantity - decrementQuantity;
+                    newQuantity1 = itemFound.Quantity - decrementQuantity;//
                     if (newQuantity1 > 0)
                     {
                         riderRepository.updateQuantity(itemId, newQuantity1);
@@ -366,34 +341,36 @@ namespace Road2Door.Controllers
                 MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId);
                 if (mItem != null)
                 {
-                     newQuantity2 = mItem.Quantity + decrementQuantity;
+                    newQuantity2 = mItem.Quantity + decrementQuantity;
                     riderRepository.updateQuantityMenuItem(itemId, newQuantity2);
 
                 }
                 var response = new
                 {
                     updatedInventoryQuantity = newQuantity1,
-                    updatedMenuQuantity = newQuantity2
+                    updatedMenuQuantity = newQuantity2,
+                    menu = menuitem // Include the updated menu in the response
+
                 };
 
                 return Json(response);
-               /* return RedirectToAction("Menu");*/
+                /* return RedirectToAction("Menu");*/
             }
-            else if (updatedQuantity<menuItemQuantity)
+            else if (updatedQuantity < menuItemQuantity) //25<32
             {
                 int newQuantity1 = 0, newQuantity2 = 0;
-                int Updatequantity = menuItemQuantity - updatedQuantity;
+                int Updatequantity = menuItemQuantity - updatedQuantity; //32-25= 7
                 Item itemFound = riderRepository.GetItem(itemId);
                 if (itemFound != null)
                 {
-                     newQuantity1 = itemFound.Quantity + Updatequantity;
+                    newQuantity1 = itemFound.Quantity + Updatequantity; //0+7=7
                     riderRepository.updateQuantity(itemId, newQuantity1);
                 }
-                MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId);
+                MenuDetail mItem = riderRepository.CheckMenuItemExist(itemId); //32
                 if (mItem != null)
                 {
-                     newQuantity2 = mItem.Quantity - Updatequantity;
-                    if (newQuantity2 >0)
+                    newQuantity2 = mItem.Quantity - Updatequantity; //32-7 =25
+                    if (newQuantity2 > 0)
                     {
                         riderRepository.updateQuantityMenuItem(itemId, newQuantity2);
                     }
@@ -406,16 +383,18 @@ namespace Road2Door.Controllers
                 }
                 var response = new
                 {
-                    updatedInventoryQuantity = newQuantity1,
-                    updatedMenuQuantity = newQuantity2
+                    updatedInventoryQuantity = newQuantity1, //7
+                    updatedMenuQuantity = newQuantity2, //25
+                    menu = menuitem // Include the updated menu in the response
+
                 };
 
                 return Json(response);
-/*                return RedirectToAction("Menu");
-*/            }
+                /*                return RedirectToAction("Menu");
+                */
+            }
             return RedirectToAction("Menu");
         }
-
         [HttpPost]
         public ActionResult UpdateLocation(decimal latitude, decimal longitude)
         {
@@ -424,7 +403,7 @@ namespace Road2Door.Controllers
 
             // Return a response if needed
             string riderEmail = Request.Cookies["email"];
-            RiderRepository riderRepository= new RiderRepository();
+            RiderRepository riderRepository = new RiderRepository();
             int riderId = riderRepository.GetRiderId(riderEmail);
 
             riderRepository.updateRiderLocation(riderId, latitude, longitude);
@@ -432,7 +411,6 @@ namespace Road2Door.Controllers
             Console.WriteLine(longitude);
             return Content("Location stored successfully!");
         }
-
         [HttpPost]
         public ActionResult SendMenu()
         {
@@ -444,7 +422,6 @@ namespace Road2Door.Controllers
 
             return Content("hehe");
         }
-
         [HttpPost]
         public ActionResult NotificationCleanup()
         {
@@ -468,6 +445,4 @@ namespace Road2Door.Controllers
 
 
     }
-
 }
-
