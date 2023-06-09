@@ -5,11 +5,12 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
-        .container-fluid{
-            margin:0px;
-            padding:0px;
-            width:100%;
+        .container-fluid {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
         }
+
         .notification {
             color: white;
             text-decoration: none;
@@ -17,7 +18,7 @@
             position: relative;
             display: inline-block;
             border-radius: 2px;
-            margin-right:3%;
+            margin-right: 3%;
         }
 
             .notification .badge {
@@ -100,63 +101,61 @@
     <a asp-action="Logout" asp-controller="Consumer">Logout</a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                // Retrieve the location initially
+                navigator.geolocation.getCurrentPosition(sendPosition);
+                // Set an interval to retrieve the location periodically (e.g., every 10 seconds)
+                setInterval(function () {
+                    navigator.geolocation.getCurrentPosition(sendPosition);
+                }, 10000); // 10,000 milliseconds = 10 seconds
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function sendPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            // Send the latitude and longitude to the server using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/Consumer/UpdateLocation", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("latitude=" + latitude + "&longitude=" + longitude);
+        }
+
+        function checkForNotification() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/Consumer/CheckForNotification", true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    // Parse the JSON response
+                    var notifications = JSON.parse(xhr.responseText);
+
+                    // Process the notifications
+                    processNotifications(notifications);
+                }
+            };
+
+            xhr.send();
+        }
+
+        function processNotifications(notifications) {
+            // Clear the existing menu details
+            console.log(notifications);
+            var badge = document.querySelector(".notification .badge");
+            badge.textContent = notifications.length;
+            
+        }
+
+        // Call checkForNotification immediately when the page loads
+        checkForNotification();
+
+        // Call checkForNotification every 5 seconds (5000 milliseconds)
+        setInterval(checkForNotification, 5000);
+    </script>
 </body>
 </html>
-
-<script>
-    function getLocation() {
-        if (navigator.geolocation) {
-            // Retrieve the location initially
-            navigator.geolocation.getCurrentPosition(sendPosition);
-            // Set an interval to retrieve the location periodically (e.g., every 10 seconds)
-            setInterval(function () {
-                navigator.geolocation.getCurrentPosition(sendPosition);
-            }, 10000); // 10,000 milliseconds = 10 seconds
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
-
-    function sendPosition(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-
-        // Send the latitude and longitude to the server using AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/Consumer/UpdateLocation", true); 
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("latitude=" + latitude + "&longitude=" + longitude);
-
-    }
-    function checkForNotification() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/Consumer/CheckForNotification", true);
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                // Parse the JSON response
-                var notifications = JSON.parse(xhr.responseText);
-
-                // Process the notifications
-                processNotifications(notifications);
-            }
-        };
-
-        xhr.send();
-    }
-
-    function processNotifications(notifications) {
-        // Update the UI or perform any other actions with the received notifications
-        console.log(notifications);
-        // Example: Update the badge count
-        var badge = document.querySelector(".notification .badge");
-        badge.textContent = notifications.length;
-    }
-
-    // Call checkForNotification immediately when the page loads
-    checkForNotification();
-
-    // Call checkForNotification every 5 seconds (5000 milliseconds)
-    setInterval(checkForNotification, 5000);
-
-</script>
