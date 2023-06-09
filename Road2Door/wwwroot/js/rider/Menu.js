@@ -1,4 +1,5 @@
-﻿let itemId;
+﻿
+let itemId;
 $(document).ready(function () {
     var maxQuantity = parseInt($("#quantity").val());
     document.getElementById('quantity').max = maxQuantity;

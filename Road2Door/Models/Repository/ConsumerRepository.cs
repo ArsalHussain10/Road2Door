@@ -51,4 +51,40 @@ public class ConsumerRepository
         road2DoorContext.SaveChanges();
     }
 
+    public List<MenuDetail> GetNotifications(int consumerId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        List<MenuDetail> menus = new List<MenuDetail>();
+
+        List<int> riderIds= road2DoorContext.Notifications
+    .Where(n => n.ConsumerId == consumerId)
+    .Select(n => n.RiderId)
+    .ToList();
+        if(riderIds.Count()>0)
+        {
+            // getting menuids of the riders
+
+            List<int> menuIds = new List<int>();
+
+            foreach (int riderId in riderIds)
+            {
+                int menueId = road2DoorContext.MenueMasters
+                    .Where(rm => rm.RiderId == riderId)
+                    .Select(rm => rm.MenueId).FirstOrDefault();
+
+                menuIds.Add(menueId);
+            }
+            //getting complete menues
+            foreach (int menueId in menuIds)
+            {
+                MenuDetail menuDetail = road2DoorContext.MenuDetails.FirstOrDefault(m => m.MenueId == menueId);
+                menus.Add(menuDetail);
+                 
+
+            }
+
+
+        }
+        return menus;
+    }
 }

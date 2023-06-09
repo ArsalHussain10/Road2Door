@@ -115,5 +115,18 @@ namespace Road2Door.Controllers
             return Content("Location stored successfully!");
         }
 
+        public IActionResult CheckForNotification()
+        {
+            // Retrieve the notifications from the database or any other data source
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            string email = Request.Cookies["email"];
+            Consumer consumer = consumerRepository.GetConsumer(email);
+            List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+
+            // Return the notifications as JSON
+            return new JsonResult(menuDetails);
+        }
+
+
     }
 }

@@ -7,6 +7,7 @@
 <a asp-action="Logout" asp-controller="Rider" >Logout</a>
 <button onclick="getLocation()">Get Location</button>*@
 <button onclick="sendMenu()">Make your menu public</button>
+<button onclick="deleteNotifications()">hide your menu</button>
 
 
 <script>
@@ -36,21 +37,26 @@
         xhr.send("latitude=" + latitude + "&longitude=" + longitude);
 
     }
-
+    var cleanupTimer;
+    var sendMenuTimer;
     function sendMenu()
     {
 
-        setInterval(function () {
-
+         cleanupTimer = setInterval(function () {
             performCleanup();
-        }, 1000)
+        }, 1000);
 
-        setInterval(function(){
-            
+         sendMenuTimer = setInterval(function () {
             sendMenuToConsumers();
-        },1000)
+        }, 1000);
 
 
+    }
+    function stopIntervals() {
+        console.log("inside stop");
+       // clearInterval(cleanupTimer);
+       performCleanup();
+        clearInterval(sendMenuTimer);
     }
 
     function sendMenuToConsumers() {
@@ -61,6 +67,16 @@
 
     }
 
+    function deleteNotifications()
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Rider/DeleteNotifications", true); // Replace "Rider" with your controller name
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send();
+        clearInterval(sendMenuTimer);
+
+
+    }
 
 
     function performCleanup() {

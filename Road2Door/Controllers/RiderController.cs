@@ -463,6 +463,17 @@ namespace Road2Door.Controllers
 
         }
 
+        // if rider want's his menu to be hidden, then delete all the notification of riders menue which is sne dto the consumers
+        public IActionResult DeleteNotifications()
+        {
+            string riderEmail = Request.Cookies["email"];
+            RiderRepository riderRepository = new RiderRepository();
+            int riderId = riderRepository.GetRiderId(riderEmail);
+            riderRepository.DeleteNotifications(riderId);
+            return Content("notifications deleted");
+
+        }
+
 
 
     }

@@ -294,6 +294,18 @@ namespace Road2Door.Models.Repository
             bool rowExists = road2DoorContext.Notifications.Any(n => n.RiderId == riderId && n.ConsumerId == consumerId);
             return rowExists;
         }
+
+        public void DeleteNotifications(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            var notificationsToDelete = road2DoorContext.Notifications
+                .Where(n => n.RiderId == riderId)
+                .ToList();
+
+            // Delete the notifications
+            road2DoorContext.Notifications.RemoveRange(notificationsToDelete);
+            road2DoorContext.SaveChanges();
+        }
     }
     
 }

@@ -129,19 +129,34 @@
 
     }
     function checkForNotification() {
-        
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/Consumer/CheckForNotification", true); // Replace "Rider" with your controller name
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.open("GET", "/Consumer/CheckForNotification", true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Parse the JSON response
+                var notifications = JSON.parse(xhr.responseText);
+
+                // Process the notifications
+                processNotifications(notifications);
+            }
+        };
+
         xhr.send();
     }
 
-        $(document).ready(function () {
-            // Call performCleanup immediately when the page loads
-            checkForNotification();
+    function processNotifications(notifications) {
+        // Update the UI or perform any other actions with the received notifications
+        console.log(notifications);
+        // Example: Update the badge count
+        var badge = document.querySelector(".notification .badge");
+        badge.textContent = notifications.length;
+    }
 
-            // Call performCleanup every 5 minutes (300,000 milliseconds)
-            setInterval(ch
-                , 5000);
-        });
+    // Call checkForNotification immediately when the page loads
+    checkForNotification();
+
+    // Call checkForNotification every 5 seconds (5000 milliseconds)
+    setInterval(checkForNotification, 5000);
+
 </script>
