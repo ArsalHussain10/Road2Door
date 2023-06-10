@@ -2,10 +2,8 @@
 {
     public class MenuConsumer
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-        public double Price { get; set; }
+        public virtual MenuDetail MenuDetail { get; set; } = null!;
+        public virtual List<Item> Items { get; set; }
 
-        public string? Description { get; set; }
     }
 }
