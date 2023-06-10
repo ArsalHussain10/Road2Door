@@ -17,6 +17,16 @@ namespace Road2Door.Controllers
             Environment = environment;
         }
         [HttpGet]
+        public IActionResult Logout()
+        {
+            foreach (var cookie in HttpContext.Request.Cookies.Keys)
+            {
+                HttpContext.Response.Cookies.Delete(cookie);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public IActionResult SignUp()
         {
             return View();
@@ -448,7 +458,8 @@ namespace Road2Door.Controllers
                 var expiredNotifications = road2DoorContext.Notifications
                     .Where(n => n.InsertionTime < threshold)
                     .ToList();
-                if (expiredNotifications.Count >= 1)
+                Console.WriteLine(expiredNotifications.Count);
+                if (expiredNotifications.Count > 0)
                 {
                     road2DoorContext.Notifications.RemoveRange(expiredNotifications);
                     road2DoorContext.SaveChanges();

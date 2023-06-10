@@ -1,4 +1,6 @@
 ﻿namespace Road2Door.Models.Repository;
+
+using Microsoft.EntityFrameworkCore;
 using Road2Door.Models;
 
 public class ConsumerRepository
@@ -51,6 +53,18 @@ public class ConsumerRepository
         road2DoorContext.SaveChanges();
     }
 
+    public int GetNotificationsCount(int consumerId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        List<MenuDetail> menus = new List<MenuDetail>();
+
+        List<int> riderIds = road2DoorContext.Notifications
+    .Where(n => n.ConsumerId == consumerId)
+    .Select(n => n.RiderId)
+    .ToList();
+        return riderIds.Count;
+
+    }
     public List<MenuDetail> GetNotifications(int consumerId)
     {
         Road2DoorContext road2DoorContext = new Road2DoorContext();
@@ -77,7 +91,9 @@ public class ConsumerRepository
             //getting complete menues
             foreach (int menueId in menuIds)
             {
-                MenuDetail menuDetail = road2DoorContext.MenuDetails.FirstOrDefault(m => m.MenueId == menueId);
+                MenuDetail menuDetail = road2DoorContext.MenuDetails
+                    .Include(m => m.Item)
+                    .FirstOrDefault(m => m.MenueId == menueId);
                 menus.Add(menuDetail);
                  
 

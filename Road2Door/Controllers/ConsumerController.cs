@@ -122,9 +122,29 @@ namespace Road2Door.Controllers
             string email = Request.Cookies["email"];
             Consumer consumer = consumerRepository.GetConsumer(email);
             List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+            int count = consumerRepository.GetNotificationsCount(consumer.Id);
 
             // Return the notifications as JSON
-            return new JsonResult(menuDetails);
+            return new JsonResult(count);
+        }
+
+        public IActionResult ShowMenus()
+        {
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            string email = Request.Cookies["email"];
+            Consumer consumer = consumerRepository.GetConsumer(email);
+            List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+            
+            //foreach(MenuDetail menuDetail in menuDetails)
+            //{
+            //    Console.WriteLine(menuDetail.Item.Name);
+            //}
+
+            return View(menuDetails);
+
+
+
+
         }
 
 

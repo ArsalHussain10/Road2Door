@@ -78,9 +78,9 @@
                         <a class="nav-link" href="#">Features</a>
                     </li>
                 </ul>
-                <a href="#" class="notification">
+                <a asp-controller="Consumer" asp-action="ShowMenus" class="notification">
                     <i class="fa fa-bell" style="font-size:20px;color:red"></i>
-                    <span class="badge">3</span>
+                    <span class="badge">0</span>
                 </a>
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -147,7 +147,7 @@
             // Clear the existing menu details
             console.log(notifications);
             var badge = document.querySelector(".notification .badge");
-            badge.textContent = notifications.length;
+            badge.textContent = notifications;
             
         }
 

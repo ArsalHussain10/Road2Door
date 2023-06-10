@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model List<MenuDetail>
+
+
+@foreach(MenuDetail m in Model)
+{
+    <h2>   @m.Item.Name   </h2>
+    <h3>
+        @m.Item.Description
+    </h3>
+    <h3>
+        @m.Quantity
+    </h3>
+    <h3>
+        @m.Item.Price
+    </h3>
+}
+
