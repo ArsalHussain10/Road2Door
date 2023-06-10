@@ -70,11 +70,11 @@ public class ConsumerRepository
         Road2DoorContext road2DoorContext = new Road2DoorContext();
         List<MenuDetail> menus = new List<MenuDetail>();
 
-        List<int> riderIds= road2DoorContext.Notifications
+        List<int> riderIds = road2DoorContext.Notifications
     .Where(n => n.ConsumerId == consumerId)
     .Select(n => n.RiderId)
     .ToList();
-        if(riderIds.Count()>0)
+        if (riderIds.Count() > 0)
         {
             // getting menuids of the riders
 
@@ -89,18 +89,58 @@ public class ConsumerRepository
                 menuIds.Add(menueId);
             }
             //getting complete menues
+            //foreach (int menueId in menuIds)
+            //{
+            //    MenuDetail menuDetail = road2DoorContext.MenuDetails
+            //        .Include(m => m.Item)
+            //        .FirstOrDefault(m => m.MenueId == menueId);
+            //    menus.Add(menuDetail);
+
+            //    //            MenuDetail menuDetail = road2DoorContext.MenuDetails
+            //    //.FirstOrDefault(m => m.MenueId == menueId);
+
+            //    //            if (menuDetail != null)
+            //    //            {
+            //    //                road2DoorContext.Entry(menuDetail)
+            //    //                    .Collection(m => m.Items)
+            //    //                    .Load();
+
+            //    //                menus.Add(menuDetail);
+            //    //            }
+
+
+            //}
             foreach (int menueId in menuIds)
             {
                 MenuDetail menuDetail = road2DoorContext.MenuDetails
                     .Include(m => m.Item)
-                    .FirstOrDefault(m => m.MenueId == menueId);
-                menus.Add(menuDetail);
-                 
+                    .Where(m => m.MenueId == menueId)
+                    .FirstOrDefault();
 
+                if (menuDetail != null)
+                {
+                    menus.Add(menuDetail);
+                }
             }
+            Console.WriteLine(menuIds.ToString());
 
 
         }
         return menus;
     }
+    //public List<MenuDetail> GetNotifications(int consumerId)
+    //{
+    //    using (Road2DoorContext road2DoorContext = new Road2DoorContext())
+    //    {
+    //        List<MenuDetail> menus = road2DoorContext.MenuDetails
+    //            .Include(m => m.Item)
+    //            .Where(m => road2DoorContext.Notifications.Any(n => n.ConsumerId == consumerId && n.RiderId == m.Menue.MenueId))
+    //            .ToList();
+
+    //        return menus;
+    //    }
+    //}
+
+
+
 }

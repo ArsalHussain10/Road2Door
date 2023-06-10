@@ -121,7 +121,7 @@ namespace Road2Door.Controllers
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
             Consumer consumer = consumerRepository.GetConsumer(email);
-            List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+            //List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
             int count = consumerRepository.GetNotificationsCount(consumer.Id);
 
             // Return the notifications as JSON
