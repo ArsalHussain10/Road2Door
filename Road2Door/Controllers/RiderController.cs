@@ -19,6 +19,7 @@ namespace Road2Door.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
+            DeleteNotifications();
             foreach (var cookie in HttpContext.Request.Cookies.Keys)
             {
                 HttpContext.Response.Cookies.Delete(cookie);

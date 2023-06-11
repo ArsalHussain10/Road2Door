@@ -265,6 +265,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\rider.gif"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\riderOnBike.png",
+      "PackagePath": "staticwebassets\\assets\\img\\riderOnBike.png"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\assets\\img\\services.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\services.jpg"
     },
@@ -717,6 +721,10 @@
       "PackagePath": "staticwebassets\\css\\rider\\inventory.css"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\menu.css",
+      "PackagePath": "staticwebassets\\css\\rider\\menu.css"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\css\\rider\\signin.css",
       "PackagePath": "staticwebassets\\css\\rider\\signin.css"
     },
@@ -1105,6 +1113,10 @@
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
     },
     {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf",
+      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf"
+    },
+    {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal.pdf",
       "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Komal Afzaal.pdf"
     },
@@ -1135,6 +1147,10 @@
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\FINAL_ERD.drawio",
       "PackagePath": "staticwebassets\\uploads\\Licnese\\FINAL_ERD.drawio"
+    },
+    {
+      "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal Resume.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Licnese\\Komal Afzaal Resume.pdf"
     },
     {
       "Id": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal.pdf",

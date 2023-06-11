@@ -12,6 +12,11 @@
 
 <script>
 
+   // window.onload=getLocation;
+    var cleanupTimer;
+    var sendMenuTimer;
+   
+
     function getLocation() {
         if (navigator.geolocation) {
             // Retrieve the location initially
@@ -37,8 +42,7 @@
         xhr.send("latitude=" + latitude + "&longitude=" + longitude);
 
     }
-    var cleanupTimer;
-    var sendMenuTimer;
+   
     function sendMenu()
     {
 
@@ -60,6 +64,9 @@
     }
 
     function sendMenuToConsumers() {
+        getLocation();
+
+        console.log("inside send menue funccccc");
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/Rider/SendMenu", true); // Replace "Rider" with your controller name
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -161,7 +168,7 @@
                         </div> -->
                         <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
-                    <a asp-action="Logout" asp-controller="Rider" class="btn btn-primary py-2 px-4">Logout</a>
+                    <a asp-controller="Rider" asp-action="Logout" class="btn btn-primary py-2 px-4">Logout</a>
                 </div>
             </nav>
 
