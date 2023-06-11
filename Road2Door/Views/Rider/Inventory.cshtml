@@ -2,9 +2,11 @@
 @model List<Item>
 
 
-    <link href="/css/rider/inventory.css" rel="stylesheet" />
 
-<table>
+    <link href="/css/rider/inventory.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+@*<table>
     <thead>
         <tr>
             <th>Item ID</th>
@@ -29,9 +31,10 @@
                     <td>@item.Quantity</td>
                     <td>@item.Price</td>
 
-                   
-                    <td><button class="edit-btn" data-item-id="@item.ItemId">Edit</button></td>
-                    <td><button class="delete-btn" onclick="deleteItem('@item.ItemId')"  data-item-id="@item.ItemId">Delete</button></td>
+
+					<td><button class="edit-btn" data-item-id="@item.ItemId"><i class="material-icons">edit</i></button></td>
+					<td><button class="delete-btn" onclick="deleteItem('@item.ItemId')" data-item-id="@item.ItemId"><i class="material-icons">delete</i></button></td>
+
 
 
                 </tr>
@@ -41,13 +44,13 @@
         
       
     </tbody>
-</table>
+</table>*@
 
-<button id="create-btn">Create a new item</button>
+@*<button id="create-btn">Create a new item</button>
 <a asp-action="HomePage" asp-controller="Rider" >Back to Home Page</a>
+*@
 
-
-<div id="modal" class="modal">
+@*<div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <form asp-action="Inventory" asp-controller="Rider" >
@@ -66,10 +69,10 @@
             <input type="submit" value="Create">
         </form>
     </div>
-</div>
+</div>*@
 
 
-<!-- Modal -->
+@*<!-- Modal -->
 <div id="edit-modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -89,9 +92,240 @@
         </form>
     </div>
 </div>
-<div id="edit-form-container"></div>
+<div id="edit-form-container"></div>*@
 
 
 
+
+<head>
+
+
+
+  
+</head>
+<body>
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-6">
+						<h2>Manage <b>Inventory</b></h2>
+					</div>
+					<div class="col-sm-6">
+							<a href="#" class="btn btn-success" onclick="openCreateModal()">
+								<i class="material-icons">&#xE147;</i> <span>Add New Item</span>
+							</a>						
+							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+
+							<a href="/Rider/HomePage" class="btn btn-danger">
+							<i class="material-icons">&#xE15C;</i> <span>Back</span>
+						</a>
+					</div>
+						
+				</div>
+			</div>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+							<th>Item ID</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Actions</th>
+					</tr>
+				</thead>
+					<tbody>
+						@if (Model != null)
+						{
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										<span class="custom-checkbox">
+											<input type="checkbox" id="checkbox_@item.ItemId" name="options[]" value="@item.ItemId">
+											<label for="checkbox_@item.ItemId"></label>
+										</span>
+									</td>
+									<td>@item.ItemId</td>
+									<td>@item.Name</td>
+									<td>@item.Description</td>
+									<td>@item.Quantity</td>
+									<td>@item.Price</td>
+									<td>
+									@*<button class="edit-btn custom-edit-btn" data-item-id="@item.ItemId" data-toggle="modal" data-target="#edit-modal">
+										<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+									</button>*@
+
+
+										<a href="#" class="edit-btn custom-edit-btn" data-item-id="@item.ItemId" onclick="openEditModal()">
+											<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+										</a>
+										<a href="#" class="delete-btn custom-delete-btn" onclick="deleteItem('@item.ItemId')" data-item-id="@item.ItemId" data-toggle="modal">
+											<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+										</a>
+
+									</td>
+								</tr>
+							}
+						}
+					</tbody>
+				
+			</table>
+		</div>
+	</div>        
+</div>
+<!-- Edit Modal HTML -->
+	<div id="edit-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="edit-form" asp-action="EditItem" asp-controller="Rider" method="post">
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Item</h4>
+@*						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+*@					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="edit-description">Description</label>
+							<input type="text" id="edit-description" name="description" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="edit-quantity">Quantity</label>
+							<input type="number" id="edit-quantity" name="quantity" class="form-control" step="1" onkeydown="return event.keyCode !== 190;">
+						</div>
+						<div class="form-group">
+							<label for="edit-price">Price</label>
+							<input type="number" id="edit-price" name="price" class="form-control" step="0.01">
+						</div>
+						<input type="number" id="itemId" value="" name="itemId" hidden> <!-- Add a hidden input field for itemId -->
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeEditModal()">
+						<input type="submit" id="edit-submit" class="btn btn-info" value="Edit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="edit-form-container"></div>
+
+
+
+
+
+@*add modal create inventory modal*@
+
+<div id="modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form asp-action="Inventory" asp-controller="Rider">
+					<div class="modal-header">
+						<h4 class="modal-title">Create New Item</h4>
+@*						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+*@					</div>
+
+					<div class="modal-body">
+						<div class="form-group">
+								<label>Item Name:</label>
+								<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="form-group">
+							<label>Item Description:</label>
+							<input type="text" class="form-control" id="description" name="description" required>
+						</div>
+							<div class="form-group">
+							<label>Item Quantity:</label>
+							<input type="text" class="form-control" id="quantity" name="quantity" required>
+						</div>
+							<div class="form-group">
+							<label>Item Price:</label>
+							<input type="text" class="form-control" id="price" name="price" required>
+						</div>
+
+					</div>	
+
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeModal()">
+						<input type="submit" class="btn btn-success" value="Create">
+
+					</div>
+				</form>	
+			</div>
+		</div>
+</div>
+
+
+
+<!-- Delete Modal HTML -->
+@*<div id="deleteEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Delete Employee</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Are you sure you want to delete these Records?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit" class="btn btn-danger" value="Delete">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>*@
+</body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/rider/inventory.js"></script>
+
+
+<script>
+	$(document).ready(function () {
+		// Activate tooltip
+		$('[data-toggle="tooltip"]').tooltip();
+
+		// Select/Deselect checkboxes
+		var checkbox = $('table tbody input[type="checkbox"]');
+		$("#selectAll").click(function () {
+			if (this.checked) {
+				checkbox.each(function () {
+					this.checked = true;
+				});
+			} else {
+				checkbox.each(function () {
+					this.checked = false;
+				});
+			}
+		});
+		checkbox.click(function () {
+			if (!this.checked) {
+				$("#selectAll").prop("checked", false);
+			}
+		});
+	});
+
+	function openEditModal() {
+		$('#edit-modal').modal('show');
+	}
+
+	function openCreateModal() {
+        $('#modal').modal('show');
+    }
+	function closeModal() {
+		$('#modal').modal('hide');
+	}
+	function closeEditModal() {
+		$('#edit-modal').modal('hide');
+	}
+
+</script>
