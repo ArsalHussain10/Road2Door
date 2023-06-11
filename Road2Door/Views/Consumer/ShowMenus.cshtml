@@ -4,22 +4,70 @@
 @{
 }
 
+@model List<MenuConsumer>
+<style>
+    .menu-container {
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
 
-@model List<MenuDetail>
+    .menu-number {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
+    .menu-table {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 10px;
+    }
 
-@foreach(MenuDetail m in Model)
+    .menu-row {
+        display: table-row;
+    }
+
+    .menu-cell {
+        display: table-cell;
+        padding: 5px;
+        vertical-align: top;
+    }
+</style>
+
+@{
+    int menuNumber = 1;
+}
+
+@foreach (MenuConsumer singleMenuConsumer in Model)
 {
-
-    <h2>   @m.Item.Name   </h2>
-    <h3>
-        @m.Item.Description
-    </h3>
-    <h3>
-        @m.Quantity
-    </h3>
-    <h3>
-        @m.Item.Price
-    </h3>
+    <div class="menu-container">
+        <div class="menu-number">
+            Menu @menuNumber
+        </div>
+        <div class="menu-table">
+            @for (int i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
+            {
+                <div class="menu-row">
+                    <div class="menu-cell">
+                        <h1>@singleMenuConsumer.Items[i].Name</h1>
+                    </div>
+                    <div class="menu-cell">
+                        <h2>@singleMenuConsumer.Items[i].Description</h2>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Quantity: @singleMenuConsumer.MenuDetails[i].Quantity</p>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Price: @singleMenuConsumer.Items[i].Price</p>
+                    </div>
+                </div>
+            }
+            <button>Alert the rider</button>
+        </div>
+    </div>
+    menuNumber++;
 }
 

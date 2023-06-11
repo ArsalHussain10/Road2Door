@@ -133,14 +133,14 @@ namespace Road2Door.Controllers
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
             Consumer consumer = consumerRepository.GetConsumer(email);
-            List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+            List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
             
             //foreach(MenuDetail menuDetail in menuDetails)
             //{
             //    Console.WriteLine(menuDetail.Item.Name);
             //}
 
-            return View(menuDetails);
+            return View(menuConsumer);
 
 
 
