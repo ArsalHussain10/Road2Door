@@ -56,11 +56,11 @@
     };
 
 
-    function deleteItem(itemId) {
-        if (confirm("Are you sure you want to delete this item?")) {
-        window.location.href = "/Rider/DeleteItem?itemId=" + itemId;
-        }
-    }
+    //function deleteItem(itemId) {
+    //    if (confirm("Are you sure you want to delete this item?")) {
+    //    window.location.href = "/Rider/DeleteItem?itemId=" + itemId;
+    //    }
+    //}
 
 
 

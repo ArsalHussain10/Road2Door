@@ -116,11 +116,6 @@
 							<a href="#" class="btn btn-success" onclick="openCreateModal()">
 								<i class="material-icons">&#xE147;</i> <span>Add New Item</span>
 							</a>						
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
-
-							<a href="/Rider/HomePage" class="btn btn-danger">
-							<i class="material-icons">&#xE15C;</i> <span>Back</span>
-						</a>
 					</div>
 						
 				</div>
@@ -128,15 +123,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
-							<th>Item ID</th>
-							<th>Name</th>
-							<th>Description</th>
+							<th>ID</th>
+							<th>Item Name</th>
+							<th>Item Description</th>
 							<th>Quantity</th>
 							<th>Price</th>
 							<th>Actions</th>
@@ -148,12 +137,6 @@
 							@foreach (var item in Model)
 							{
 								<tr>
-									<td>
-										<span class="custom-checkbox">
-											<input type="checkbox" id="checkbox_@item.ItemId" name="options[]" value="@item.ItemId">
-											<label for="checkbox_@item.ItemId"></label>
-										</span>
-									</td>
 									<td>@item.ItemId</td>
 									<td>@item.Name</td>
 									<td>@item.Description</td>
@@ -168,9 +151,11 @@
 										<a href="#" class="edit-btn custom-edit-btn" data-item-id="@item.ItemId" onclick="openEditModal()">
 											<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
 										</a>
-										<a href="#" class="delete-btn custom-delete-btn" onclick="deleteItem('@item.ItemId')" data-item-id="@item.ItemId" data-toggle="modal">
-											<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-										</a>
+											<a href="#" class="delete-btn custom-delete-btn" onclick="openDeleteModal('@item.ItemId')" data-item-id="@item.ItemId" data-toggle="modal">
+												<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+											</a>
+
+
 
 									</td>
 								</tr>
@@ -179,45 +164,13 @@
 					</tbody>
 				
 			</table>
+				<a href="/Rider/HomePage" class="btn btn-secondary">
+					<i class="material-icons">arrow_back</i> Back
+				</a>
+
 		</div>
 	</div>        
 </div>
-<!-- Edit Modal HTML -->
-	<div id="edit-modal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form id="edit-form" asp-action="EditItem" asp-controller="Rider" method="post">
-					<div class="modal-header">
-						<h4 class="modal-title">Edit Item</h4>
-@*						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-*@					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label for="edit-description">Description</label>
-							<input type="text" id="edit-description" name="description" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="edit-quantity">Quantity</label>
-							<input type="number" id="edit-quantity" name="quantity" class="form-control" step="1" onkeydown="return event.keyCode !== 190;">
-						</div>
-						<div class="form-group">
-							<label for="edit-price">Price</label>
-							<input type="number" id="edit-price" name="price" class="form-control" step="0.01">
-						</div>
-						<input type="number" id="itemId" value="" name="itemId" hidden> <!-- Add a hidden input field for itemId -->
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeEditModal()">
-						<input type="submit" id="edit-submit" class="btn btn-info" value="Edit">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div id="edit-form-container"></div>
-
-
-
 
 
 @*add modal create inventory modal*@
@@ -261,58 +214,95 @@
 		</div>
 </div>
 
+<!-- Edit Modal HTML -->
+	<div id="edit-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="edit-form" asp-action="EditItem" asp-controller="Rider" method="post">
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Item</h4>
+@*						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+*@					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="edit-description">Description</label>
+							<input type="text" id="edit-description" name="description" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="edit-quantity">Quantity</label>
+							<input type="number" id="edit-quantity" name="quantity" class="form-control" step="1" onkeydown="return event.keyCode !== 190;">
+						</div>
+						<div class="form-group">
+							<label for="edit-price">Price</label>
+							<input type="number" id="edit-price" name="price" class="form-control" step="0.01">
+						</div>
+						<input type="number" id="itemId" value="" name="itemId" hidden> <!-- Add a hidden input field for itemId -->
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeEditModal()">
+						<input type="submit" id="edit-submit" class="btn btn-info" value="Edit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="edit-form-container"></div>
+
+
+
 
 
 <!-- Delete Modal HTML -->
-@*<div id="deleteEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Delete Employee</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>*@
+<div id="delete-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">						
+                    <h4 class="modal-title">Delete Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">					
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="deleteModal()">
+						<input type="submit" id="delete-confirm-btn" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/rider/inventory.js"></script>
 
 
 <script>
-	$(document).ready(function () {
-		// Activate tooltip
-		$('[data-toggle="tooltip"]').tooltip();
+	//$(document).ready(function () {
+	//	// Activate tooltip
+	//	$('[data-toggle="tooltip"]').tooltip();
 
-		// Select/Deselect checkboxes
-		var checkbox = $('table tbody input[type="checkbox"]');
-		$("#selectAll").click(function () {
-			if (this.checked) {
-				checkbox.each(function () {
-					this.checked = true;
-				});
-			} else {
-				checkbox.each(function () {
-					this.checked = false;
-				});
-			}
-		});
-		checkbox.click(function () {
-			if (!this.checked) {
-				$("#selectAll").prop("checked", false);
-			}
-		});
-	});
+	//	// Select/Deselect checkboxes
+	//	var checkbox = $('table tbody input[type="checkbox"]');
+	//	$("#selectAll").click(function () {
+	//		if (this.checked) {
+	//			checkbox.each(function () {
+	//				this.checked = true;
+	//			});
+	//		} else {
+	//			checkbox.each(function () {
+	//				this.checked = false;
+	//			});
+	//		}
+	//	});
+	//	checkbox.click(function () {
+	//		if (!this.checked) {
+	//			$("#selectAll").prop("checked", false);
+	//		}
+	//	});
+	//});
 
 	function openEditModal() {
 		$('#edit-modal').modal('show');
@@ -327,5 +317,44 @@
 	function closeEditModal() {
 		$('#edit-modal').modal('hide');
 	}
+	function deleteModal() {
+		$('#delete-modal').modal('hide');
+	}
+
+	function openDeleteModal(itemId) {
+		// Store the itemId in a data attribute of the delete-confirm-btn
+		$('#delete-confirm-btn').data('itemId', itemId);
+
+		// Open the delete modal
+		$('#delete-modal').modal('show');
+	}
+	$('#delete-confirm-btn').on('click', function () {
+		var itemId = $(this).data('itemId');
+		console.log('Deleting item with itemId:', itemId);
+
+		// Make an AJAX request to delete the item from the database
+		$.ajax({
+			url: '/Rider/DeleteItem',
+			method: 'POST',
+			data: { itemId: itemId },
+			success: function (response) {
+				// Handle the success response
+				console.log('Item deleted successfully');
+				// You can also perform any additional actions here, such as updating the UI
+
+				// Close the delete modal
+				$('#delete-modal').modal('hide');
+				location.reload();
+
+			},
+			error: function (error) {
+				// Handle the error response
+				console.error('Error deleting item:', error);
+				// You can display an error message or handle the error in a way that suits your application
+			}
+		});
+	});
+
+
 
 </script>
