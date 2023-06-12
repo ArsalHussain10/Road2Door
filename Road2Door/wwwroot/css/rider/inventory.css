@@ -180,15 +180,22 @@ table.table td:last-child i {
 }
 
 table.table td a {
+    color: #fff;
+    float: inline-start;
+    font-size: 14px;
+    border: none;
+    min-width: 150px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: -2px;
     font-weight: bold;
-    color: #566787;
     display: inline-block;
     text-decoration: none;
-    outline: none !important;
 }
 
     table.table td a:hover {
-        color: #2196F3;
+        color: aliceblue;
     }
 
     table.table td a.edit {

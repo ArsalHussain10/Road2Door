@@ -13,9 +13,7 @@ public partial class MenuDetail
 
     public int Quantity { get; set; }
 
-     public virtual Item Item { get; set; } = null!;
-    //public virtual ICollection<Item> Items { get; set; } = new List<Item>();
-
+    public virtual Item Item { get; set; } = null!;
 
     public virtual MenueMaster Menue { get; set; } = null!;
 }

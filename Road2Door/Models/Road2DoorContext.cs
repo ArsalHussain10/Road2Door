@@ -33,17 +33,15 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<RiderLocation> RiderLocations { get; set; }
 
-    public virtual DbSet<Table> Tables { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Road2Door;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Road2Door;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Consumer>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC07788B365E");
+            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC078618EC5B");
 
             entity.ToTable("Consumer");
 
@@ -67,7 +65,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<ConsumerLocation>(entity =>
         {
-            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C819206F21C");
+            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C81F85C6F62");
 
             entity.ToTable("ConsumerLocation");
 
@@ -88,7 +86,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<InventoryItem>(entity =>
         {
-            entity.HasKey(e => e.Srno);
+            entity.HasKey(e => e.Srno).HasName("PK__tmp_ms_x__C3A7DF84C3C713E9");
 
             entity.ToTable("Inventory_Items");
 
@@ -98,12 +96,13 @@ public partial class Road2DoorContext : DbContext
 
             entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
                 .HasForeignKey(d => d.RiderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable");
         });
 
         modelBuilder.Entity<Item>(entity =>
         {
-            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA9678DB37");
+            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA919E0DCC");
 
             entity.ToTable("Item");
 
@@ -138,7 +137,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<MenueMaster>(entity =>
         {
-            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0C1AD9EE62");
+            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0CBE1F1454");
 
             entity.ToTable("Menue_Master");
 
@@ -176,7 +175,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<Rider>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Rider__3214EC076EC9EB2E");
+            entity.HasKey(e => e.Id).HasName("PK__Rider__3214EC07761E4734");
 
             entity.ToTable("Rider");
 
@@ -215,7 +214,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<RiderLocation>(entity =>
         {
-            entity.HasKey(e => e.RiderId).HasName("PK__RiderLoc__DB1C01CD5195C1BC");
+            entity.HasKey(e => e.RiderId).HasName("PK__RiderLoc__DB1C01CD3F72DB54");
 
             entity.ToTable("RiderLocation");
 
@@ -232,15 +231,6 @@ public partial class Road2DoorContext : DbContext
             entity.HasOne(d => d.Rider).WithOne(p => p.RiderLocation)
                 .HasForeignKey<RiderLocation>(d => d.RiderId)
                 .HasConstraintName("FK_RiderLocation_ToRider");
-        });
-
-        modelBuilder.Entity<Table>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Table__3214EC0726284885");
-
-            entity.ToTable("Table");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         OnModelCreatingPartial(modelBuilder);
