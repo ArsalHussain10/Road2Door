@@ -18,4 +18,6 @@ public partial class Consumer
     public virtual ConsumerLocation? ConsumerLocation { get; set; }
 
     public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
+
+    public virtual ICollection<Order> Orders { get; } = new List<Order>();
 }

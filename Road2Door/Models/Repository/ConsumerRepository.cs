@@ -137,4 +137,59 @@ public class ConsumerRepository
             .ToList();
         return itemIds;
     }
+
+    public int GetConsumerId(string email)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        Consumer consumer = road2DoorContext.Consumers.FirstOrDefault(c => c.Email == email);
+        return consumer.Id;
+    }
+
+    public MenuDetail GetMenuItem(int itemId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+        return item;
+    }
+    public void updateQuantity(int itemId, int newQuantity)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+        if (item != null)
+        {
+            item.Quantity = newQuantity;
+            road2DoorContext.SaveChanges();
+        }
+
+    }
+
+    public List<int> GetItemIds(int menuId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        List<int> itemIds = road2DoorContext.MenuDetails
+                                               .Where(i => i.MenueId == menuId)
+                                               .Select(i => i.ItemId)
+                                               .ToList();
+        return itemIds;
+    }
+
+    public List<MenuDetail> GetMenuDetailItems(List<int> itemIds)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+
+        List<MenuDetail> items = new List<MenuDetail>();
+        foreach (var itemId in itemIds)
+        {
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+
+            if (item != null)
+            {
+                items.Add(item);
+            }
+        }
+
+        return items;
+
+    }
 }
+

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BGXyv3Mm/Wwlvl/SSSi8L4/wyzYKmf3Rvx/FK2eJQuw=",
+  "Hash": "lU/Dcz2hS4kQajOtKneC9reS4mORxZwE6MqafnnIuwM=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -4811,6 +4811,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\educateme (3).sql"
     },
     {
+      "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\ITS Assignment-1.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/ITS Assignment-1.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\ITS Assignment-1.pdf"
+    },
+    {
       "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -4843,6 +4860,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Komal Afzaal.pdf"
+    },
+    {
+      "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\LaibaTariq.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/LaibaTariq.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\LaibaTariq.pdf"
     },
     {
       "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\pdfresizer.com-pdf-crop.pdf",
@@ -5015,6 +5049,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\FINAL_ERD.drawio"
     },
     {
+      "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\ITS Assignment-01.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/ITS Assignment-01.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\ITS Assignment-01.pdf"
+    },
+    {
       "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal Resume.pdf",
       "SourceId": "Road2Door",
       "SourceType": "Discovered",
@@ -5081,6 +5132,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\pdfresizer.com-pdf-crop (1).pdf"
+    },
+    {
+      "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\socio notes.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/socio notes.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\socio notes.pdf"
     },
     {
       "Identity": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\software houses.pdf",

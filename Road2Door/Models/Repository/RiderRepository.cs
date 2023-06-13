@@ -45,6 +45,12 @@ namespace Road2Door.Models.Repository
             Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email);
             return rider.Id;
         }
+        public int GetRiderIdFromMenuId(int menuId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenueMaster riderId = road2DoorContext.MenueMasters.FirstOrDefault(r => r.MenueId == menuId);
+            return riderId.RiderId;
+        }
 
         public RiderLocation GetRiderLocation(int riderId)
         {

@@ -132,7 +132,7 @@ namespace Road2Door.Controllers
         {
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
-            Consumer consumer = consumerRepository.GetConsumer(email);
+            Consumer consumer = consumerRepository.GetConsumer(email);;
             List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
             
             //foreach(MenuDetail menuDetail in menuDetails)
@@ -146,7 +146,63 @@ namespace Road2Door.Controllers
 
 
         }
+      
 
+        public IActionResult PlaceOrder()
+        {
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            string email = Request.Cookies["email"];
+            Consumer consumer = consumerRepository.GetConsumer(email); ;
+            List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
+
+            return View(menuConsumer);
+
+        }
+
+        public IActionResult AddToCart(int itemId, int quantity, int menuId)
+        {
+
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            RiderRepository riderRepository = new RiderRepository();
+            OrderRepository orderRepository = new OrderRepository();
+
+            string consumerEmail = Request.Cookies["email"];
+            int consumerId = consumerRepository.GetConsumerId(consumerEmail);
+            int riderId = riderRepository.GetRiderIdFromMenuId(menuId);
+            MenuDetail itemFound = consumerRepository.GetMenuItem(itemId);
+            if (itemFound != null)
+            {
+                ViewBag.maxQuantity = itemFound.Quantity;
+                int newQuantity = itemFound.Quantity - quantity;
+                consumerRepository.updateQuantity(itemId, newQuantity);
+            }
+            List<int> itemIds = consumerRepository.GetItemIds(menuId);
+
+            List<MenuDetail> items = consumerRepository.GetMenuDetailItems(itemIds);
+            ViewBag.items = items;
+            Order oItem = orderRepository.CheckMenuItemExist(itemId);
+            if (oItem != null)
+            {
+                int updateQuantity = oItem.Quantity + quantity;
+                riderRepository.updateQuantityMenuItem(itemId, updateQuantity);
+
+            }
+            else
+            {
+                MenuDetail menuItem = new MenuDetail
+                {
+                    MenueId = menuId,
+                    ItemId = itemId,
+                    Quantity = quantity,
+                };
+                riderRepository.AddToMenuDetails(menuItem);
+            }
+            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
+            ViewBag.menuItems = menuitem;
+            ViewBag.menuId = menuId;
+
+            return View("MenuPage");
+        }
 
     }
 }

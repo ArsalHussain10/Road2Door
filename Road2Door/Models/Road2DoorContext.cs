@@ -29,6 +29,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
+    public virtual DbSet<Order> Orders { get; set; }
+
     public virtual DbSet<Rider> Riders { get; set; }
 
     public virtual DbSet<RiderLocation> RiderLocations { get; set; }
@@ -171,6 +173,29 @@ public partial class Road2DoorContext : DbContext
                 .HasForeignKey(d => d.RiderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Notification_ToRider");
+        });
+
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCFD0DB4169");
+
+            entity.ToTable("Order");
+
+            entity.HasOne(d => d.Consumer).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.ConsumerId)
+                .HasConstraintName("FK_Order_ConsumerId_To_ConsumerTable");
+
+            entity.HasOne(d => d.Item).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.ItemId)
+                .HasConstraintName("FK_Order_Item_To_ItemTable");
+
+            entity.HasOne(d => d.Menu).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.MenuId)
+                .HasConstraintName("FK_Order_Menu_To_MenueMasterTable");
+
+            entity.HasOne(d => d.Rider).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.RiderId)
+                .HasConstraintName("FK_Order_RiderId_To_RiderTable");
         });
 
         modelBuilder.Entity<Rider>(entity =>
