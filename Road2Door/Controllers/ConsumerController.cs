@@ -178,8 +178,13 @@ namespace Road2Door.Controllers
             }
             List<int> itemIds = consumerRepository.GetItemIds(menuId);
 
-            List<MenuDetail> items = consumerRepository.GetMenuDetailItems(itemIds);
-            ViewBag.items = items;
+            //List<MenuDetail> items = consumerRepository.GetMenuDetailItems(itemIds);
+
+
+            Consumer consumer = consumerRepository.GetConsumer(consumerEmail); ;
+            List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
+
+            //ViewBag.items = items;
             Order oItem = orderRepository.CheckMenuItemExist(itemId);
             if (oItem != null)
             {
@@ -189,19 +194,21 @@ namespace Road2Door.Controllers
             }
             else
             {
-                MenuDetail menuItem = new MenuDetail
+                Order orderItem = new Order
                 {
-                    MenueId = menuId,
+                    MenuId = menuId,
                     ItemId = itemId,
+                    RiderId = riderId,
+                    ConsumerId = consumerId,
                     Quantity = quantity,
                 };
-                riderRepository.AddToMenuDetails(menuItem);
+                orderRepository.AddToOrder(orderItem);
             }
-            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
-            ViewBag.menuItems = menuitem;
+            List<Order> orderitem = orderRepository.GetOrderItem(menuId);
+            ViewBag.menuItems = orderitem;
             ViewBag.menuId = menuId;
 
-            return View("MenuPage");
+            return View("PlaceOrder", menuConsumer);
         }
 
     }
