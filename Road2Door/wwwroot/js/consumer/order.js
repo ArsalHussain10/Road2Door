@@ -52,6 +52,7 @@ $(document).ready(function () {
                 // Handle the success response
                 // (e.g., display a success message, update the UI, etc.)
                 console.log(response);
+                location.reload();
             },
             error: function (xhr, status, error) {
                 // Handle the error response
@@ -195,8 +196,12 @@ $(document).ready(function () {
 */
 
     $('.IncreaseDecreaseOrderItem').click(function () {
+        console.log("in the increase decrease");
         var itemId = $(this).data('item-id');
         var menuId = $(this).data('menu-id');
+
+        console.log("itemId" + itemId);
+        console.log("menuId" + menuId);
 
         var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
         var menuitemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
@@ -205,7 +210,7 @@ $(document).ready(function () {
         // Update modal content with item details
         $("#modal-order-itemid").text(itemId);
         $("#modal-order-itemname").text(itemName);
-        $("#modal-order-itemquantity").text(menuitemQuantity);
+        $("#modal-order-menuitemquantity").text(menuitemQuantity);
         $("#modal-order-itemquantity").text(itemQuantityOfOrder);
         $("#modal-order-quantity").text(itemQuantityOfOrder);
         var updatedVal = parseInt(itemQuantityOfOrder);
@@ -298,10 +303,4 @@ $(document).ready(function () {
         });
     });
 
-    function deleteItem(itemId, quantity) {
-
-        if (confirm("Are you sure you want to delete this item from the menu?")) {
-            var url = "/Consumer/DeleteItemFromOrder?itemId=" + itemId + "&quantity=" + quantity;
-            window.location.href = url;
-        }
-    }
+    

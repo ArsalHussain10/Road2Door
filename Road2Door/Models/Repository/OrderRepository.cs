@@ -74,5 +74,29 @@
             }
         }
 
+        public void addQuantitytoMenuDetailOnDelete(int itemId, int quantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity = quantity;
+                road2DoorContext.SaveChanges();
+            }
+        }
+
+        public void DeleteItemFromOrder(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Order itemToDelete = road2DoorContext.Orders.SingleOrDefault(i => i.ItemId == itemId);
+
+            if (itemToDelete != null)
+            {
+                road2DoorContext.Orders.Remove(itemToDelete);
+                road2DoorContext.SaveChanges();
+            }
+
+        }
+
     }
 }

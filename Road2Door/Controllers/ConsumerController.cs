@@ -41,7 +41,7 @@ namespace Road2Door.Controllers
                 HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
                 Consumer consumer = consumerRepository.GetConsumer(email);
 
-                return View("HomePage",consumer);
+                return View("HomePage", consumer);
             }
             return View();
 
@@ -67,9 +67,9 @@ namespace Road2Door.Controllers
 
         public IActionResult EditSettings(int id, string name, string email, string password, string contact)
         {
-            Road2DoorContext road2DoorContext= new Road2DoorContext();
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
             Consumer originalConsumer = road2DoorContext.Consumers.Find(id);
-            if(originalConsumer != null)
+            if (originalConsumer != null)
             {
                 originalConsumer.Id = id;
                 originalConsumer.Name = name;
@@ -94,7 +94,7 @@ namespace Road2Door.Controllers
         {
             string email = Request.Cookies["email"];
             ConsumerRepository consumerRepository = new ConsumerRepository();
-            Consumer consumer=consumerRepository.GetConsumer(email);
+            Consumer consumer = consumerRepository.GetConsumer(email);
             return View(consumer);
 
         }
@@ -132,9 +132,9 @@ namespace Road2Door.Controllers
         {
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
-            Consumer consumer = consumerRepository.GetConsumer(email);;
+            Consumer consumer = consumerRepository.GetConsumer(email); ;
             List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
-            
+
             //foreach(MenuDetail menuDetail in menuDetails)
             //{
             //    Console.WriteLine(menuDetail.Item.Name);
@@ -146,7 +146,7 @@ namespace Road2Door.Controllers
 
 
         }
-      
+
 
         public IActionResult PlaceOrder()
         {
@@ -190,7 +190,7 @@ namespace Road2Door.Controllers
 
             if (oItem != null)
             {
-              
+
                 int updateQuantity = oItem.Quantity + quantity;
                 orderRepository.updateQuantityMenuItem(itemId, updateQuantity);
 
@@ -215,7 +215,7 @@ namespace Road2Door.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateOrderItemQuantity(int itemId, int orderItemQuantity, int updatedQuantity,int menuId)
+        public IActionResult UpdateOrderItemQuantity(int itemId, int orderItemQuantity, int updatedQuantity, int menuId)
         {
             ConsumerRepository consumerRepository = new ConsumerRepository();
             OrderRepository orderRepository = new OrderRepository();
@@ -225,8 +225,8 @@ namespace Road2Door.Controllers
             List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id); //1
 
             List<Order> orderitem = orderRepository.GetOrderItem(menuId);
-/*            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
-*/
+            /*            List<MenuDetail> menuitem = riderRepository.GetMenuItem(menuId);
+            */
             ViewBag.menuId = menuId;
             ViewBag.items = orderitem;
             //ViewBag.menuItems = menuitem;
@@ -305,22 +305,24 @@ namespace Road2Door.Controllers
                 /*                return RedirectToAction("Menu");
                 */
             }
-            return RedirectToAction("PlaceOrder",menuConsumer);
+            return RedirectToAction("PlaceOrder", menuConsumer);
         }
 
-/*        public IActionResult DeleteItemFromOrder(int itemId, int quantity)
+        public IActionResult DeleteItemFromOrder(int itemId, int quantity)
         {
-            ConsumerRepository consumerRepository = new ConsumerRepository();
+            //ConsumerRepository consumerRepository = new ConsumerRepository();
+            OrderRepository orderRepository = new OrderRepository();
 
-            Item itemFound = riderRepository.GetItem(itemId);
+            MenuDetail itemFound = orderRepository.GetItemFromMenu(itemId);
             if (itemFound != null)
             {
                 int newQuantity = itemFound.Quantity + quantity;
-                riderRepository.addQuantitytoInventoryOnDelete(itemId, newQuantity);
+                orderRepository.addQuantitytoMenuDetailOnDelete(itemId, newQuantity);
             }
-            riderRepository.DeleteItemFromMenu(itemId);
+            orderRepository.DeleteItemFromOrder(itemId);
 
-            return RedirectToAction("Menu");
+            return RedirectToAction("PlaceOrder");
+
         }
-*/    }
+    }
 }
