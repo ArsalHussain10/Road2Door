@@ -749,6 +749,10 @@
       "PackagePath": "staticwebassets\\js\\admin\\showRiders.js"
     },
     {
+      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\js\\consumer\\order.js",
+      "PackagePath": "staticwebassets\\js\\consumer\\order.js"
+    },
+    {
       "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\js\\consumer\\settings.js",
       "PackagePath": "staticwebassets\\js\\consumer\\settings.js"
     },
@@ -1103,118 +1107,6 @@
     {
       "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\lib\\wow\\wow.min.js",
       "PackagePath": "staticwebassets\\lib\\wow\\wow.min.js"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arabic-GUIDE-CH1-5 words.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arabic-GUIDE-CH1-5 words.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal_Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Arsal_Resume.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\ITS Assignment-1.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\ITS Assignment-1.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Komal Afzaal.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\LaibaTariq.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\LaibaTariq.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Resume-LaibaTariq.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\Resume-LaibaTariq.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\SQL- Practice Problem1-Sol.docx",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\SQL- Practice Problem1-Sol.docx"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\WhatsApp Image 2023-05-02 at 7.25.34 PM.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\WhatsApp Image 2023-05-02 at 7.25.34 PM.jpeg"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\astra_1.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\astra_1.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\educateme (3).sql",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\educateme (3).sql"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\pdfresizer.com-pdf-crop.pdf",
-      "PackagePath": "staticwebassets\\uploads\\CriminalRecord\\pdfresizer.com-pdf-crop.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arabic-GUIDE-CH1-5 words.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Arabic-GUIDE-CH1-5 words.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume (1).pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Arsal-Resume.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\FINAL_ERD.drawio",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\FINAL_ERD.drawio"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\ITS Assignment-01.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\ITS Assignment-01.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Komal Afzaal Resume.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Komal Afzaal.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Laiba_ Tariq_Resume.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\Laiba_ Tariq_Resume.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\SQL- Practice Problem2-Sol.docx",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\SQL- Practice Problem2-Sol.docx"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\astera.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\astera.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\educateme (2).sql",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\educateme (2).sql"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\pdfresizer.com-pdf-crop (1).pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\pdfresizer.com-pdf-crop (1).pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\socio notes.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\socio notes.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\software houses.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\software houses.pdf"
-    },
-    {
-      "Id": "D:\\FYP\\Project_Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\transcript.pdf",
-      "PackagePath": "staticwebassets\\uploads\\Licnese\\transcript.pdf"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Road2Door.Microsoft.AspNetCore.StaticWebAssets.props",

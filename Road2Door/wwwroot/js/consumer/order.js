@@ -193,119 +193,115 @@ $(document).ready(function () {
     });
     });
 */
-    //$('.IncreaseDecreaseMenuItem').click(function () {
-    //    var itemId = $(this).data('item-id');
-    //    var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
-    //    var itemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
-    //    var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-    //    console.log(itemId + " " + itemName + " " + itemQuantity)
-    //    // Update modal content with item details
-    //    $("#modal-itemid").text(itemId);
-    //    $("#modal-itemname").text(itemName);
-    //    $("#modal-itemquantity").text(itemQuantity);
-    //    $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-    //    $("#modal-menu-quantity").text(itemQuantityOfMenu);
-    //    var updatedVal = parseInt(itemQuantityOfMenu);
-    //    var count = 0;
 
-    //    // Plus button click event
-    //    $(document).off("click", ".plus-btn").on("click", ".plus-btn", function () {
-    //        if (count < parseInt(itemQuantity) || updatedVal < parseInt(itemQuantityOfMenu)) {
-    //            updatedVal = updatedVal + 1;
-    //            count = count + 1;
+    $('.IncreaseDecreaseOrderItem').click(function () {
+        var itemId = $(this).data('item-id');
+        var menuId = $(this).data('menu-id');
 
-    //            $("#modal-menu-quantity").text(updatedVal.toString()); // Update displayed quantity
-    //        }
-    //        if (count > parseInt(itemQuantityOfMenu)) {
-    //            $(".plus-btn").prop("disabled", true); // Disable plus button
-    //        }
-    //    });
+        var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
+        var menuitemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
+        var itemQuantityOfOrder = $(this).closest("tr").find("td:nth-child(2)").text();
+        console.log(itemId + " " + itemName + " " + itemQuantity)
+        // Update modal content with item details
+        $("#modal-order-itemid").text(itemId);
+        $("#modal-order-itemname").text(itemName);
+        $("#modal-order-itemquantity").text(menuitemQuantity);
+        $("#modal-order-itemquantity").text(itemQuantityOfOrder);
+        $("#modal-order-quantity").text(itemQuantityOfOrder);
+        var updatedVal = parseInt(itemQuantityOfOrder);
+        var count = 0;
 
-    //    // Minus button click event
-    //    $(document).off("click", ".minus-btn").on("click", ".minus-btn", function () {
-    //        if (updatedVal > 0) {
-    //            updatedVal = updatedVal - 1;
-    //            count = count - 1;
+        // Plus button click event
+        $(document).off("click", ".plus-btn").on("click", ".plus-btn", function () {
+            if (count < parseInt(menuitemQuantity) || updatedVal < parseInt(itemQuantityOfOrder)) {
+                updatedVal = updatedVal + 1;
+                count = count + 1;
 
-    //            $("#modal-menu-quantity").text(updatedVal.toString());
-    //            $(".plus-btn").prop("disabled", false);
-    //        }
-    //    });
+                $("#modal-order-quantity").text(updatedVal.toString()); // Update displayed quantity
+            }
+            if (count > parseInt(itemQuantityOfOrder)) {
+                $(".plus-btn").prop("disabled", true); // Disable plus button
+            }
+        });
 
-    //    $('#edit-menu-modal').css('display', 'block');
+        // Minus button click event
+        $(document).off("click", ".minus-btn").on("click", ".minus-btn", function () {
+            if (updatedVal > 0) {
+                updatedVal = updatedVal - 1;
+                count = count - 1;
 
-    //    // Click event for close button
-    //    $('.close').click(function () {
-    //        $('#edit-menu-modal').css('display', 'none');
-    //    });
+                $("#modal-order-quantity").text(updatedVal.toString());
+                $(".plus-btn").prop("disabled", false);
+            }
+        });
 
-    //    // Function to submit the form and update the item quantity in the menu
-    //    $(document).off("submit", "#update-menu").on("submit", "#update-menu", function (e) {
-    //        e.preventDefault();
-    //        console.log("inside update button click function2");
+        $('#edit-order-modal').css('display', 'block');
 
-    //        var updatedQuantity = updatedVal.toString(); // Convert updatedVal to string
+        // Click event for close button
+        $('.close').click(function () {
+            $('#edit-order-modal').css('display', 'none');
+        });
 
-    //        $("#modal-itemid").text(itemId);
-    //        $("#modal-itemquantity").text(itemQuantity);
-    //        $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-    //        $("#modal-menu-quantity").text(itemQuantityOfMenu);
-    //        console.log(itemId);
-    //        console.log(itemQuantity);
-    //        console.log(itemQuantityOfMenu);
-    //        console.log(updatedQuantity);
-    //        var data = {
-    //            itemId: itemId,
-    //            menuItemQuantity: itemQuantityOfMenu,
-    //            updatedQuantity: updatedQuantity, // Pass updatedQuantity instead of updatedVal
-    //        };
+        // Function to submit the form and update the item quantity in the menu
+        $(document).off("submit", "#update-menu").on("submit", "#update-menu", function (e) {
+            e.preventDefault();
+            console.log("inside update button click function2");
 
-    //        // Make an AJAX request to update the item quantity
-    //        $.ajax({
-    //            url: "/Rider/UpdateMenuItemQuantity",
-    //            method: "post",
-    //            data: data,
-    //            success: function (response) {
-    //                count = 0;
-    //                // Handle the success response
-    //                // (e.g., display a success message, update the UI, etc.)
-    //                $('#edit-menu-modal').css('display', 'none');
+            var updatedQuantity = updatedVal.toString(); // Convert updatedVal to string
 
-    //                var updatedInventoryQuantity = response.updatedInventoryQuantity;
-    //                var updatedMenuQuantity = response.updatedMenuQuantity;
-    //                console.log("inventory is " + updatedInventoryQuantity + "menu is " + updatedMenuQuantity)
+            $("#modal-order-itemid").text(itemId);
+            $("#modal-order-itemquantity").text(menuitemQuantity);
+            $("#modal-order-itemquantity").text(itemQuantityOfOrder);
+            $("#modal-order-quantity").text(itemQuantityOfOrder);
+            console.log(itemId);
+            console.log(menuitemQuantity);
+            console.log(itemQuantityOfMenu);
+            console.log(updatedQuantity);
+            var data = {
+                itemId: itemId,
+                orderItemQuantity: itemQuantityOfOrder,
+                updatedQuantity: updatedQuantity,
+                menuId: menuId
+                // Pass updatedQuantity instead of updatedVal
+            };
 
-    //                // Update the inventory table with the new quantity
-    //                $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedInventoryQuantity);
+            // Make an AJAX request to update the item quantity
+            $.ajax({
+                url: "/Consumer/UpdateOrderItemQuantity",
+                method: "post",
+                data: data,
+                success: function (response) {
+                    count = 0;
+                    // Handle the success response
+                    // (e.g., display a success message, update the UI, etc.)
+                    $('#edit-order-modal').css('display', 'none');
 
-    //                // Update the menu table with the new quantity
-    //                $(".IncreaseDecreaseMenuItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedMenuQuantity);
-    //                location.reload();
+                    var updatedMenuQuantity = response.updatedMenuQuantity;
+                    var updatedOrderQuantity = response.updatedOrderQuantity;
+                    console.log("Menu is " + updatedMenuQuantity + "order is " + updatedOrderQuantity)
 
-    //                console.log("success");
-    //            },
-    //            error: function (xhr, status, error) {
-    //                // Handle the error response
-    //                // (e.g., display an error message, handle specific error cases, etc.)
-    //                console.error(error);
-    //            }
-    //        });
-    //    });
-    //});
+                    // Update the inventory table with the new quantity
+                    $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedInventoryQuantity);
 
+                    // Update the menu table with the new quantity
+                    $(".IncreaseDecreaseOrderItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedMenuQuantity);
+                    location.reload();
 
+                    console.log("success");
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error response
+                    // (e.g., display an error message, handle specific error cases, etc.)
+                    console.error(error);
+                }
+            });
+        });
+    });
 
+    function deleteItem(itemId, quantity) {
 
-
-
-
-
-});
-
-//function deleteItem(itemId, quantity) {
-
-//    if (confirm("Are you sure you want to delete this item from the menu?")) {
-//        var url = "/Rider/DeleteItemFromMenu?itemId=" + itemId + "&quantity=" + quantity;
-//        window.location.href = url;
-//    }
-//}
+        if (confirm("Are you sure you want to delete this item from the menu?")) {
+            var url = "/Consumer/DeleteItemFromOrder?itemId=" + itemId + "&quantity=" + quantity;
+            window.location.href = url;
+        }
+    }

@@ -38,5 +38,41 @@
                 road2DoorContext.SaveChanges();
             }
         }
+        public MenuDetail GetItemFromMenu(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+            return item;
+        }
+
+        public void updateMenuDetailsQuantity(int itemId, int newQuantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            MenuDetail item = road2DoorContext.MenuDetails.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity = newQuantity;
+                road2DoorContext.SaveChanges();
+            }
+
+        }
+        public Order CheckOrderItemExist(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Order item = road2DoorContext.Orders.FirstOrDefault(i => i.ItemId == itemId);
+            return item;
+        }
+
+        public void updateQuantityOrderItem(int itemId, int newQuantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Order item = road2DoorContext.Orders.FirstOrDefault(i => i.ItemId == itemId);
+            if (item != null)
+            {
+                item.Quantity = newQuantity;
+                road2DoorContext.SaveChanges();
+            }
+        }
+
     }
 }

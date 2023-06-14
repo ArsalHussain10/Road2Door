@@ -157,7 +157,7 @@
                                             <span class="item-quantity">@item.Quantity</span>
                                         </td>
                                         <td>
-                                            <a href="#" class="IncreaseDecreaseMenuItem " data-item-id="@item.ItemId" onclick="openEditMenuModal()">
+                                            <a href="#" class="IncreaseDecreaseOrderItem " data-item-id="@item.ItemId" data-menu-id="@item.MenuId" onclick="openEditMenuModal()">
                                                 <i class="material-icons custom-edit-btn" data-toggle="tooltip" title="Update">&#xE254;</i>
                                             </a>
                                             <a href="#" class="delete-btn " onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId" data-toggle="modal">
@@ -245,23 +245,23 @@
    
     
 
-    <div id="edit-menu-modal" class="modal">
+    <div id="edit-order-modal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Item</h4>
+                    <h4 class="modal-title">Edit Order Item</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <p>Item ID: <span id="modal-itemid" name="itemId"></span></p>
-                        <p>Item Name: <span id="modal-itemname" name="itemName"></span></p>
-                        <p>Item Quantity: <span id="modal-itemquantity" name="itemQuantity"></span></p>
-                        <p>Menu Item Quantity: <span id="modal-menu-itemquantity" name="menuItemQuantity"></span></p>
+                        <p>Menu Item ID: <span id="modal-order-itemid" name="itemId"></span></p>
+                        <p>Menu Item Name: <span id="modal-order-itemname" name="itemName"></span></p>
+                        <p>Menu Item Quantity: <span id="modal-order-itemquantity" name="menuQuantity"></span></p>
+                        <p>Order Item Quantity: <span id="modal-order-itemquantity" name="orderItemQuantity"></span></p>
                     </div>
                 </div>
  
-                <form id="update-menu" asp-action="UpdateMenuItemQuantity" asp-controller="Rider" method="post">
+                <form id="update-menu" asp-action="UpdateOrderItemQuantity" asp-controller="Consumer" method="post">
                     <label for="quantity">Quantity:</label>
                     @*<div class="form-group">
                     <label for="quantity" class="col-form-label">Quantity:</label>
@@ -272,7 +272,7 @@
                         <a style="text-decoration:none;" href="#" class="minus-btn">
                             <i class="material-icons bi bi-dash" data-toggle="tooltip" title="Remove">remove</i>
                         </a>
-                        <span type="number" id="modal-menu-quantity" name="menuItemQuantity"></span>
+                        <span type="number" id="modal-order-quantity" name="orderItemQuantity"></span>
 
                         <a href="#" class="plus-btn">
                             <i class="material-icons bi bi-plus" data-toggle="tooltip" title="Add">add</i>
