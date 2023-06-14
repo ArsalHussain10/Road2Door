@@ -52,7 +52,6 @@ $(document).ready(function () {
                 // Handle the success response
                 // (e.g., display a success message, update the UI, etc.)
                 console.log(response);
-                location.reload();
             },
             error: function (xhr, status, error) {
                 // Handle the error response
@@ -72,33 +71,36 @@ $(document).ready(function () {
         console.log("menuId" + menuId);
 
         var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
-        var menuitemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
-        var itemQuantityOfOrder = $(this).closest("tr").find("td:nth-child(2)").text();
-        console.log(itemId + " " + itemName + " " + menuitemQuantity)
+        var menuitemQuantity = parseInt($(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text());
+        var itemQuantityOfOrder = parseInt($(this).closest("tr").find("td:nth-child(2)").text());
+        console.log(itemId + " " + itemName + " " + menuitemQuantity);
+
         // Update modal content with item details
         $("#modal-order-itemid").text(itemId);
         $("#modal-order-itemname").text(itemName);
         $("#modal-order-menuitemquantity").text(menuitemQuantity);
         $("#modal-order-itemquantity").text(itemQuantityOfOrder);
         $("#modal-order-quantity").text(itemQuantityOfOrder);
-        var updatedVal = parseInt(itemQuantityOfOrder);
+        var updatedVal = itemQuantityOfOrder;
         var count = 0;
 
+        $('#edit-order-modal').css('display', 'block');
+
         // Plus button click event
-        $(document).off("click", ".plus-btn").on("click", ".plus-btn", function () {
-            if (count < parseInt(menuitemQuantity) || updatedVal < parseInt(itemQuantityOfOrder)) {
+        $(".plus-btn").off("click").on("click", function () {
+            if (count < menuitemQuantity || updatedVal < itemQuantityOfOrder) {
                 updatedVal = updatedVal + 1;
                 count = count + 1;
 
                 $("#modal-order-quantity").text(updatedVal.toString()); // Update displayed quantity
             }
-            if (count > parseInt(itemQuantityOfOrder)) {
+            if (count > itemQuantityOfOrder) {
                 $(".plus-btn").prop("disabled", true); // Disable plus button
             }
         });
 
         // Minus button click event
-        $(document).off("click", ".minus-btn").on("click", ".minus-btn", function () {
+        $(".minus-btn").off("click").on("click", function () {
             if (updatedVal > 0) {
                 updatedVal = updatedVal - 1;
                 count = count - 1;
@@ -107,8 +109,6 @@ $(document).ready(function () {
                 $(".plus-btn").prop("disabled", false);
             }
         });
-
-        $('#edit-order-modal').css('display', 'block');
 
         // Click event for close button
         $('.close').click(function () {
@@ -132,10 +132,9 @@ $(document).ready(function () {
             console.log(updatedQuantity);
             var data = {
                 itemId: itemId,
-                orderItemQuantity: itemQuantityOfOrder,
+                orderItemQuantity: itemQuantityOfOrder.toString(),
                 updatedQuantity: updatedQuantity,
                 menuId: menuId
-                // Pass updatedQuantity instead of updatedVal
             };
 
             // Make an AJAX request to update the item quantity
@@ -151,16 +150,16 @@ $(document).ready(function () {
 
                     var updatedMenuQuantity = response.updatedMenuQuantity;
                     var updatedOrderQuantity = response.updatedOrderQuantity;
-                    console.log("Menu is " + updatedMenuQuantity + "order is " + updatedOrderQuantity)
+                    console.log("Menu is " + updatedMenuQuantity + " order is " + updatedOrderQuantity)
 
                     // Update the inventory table with the new quantity
                     $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedMenuQuantity);
 
                     // Update the menu table with the new quantity
                     $(".IncreaseDecreaseOrderItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedOrderQuantity);
-                    location.reload();
 
                     console.log("success");
+
                 },
                 error: function (xhr, status, error) {
                     // Handle the error response
@@ -170,5 +169,6 @@ $(document).ready(function () {
             });
         });
     });
+
 
 });
