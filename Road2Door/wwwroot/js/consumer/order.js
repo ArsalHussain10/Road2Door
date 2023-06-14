@@ -62,138 +62,6 @@ $(document).ready(function () {
         });
 
     });
-    //  $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-    /*  var updatedVal = parseInt(itemQuantityOfMenu);
-      var count = 0;
-  
-      $(".plus-btn").click(function () {
-          console.log(count + itemQuantity)
-          if (parseInt(count) < itemQuantity || updatedVal < itemQuantityOfMenu) {
-              updatedVal = updatedVal + 1;
-              count = count + 1;
-              console.log("here is the count" + count);
-  
-              $("#modal-menu-quantity").text(updatedVal.toString()); // Update displayed quantity
-  
-          }
-          // if (count > itemQuantityOfMenu) {
-               $(".plus-btn").prop("disabled", true); // Disable plus button
-           }//
-  
-  
-      });
-      // Minus button click event
-      $(".minus-btn").click(function () {
-          if (updatedVal > 0) {
-              updatedVal = updatedVal - 1;
-              count = count - 1;
-  
-              console.log(typeof (updatedVal));
-              $("#modal-menu-quantity").text(updatedVal.toString());
-              $(".plus-btn").prop("disabled", false);
-          }
-  
-      });*/
-    /*    var itemId, itemName, itemQuantity, itemQuantityOfMenu, updatedVal;
-    */
-    /*$('.IncreaseDecreaseMenuItem').click(function () {
-        var itemId = $(this).data('item-id');
-        var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
-        var itemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
-        var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-        // Update modal content with item details
-        $("#modal-itemid").text(itemId);
-        $("#modal-itemname").text(itemName);
-        $("#modal-itemquantity").text(itemQuantity);
-        $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-        $("#modal-menu-quantity").text(itemQuantityOfMenu);
-        var  updatedVal = parseInt(itemQuantityOfMenu);
-        var count = 0;
-
-        // Plus button click event
-        $(document).on("click", ".plus-btn", function () {
-            if (parseInt(count) < itemQuantity || updatedVal < itemQuantityOfMenu) {
-                updatedVal = updatedVal + 1;
-                count = count + 1;
-
-                $("#modal-menu-quantity").text(updatedVal.toString()); // Update displayed quantity
-            }
-            if (count > itemQuantityOfMenu) {
-                $(".plus-btn").prop("disabled", true); // Disable plus button
-            }
-        });
-
-        // Minus button click event
-        $(document).on("click", ".minus-btn", function () {
-            if (updatedVal > 0) {
-                updatedVal = updatedVal - 1;
-                count = count - 1;
-
-                $("#modal-menu-quantity").text(updatedVal.toString());
-                $(".plus-btn").prop("disabled", false);
-            }
-        });
-
-        $('#edit-menu-modal').css('display', 'block');
-
-        // Click event for close button
-        $('.close').click(function () {
-            $('#edit-menu-modal').css('display', 'none');
-        });
-
-
-    // Function to submit the form and update the item quantity in the menu
-    $(document).on("submit", "#update-menu", function (e) {
-        e.preventDefault();
-        console.log("inside update button click function2");
-     //   var itemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
-     //   var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-
-        $("#modal-itemid").text(itemId);
-        $("#modal-itemquantity").text(itemQuantity);
-        $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-        $("#modal-menu-quantity").text(itemQuantityOfMenu);
-        console.log(itemId);
-        console.log(itemQuantity);
-        console.log(itemQuantityOfMenu);
-       // console.log(updatedVal);
-        var data = {
-            itemId: itemId,
-            menuItemQuantity: itemQuantityOfMenu,
-            updatedQuantity: updatedVal,
-        };
-        // Make an AJAX request to update the item quantity
-        $.ajax({
-            url: "/Rider/UpdateMenuItemQuantity",
-            method: "post",
-            data: data,
-            success: function (response) {
-                count = 0;
-                // Handle the success response
-                // (e.g., display a success message, update the UI, etc.)
-                $('#edit-menu-modal').css('display', 'none');
-
-                var updatedInventoryQuantity = response.updatedInventoryQuantity;
-                var updatedMenuQuantity = response.updatedMenuQuantity;
-                console.log("inventory is " + updatedInventoryQuantity + "menu is " + updatedMenuQuantity)
-
-                // Update the inventory table with the new quantity
-                $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedInventoryQuantity);
-
-                // Update the menu table with the new quantity
-                $(".IncreaseDecreaseMenuItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedMenuQuantity);
-
-                console.log("success");
-            },
-            error: function (xhr, status, error) {
-                // Handle the error response
-                // (e.g., display an error message, handle specific error cases, etc.)
-                console.error(error);
-            }
-        });
-    });
-    });
-*/
 
     $('.IncreaseDecreaseOrderItem').click(function () {
         console.log("in the increase decrease");
@@ -206,7 +74,7 @@ $(document).ready(function () {
         var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
         var menuitemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
         var itemQuantityOfOrder = $(this).closest("tr").find("td:nth-child(2)").text();
-        console.log(itemId + " " + itemName + " " + itemQuantity)
+        console.log(itemId + " " + itemName + " " + menuitemQuantity)
         // Update modal content with item details
         $("#modal-order-itemid").text(itemId);
         $("#modal-order-itemname").text(itemName);
@@ -260,7 +128,7 @@ $(document).ready(function () {
             $("#modal-order-quantity").text(itemQuantityOfOrder);
             console.log(itemId);
             console.log(menuitemQuantity);
-            console.log(itemQuantityOfMenu);
+            console.log(itemQuantityOfOrder);
             console.log(updatedQuantity);
             var data = {
                 itemId: itemId,
@@ -286,10 +154,10 @@ $(document).ready(function () {
                     console.log("Menu is " + updatedMenuQuantity + "order is " + updatedOrderQuantity)
 
                     // Update the inventory table with the new quantity
-                    $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedInventoryQuantity);
+                    $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text(updatedMenuQuantity);
 
                     // Update the menu table with the new quantity
-                    $(".IncreaseDecreaseOrderItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedMenuQuantity);
+                    $(".IncreaseDecreaseOrderItem[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text(updatedOrderQuantity);
                     location.reload();
 
                     console.log("success");
@@ -303,4 +171,4 @@ $(document).ready(function () {
         });
     });
 
-    
+});

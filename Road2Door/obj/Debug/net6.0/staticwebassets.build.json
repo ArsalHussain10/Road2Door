@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IyWomvbwblNijE48pIlJS57TGeeOvVKmbbelCwnmDos=",
+  "Hash": "VmT2KvkmOOCqihierbV6q1x0oOfDGle1TQ7E8KQ7eiA=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -4741,6 +4741,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/Komal Afzaal Resume.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Komal Afzaal Resume.pdf"
+    },
+    {
+      "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\uploads\\Licnese\\Komal Afzaal Resume.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/Komal Afzaal Resume.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\Komal Afzaal Resume.pdf"
     }
   ]
 }

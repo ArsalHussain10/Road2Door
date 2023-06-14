@@ -157,7 +157,7 @@
                                             <span class="item-quantity">@item.Quantity</span>
                                         </td>
                                         <td>
-                                            <a href="#" class="IncreaseDecreaseOrderItem" data-item-id="@item.ItemId" data-menu-id="@item.MenuId">
+                                            <a href="#" class="IncreaseDecreaseOrderItem" data-item-id="@item.ItemId" data-menu-id="@item.MenuId" onclick="openEditOrderModal()">
                                                 <i class="material-icons custom-edit-btn" data-toggle="tooltip" title="Update">&#xE254;</i>
                                             </a>
                                             <a href="#" class="delete-btn" onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId" data-toggle="modal">
@@ -333,10 +333,10 @@
         var modal = document.getElementById("placeOrderModal");
         modal.style.display = "block";
     }
-    //function openEditOrderModal() {
-    //    console.log("here");
-    //    $('#edit-order-modal').modal('show');
-    //}
+    function openEditOrderModal() {
+        console.log("here");
+        $('#edit-order-modal').modal('show');
+    }
     function openEditModal() {
         $('#edit-modal').modal('show');
     }
