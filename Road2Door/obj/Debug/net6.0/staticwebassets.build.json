@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VmT2KvkmOOCqihierbV6q1x0oOfDGle1TQ7E8KQ7eiA=",
+  "Hash": "MenSCaMSiEYG0W10oWWyYThVe3ohIDB6Ndb2zdP38ts=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -2973,6 +2973,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\admin\\riderAccountRequest.css"
+    },
+    {
+      "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\css\\admin\\showRider.css",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "css/admin/showRider.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin\\showRider.css"
     },
     {
       "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 14 june 823pm\\Road2Door\\wwwroot\\css\\consumer\\settings.css",

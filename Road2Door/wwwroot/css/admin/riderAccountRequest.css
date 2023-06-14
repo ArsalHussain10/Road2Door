@@ -1,8 +1,8 @@
-﻿.box {
+﻿/*.box {
     width: 100%;
     border: 1px solid black;
     padding: 20px;
-}
+}*/
 
     .box p {
         margin: 0;
@@ -46,3 +46,4 @@
         text-decoration: none;
         cursor: pointer;
     }
+

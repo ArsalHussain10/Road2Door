@@ -1,12 +1,120 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1560807707-8cc77767d783');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
+        }
 
-<a asp-controller="Admin" asp-action="ShowRiders">Show Riders</a>
-<a asp-controller="Admin" asp-action="ShowConsumers">Show Consumers</a>
-<a asp-controller="Admin" asp-action="RiderAccountRequest">Show Account Request</a>
+        .container {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 50px;
+        }
 
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+            color: #fff;
+        }
 
+        .navbar.navbar-expand-lg.navbar-dark {
+            background-color: #333;
+        }
+
+        .nav-link {
+            color: #fff;
+        }
+
+        h1 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/ShowConsumers">Show Consumers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/RiderAccountRequest">Show Account Request</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/SignIn">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/ShowRiders">Show Riders</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to the Admin Panel</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Show Consumers</h5>
+                        <p class="card-text">View and manage consumer information.</p>
+                        <a href="/Admin/ShowConsumers" class="btn btn-primary">Go to Consumers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Show Account Request</h5>
+                        <p class="card-text">Approve or reject rider signup requests.</p>
+                        <a href="/Admin/RiderAccountRequest" class="btn btn-primary">Go to Account Requests</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Logout</h5>
+                        <p class="card-text">Sign out from the admin panel.</p>
+                        <a href="/Admin/SignIn" class="btn btn-primary">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Show Riders</h5>
+                        <p class="card-text">View and manage rider information.</p>
+                        <a href="/Admin/ShowRiders" class="btn btn-primary">Go to Riders</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

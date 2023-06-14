@@ -1,37 +1,43 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <link href="/css/admin/riderAccountRequest.css" rel="stylesheet" />
+    <link href="/css/admin/showRider.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
 </head>
 <body>
-    @foreach (Rider r in Model)
-    {
-
-        <div class="box">
-            <p>Rider ID: <span id="riderId"> @r.Id </span></p>
-            <p>Name: <span id="name">  @r.Name  </span></p>
-            <p>Email: <span id="email">  @r.Email </span></p>
-            <p>CNIC: <span id="cnic">  @r.Cnic </span></p>
-            <p>Phone: <span id="phone">  @r.Phone </span></p>
-            <p>Account Status: <span id="accountStatus" style="background-color: @((r.Status == 1) ? "green" : "red")">@r.Status</span></p>
-            <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
-            <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
-            <button id="statusButton" onclick="toggleAccountStatus( '@r.Id', '@r.Status')">Activate/Deactivate Account</button>
+    <div class="container">
+        <h1>Show Riders</h1>
+        <div class="row">
+            @foreach (Rider r in Model)
+            {
+                <div class="col-md-6">
+                    <div class="box">
+                        <p>Rider ID: <span>@r.Id</span></p>
+                        <p>Name: <span>@r.Name</span></p>
+                        <p>Email: <span>@r.Email</span></p>
+                        <p>CNIC: <span>@r.Cnic</span></p>
+                        <p>Phone: <span>@r.Phone</span></p>
+                        <p>Account Status: <span class="account-status @((r.Status == 1) ? "active" : "inactive")">@((r.Status == 1) ? "Active" : "Inactive")</span></p>
+                        <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
+                        <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
+                        <button class="btn btn-primary" onclick="toggleAccountStatus('@r.Id', '@r.Status')">Activate/Deactivate Account</button>
+                    </div>
+                </div>
+            }
         </div>
-
-
-    }
-
+    </div>
 
     <div id="licenseModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="hideLicenseModal()">&times;</span>
-            <iframe id="licenseImage" src="" alt="Image not found" width="90%" height="90%"></iframe>
+            <iframe id="licenseImage" src="" alt="Image not found"></iframe>
         </div>
     </div>
-
+    
 </body>
-
 <script src="/js/admin/showRiders.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </html>

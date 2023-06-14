@@ -1,0 +1,64 @@
+﻿
+<html>
+
+<head>
+    <link href="/css/consumer/signin.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+<body>
+    <div class="container mt-5 mb-6">
+        @*        <img src="/assets/img/delivery.gif" alt="Image" class="riderConsumerGif" />
+        *@
+        <div class="row d-flex align-items-center justify-content-center">
+
+            <div class="col-md-5">
+
+                <div class="card px-5 py-5">
+                    <h2 class="text-center">Admin SignIn</h2>
+
+                    <form>
+                        <div class="form-input">
+                            <i class="fa fa-envelope"></i>
+                            <input  style="color:white" type="email" class="form-control" id="email" name="email" value="admin">
+                        </div>
+
+                        <div class="form-input">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" class="form-control" name="password" id="Password" placeholder="Password" required>
+                        </div>
+
+                        <button class="mx-auto btn rounded-pill btn-warning mt-4 signup" onclick="signIn()">Sign in</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+    function signIn() {
+        var passwordInput = document.getElementById("Password");
+        var password = passwordInput.value;
+
+        if (password === "admin123") {
+            // If password is correct, redirect to the ASP.NET controller
+            window.location.href = "/Admin/AdminHome";
+        } else {
+            // Display error message on the sign-in page
+            var errorElement = document.createElement("p");
+            errorElement.textContent = "Wrong password. Please try again.";
+            errorElement.style.color = "red";
+            document.body.appendChild(errorElement);
+        }
+    }
+</script>
+</html>
