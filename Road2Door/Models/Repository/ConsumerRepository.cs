@@ -113,6 +113,20 @@ public class ConsumerRepository
         return menuConsumers;
     }
 
+    public MenuConsumer GetSingleMenuConsumer(int menuId)
+    {
+        List<MenuDetail> menuDetails = new List<MenuDetail>();
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+
+        MenuConsumer singleMenuConsumer = new MenuConsumer();
+        menuDetails = road2DoorContext.MenuDetails
+            .Where(m => m.MenueId == menuId).ToList();
+        List<Item> itemsOfSingleMenu = new List<Item>();
+        itemsOfSingleMenu = PopulateItemsOfMenu(menuId);
+        singleMenuConsumer.MenuDetails = menuDetails;
+        singleMenuConsumer.Items = itemsOfSingleMenu;
+        return singleMenuConsumer;
+    }
 
 
     public List<Item> PopulateItemsOfMenu(int menuId)

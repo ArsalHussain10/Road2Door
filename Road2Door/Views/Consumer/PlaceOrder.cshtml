@@ -2,7 +2,7 @@
     List<MenuConsumer> Items = ViewBag.items as List<MenuConsumer>;
 
 }*@
-@model List<MenuConsumer>
+@model MenuConsumer
 
     @{
     List<Order> orderItems = ViewBag.orderItems as List<Order>;
@@ -18,9 +18,6 @@
 
 
 
-@{
-    int menuNumber = 1;
-}
 
 <body>
     <div class="container-xl">
@@ -52,33 +49,28 @@
                     </thead>
                     <tbody>
 
-                        @foreach (MenuConsumer singleMenuConsumer in Model)
-                        {
-                               <div class="menu-number">
-                                    Menu @menuNumber
-                                </div>
                                
-                                    @for (int i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
+                                    @for (int i = 0; i < Model.MenuDetails.Count; i++)
                                     {
+                            
                                 <tr>
-                                    <td>@singleMenuConsumer.Items[i].ItemId</td>
-                                    <td>@singleMenuConsumer.Items[i].Name</td>
+                                    <td>@Model.Items[i].ItemId</td>
+                                    <td>@Model.Items[i].Name</td>
 
-                                    <td>@singleMenuConsumer.Items[i].Description</td>
-                                    <td>@singleMenuConsumer.MenuDetails[i].Quantity</td>
-                                    <td>@singleMenuConsumer.Items[i].Price</td>
+                                    <td>@Model.Items[i].Description</td>
+                                    <td>@Model.MenuDetails[i].Quantity</td>
+                                    <td>@Model.Items[i].Price</td>
                                     <td>
                                         <div class="col-sm-6">
-                                            <a href="#" class="btn btn-success edit-btn" data-item-id="@singleMenuConsumer.Items[i].ItemId"  data-menu-id="@singleMenuConsumer.MenuDetails[i].MenueId" onclick="openEditModal(@singleMenuConsumer.Items[i].ItemId)">
+                                            <a href="#" class="btn btn-success edit-btn" data-item-id="@Model.Items[i].ItemId"  data-menu-id="@Model.MenuDetails[i].MenueId" onclick="openEditModal(@Model.Items[i].ItemId)">
                                                 <i class="material-icons" data-toggle="tooltip" title="Add"></i> <span>Add to Cart</span>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-                                       
-                                    }
-                           menuNumber++;
-                        }
+                            }
+
+                        
 
                      </tbody>
 

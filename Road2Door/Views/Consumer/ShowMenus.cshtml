@@ -38,8 +38,11 @@
 </style>
 
 @{
-    int menuNumber = 1;
+    int menuNumber = 0;
+    int i = 0;
 }
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
 
 @foreach (MenuConsumer singleMenuConsumer in Model)
 {
@@ -48,7 +51,8 @@
             Menu @menuNumber
         </div>
         <div class="menu-table">
-            @for (int i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
+
+            @for (  i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
             {
                 <div class="menu-row">
                     <div class="menu-cell">
@@ -64,14 +68,37 @@
                         <p>Price: @singleMenuConsumer.Items[i].Price</p>
                     </div>
                 </div>
+            
+         
             }
             <button>Alert the rider</button><br>
 
-            <a href="/Consumer/PlaceOrder" value='@Model' class="nav-item nav-link">PlaceOrder</a>
+            <a href="#" class="nav-item nav-link" onclick="sendSingleMenuConsumer('@singleMenuConsumer.MenuDetails[menuNumber].MenueId')">Place Order</a>
 
-@*            <button class="btn" asp-controller="Consumer"asp-action="PlaceOrder">Place Order</button>
-*@
         </div>
     </div>
     menuNumber++;
 }
+
+<script>
+       $(document).ready(function() {
+        $('.place-order-link').click(function(e) {
+            e.preventDefault();
+            var menuIndex = $(this).data('menu-index');
+            sendSingleMenuConsumer(menuIndex);
+        });
+    });
+
+    function sendSingleMenuConsumer(menuId) {
+        var url = "/Consumer/PlaceOrder";
+
+        console.log(menuId)
+        // Construct the URL with the serialized MenuConsumer object
+        url += "?menuId=" + encodeURIComponent(menuId);
+
+        window.location.href = url;
+    }
+
+
+
+</script>

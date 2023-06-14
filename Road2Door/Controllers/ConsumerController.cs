@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Road2Door.Models;
 using Road2Door.Models.Repository;
+using Newtonsoft.Json;
+
 
 namespace Road2Door.Controllers
 {
@@ -147,17 +150,22 @@ namespace Road2Door.Controllers
 
         }
 
-
-        public IActionResult PlaceOrder()
+        [HttpGet]
+        public IActionResult PlaceOrder(int menuId)
         {
+            // Deserialize the MenuConsumer object from the query parameter
+            //var menuConsumer = JsonConvert.DeserializeObject<MenuConsumer>(singleMenuConsumer);
+            Console.WriteLine(menuId);
             ConsumerRepository consumerRepository = new ConsumerRepository();
-            string email = Request.Cookies["email"];
-            Consumer consumer = consumerRepository.GetConsumer(email); ;
-            List<MenuConsumer> menuConsumer = consumerRepository.GetNotifications(consumer.Id);
+            MenuConsumer singleMenuConsumer = consumerRepository.GetSingleMenuConsumer(menuId);
+            // Perform any necessary operations with the menuConsumer object
+            // ...
 
-            return View(menuConsumer);
 
+
+            return View(singleMenuConsumer);
         }
+
 
         public IActionResult AddToCart(int itemId, int quantity, int menuId)
         {
