@@ -24,5 +24,19 @@
             return items;
 
         }
+
+        public void updateQuantityMenuItem(int itemId, int newQuantity)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Order item = road2DoorContext.Orders.FirstOrDefault(i => i.ItemId == itemId);
+            Console.WriteLine("newQunatity" + item.Quantity);
+
+            if (item != null)
+            {
+                Console.WriteLine("newQunatity"+newQuantity);
+                item.Quantity = newQuantity;
+                road2DoorContext.SaveChanges();
+            }
+        }
     }
 }

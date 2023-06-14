@@ -170,10 +170,11 @@ namespace Road2Door.Controllers
             int consumerId = consumerRepository.GetConsumerId(consumerEmail);
             int riderId = riderRepository.GetRiderIdFromMenuId(menuId);
             MenuDetail itemFound = consumerRepository.GetMenuItem(itemId);
+            Console.WriteLine(itemFound.Quantity); //4
             if (itemFound != null)
             {
                 ViewBag.maxQuantity = itemFound.Quantity;
-                int newQuantity = itemFound.Quantity - quantity;
+                int newQuantity = itemFound.Quantity - quantity; //4-1
                 consumerRepository.updateQuantity(itemId, newQuantity);
             }
             List<int> itemIds = consumerRepository.GetItemIds(menuId);
@@ -186,10 +187,12 @@ namespace Road2Door.Controllers
 
             //ViewBag.items = items;
             Order oItem = orderRepository.CheckMenuItemExist(itemId);
+
             if (oItem != null)
             {
+              
                 int updateQuantity = oItem.Quantity + quantity;
-                riderRepository.updateQuantityMenuItem(itemId, updateQuantity);
+                orderRepository.updateQuantityMenuItem(itemId, updateQuantity);
 
             }
             else
@@ -205,7 +208,7 @@ namespace Road2Door.Controllers
                 orderRepository.AddToOrder(orderItem);
             }
             List<Order> orderitem = orderRepository.GetOrderItem(menuId);
-            ViewBag.menuItems = orderitem;
+            ViewBag.orderItems = orderitem;
             ViewBag.menuId = menuId;
 
             return View("PlaceOrder", menuConsumer);

@@ -4,7 +4,10 @@
 }*@
 @model List<MenuConsumer>
 
+    @{
+    List<Order> orderItems = ViewBag.orderItems as List<Order>;
 
+    }
 
 
 <link href="/css/rider/inventory.css" rel="stylesheet" />
@@ -141,9 +144,34 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-
-
                         <tbody id="menu-table-body">
+
+                            @if (orderItems != null)
+                            {
+                                @foreach (var item in orderItems)
+                                {
+                                    <tr>
+                                        <td>@item.ItemId</td>
+@*                                        <td>@item.Item.Name</td>
+*@                                        <td>
+                                            <span class="item-quantity">@item.Quantity</span>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="IncreaseDecreaseMenuItem " data-item-id="@item.ItemId" onclick="openEditMenuModal()">
+                                                <i class="material-icons custom-edit-btn" data-toggle="tooltip" title="Update">&#xE254;</i>
+                                            </a>
+                                            <a href="#" class="delete-btn " onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId" data-toggle="modal">
+                                                <i class="material-icons custom-delete-btn" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                            </a>
+                                        </td>
+                                        @*<td><button class="IncreaseDecreaseMenuItem" data-item-id="@item.ItemId">Update</button></td>
+                                <td><button class="delete-btn" onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId">Delete</button></td>*@
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+
+@*                        <tbody id="menu-table-body">
 
                             @foreach (MenuConsumer singleMenuConsumer in Model)
                             {
@@ -157,8 +185,8 @@
                                         <td>@singleMenuConsumer.Items[i].ItemId</td>
                                         <td>@singleMenuConsumer.Items[i].Name</td>
 
-                                        <td>@singleMenuConsumer.MenuDetails[i].Quantity</td>
-
+                                        <td>@singleMenuConsumer.Orders[i].Quantity</td>
+                                        s
                                         <td>
                                             <a href="#" class="IncreaseDecreaseMenuItem " data-item-id="@singleMenuConsumer.Items[i].ItemId" onclick="openEditMenuModal()">
                                                 <i class="material-icons custom-edit-btn" data-toggle="tooltip" title="Update">&#xE254;</i>
@@ -180,9 +208,8 @@
                                 menuNumber++;
                             }
 
-
-                        </tbody>
-                    </table>
+@*                        </tbody>
+*@                    </table>
                     <a href="/Rider/HomePage" class="btn btn-secondary">
                         <i class="material-icons">arrow_back</i> Back
                     </a>
