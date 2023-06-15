@@ -1,5 +1,6 @@
 ﻿namespace Road2Door.Models.Repository;
 
+using Microsoft.Ajax.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Road2Door.Models;
 using System.Security.Cryptography.Xml;
@@ -176,6 +177,12 @@ public class ConsumerRepository
         }
 
     }
+    public void UpdateMenuDetail(MenuDetail menuDetail)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        road2DoorContext.MenuDetails.Update(menuDetail);
+        road2DoorContext.SaveChanges();
+    }
 
     public List<int> GetItemIds(int menuId)
     {
@@ -204,6 +211,19 @@ public class ConsumerRepository
 
         return items;
 
+    }
+
+    public int MakeOrder(Order order)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        road2DoorContext.Orders.Add(order);
+        road2DoorContext.SaveChanges();
+        return order.OrderId;
+    }
+    public Item GetItem(int itemId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        return road2DoorContext.Items.FirstOrDefault(i=> i.ItemId==itemId);
     }
 }
 

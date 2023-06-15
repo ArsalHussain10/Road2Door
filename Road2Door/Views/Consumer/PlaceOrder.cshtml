@@ -1,23 +1,9 @@
-﻿@*{
-    List<MenuConsumer> Items = ViewBag.items as List<MenuConsumer>;
-
-}*@
+﻿@*
 @model MenuConsumer
-
-    @{
-    List<Order> orderItems = ViewBag.orderItems as List<Order>;
-
-    }
-
 
 <link href="/css/rider/inventory.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-
-
-
-
 
 <body>
     <div class="container-xl">
@@ -28,12 +14,6 @@
                         <div class="col-sm-6">
                             <h2>Menu</h2>
                         </div>
-                        @*<div class="col-sm-6">
-                        <a href="#" class="btn btn-success" onclick="openCreateModal()">
-                        <i class="material-icons">&#xE147;</i> <span>Add New Item</span>
-                        </a>
-                        </div>*@
-
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
@@ -48,32 +28,24 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                               
-                                    @for (int i = 0; i < Model.MenuDetails.Count; i++)
-                                    {
-                            
-                                <tr>
-                                    <td>@Model.Items[i].ItemId</td>
-                                    <td>@Model.Items[i].Name</td>
-
-                                    <td>@Model.Items[i].Description</td>
-                                    <td>@Model.MenuDetails[i].Quantity</td>
-                                    <td>@Model.Items[i].Price</td>
-                                    <td>
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-success edit-btn" data-item-id="@Model.Items[i].ItemId"  data-menu-id="@Model.MenuDetails[i].MenueId" onclick="openEditModal(@Model.Items[i].ItemId)">
-                                                <i class="material-icons" data-toggle="tooltip" title="Add"></i> <span>Add to Cart</span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
-
-                        
-
-                     </tbody>
-
+                        @for (int i = 0; i < Model.MenuDetails.Count; i++)
+                        {
+                            <tr>
+                                <td>@Model.Items[i].ItemId</td>
+                                <td>@Model.Items[i].Name</td>
+                                <td>@Model.Items[i].Description</td>
+                                <td>@Model.MenuDetails[i].Quantity</td>
+                                <td>@Model.Items[i].Price</td>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <a href="#" class="btn btn-success edit-btn" data-item-id="@Model.Items[i].ItemId" data-menu-id="@Model.MenuDetails[i].MenueId" onclick="openEditModal(@Model.Items[i].ItemId)">
+                                            <i class="material-icons" data-toggle="tooltip" title="Add"></i> <span>Add to Cart</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -103,7 +75,6 @@
                         <input type="hidden" id="itemId" name="itemId">
                         <input type="hidden" id="menuId" name="menuId">
                     </div>
-
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeEditModal()">
                         <input type="submit" id="add-orderItem" class="btn btn-primary" value="Add to Cart">
@@ -126,7 +97,6 @@
                     </div>
                 </div>
                 <table id="menu-table">
-
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -137,15 +107,13 @@
                             </tr>
                         </thead>
                         <tbody id="menu-table-body">
-
                             @if (orderItems != null)
                             {
                                 @foreach (var item in orderItems)
                                 {
                                     <tr>
                                         <td>@item.ItemId</td>
-@*                                        <td>@item.Item.Name</td>
-*@                                        <td>
+                                        <td>
                                             <span class="item-quantity">@item.Quantity</span>
                                         </td>
                                         <td>
@@ -156,222 +124,196 @@
                                                 <i class="material-icons custom-delete-btn" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                             </a>
                                         </td>
-                                        @*<td><button class="IncreaseDecreaseMenuItem" data-item-id="@item.ItemId">Update</button></td>
-                                <td><button class="delete-btn" onclick="deleteItem('@item.ItemId', '@item.Quantity')" data-item-id="@item.ItemId">Delete</button></td>*@
                                     </tr>
                                 }
                             }
                         </tbody>
-
-@*                        <tbody id="menu-table-body">
-
-                            @foreach (MenuConsumer singleMenuConsumer in Model)
-                            {
-                                <div class="menu-number">
-                                    Menu @menuNumber
-                                </div>
-
-                                @for (int i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
-                                {
-                                    <tr>
-                                        <td>@singleMenuConsumer.Items[i].ItemId</td>
-                                        <td>@singleMenuConsumer.Items[i].Name</td>
-
-                                        <td>@singleMenuConsumer.Orders[i].Quantity</td>
-                                        s
-                                        <td>
-                                            <a href="#" class="IncreaseDecreaseMenuItem " data-item-id="@singleMenuConsumer.Items[i].ItemId" onclick="openEditMenuModal()">
-                                                <i class="material-icons custom-edit-btn" data-toggle="tooltip" title="Update">&#xE254;</i>
-                                            </a>
-                                            <a href="#" class="delete-btn " onclick="deleteItem('@singleMenuConsumer.Items[i].ItemId', '@singleMenuConsumer.Items[i].Quantity')" data-item-id="@singleMenuConsumer.Items[i].ItemId" data-toggle="modal">
-                                                <i class="material-icons custom-delete-btn" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                            </a>
-                                        </td>
-                                        @*<td>
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-success edit-btn" data-item-id="@singleMenuConsumer.Items[i].ItemId" data-menu-id="@singleMenuConsumer.MenuDetails[i].MenueId" onclick="openEditModal(@singleMenuConsumer.Items[i].ItemId)">
-                                                    <i class="material-icons" data-toggle="tooltip" title="Add"></i> <span>Add to Cart</span>
-                                                </a>
-                                            </div>
-                                        </td>*@
-                                    </tr>
-
-
-@*                        </tbody>
-*@                    </table>
+                    </table>
                     <a href="/Consumer/HomePage" class="btn btn-secondary">
                         <i class="material-icons">arrow_back</i> Back
                     </a>
-
+                </table>
             </div>
         </div>
     </div>
-
-
-    @*<div id="edit-modal" class="modal">
-    <div class="modal-content">
-    <span class="close">&times;</span>
-
-    <p>Item ID: <span id="modal-item-id" name="itemId"></span></p>
-    <p>Item Name: <span id="modal-item-name" name="itemName"></span></p>
-    <p>Item Quantity: <span id="modal-item-quantity" name="itemQuantity"></span></p>
-
-    <form id="add-to-menu-form" asp-action="AddToMenu" asp-controller="Rider" method="post">
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" name="quantity" min="1" max= @ViewBag.maxQuantity required ><br>
-    <input type="hidden" id="itemId" name="itemId">
-    <input type="submit" id="add-menuItem" value="Add to Menu">
-    </form>
-    </div>
-    </div>
-    *@
-
-
-    <!-- Modal -->
- @*   <div id="edit-form-container"></div>
-    <h5>Your Menu: M-@ViewBag.menuId</h5>
-*@
-   
-    
-
-    <div id="edit-order-modal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Order Item</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <p>Menu Item ID: <span id="modal-order-itemid" name="itemId"></span></p>
-                        <p>Menu Item Name: <span id="modal-order-itemname" name="itemName"></span></p>
-                        <p>Menu Item Quantity: <span id="modal-order-menuitemquantity" name="menuQuantity"></span></p>
-                        <p>Order Item Quantity: <span id="modal-order-itemquantity" name="orderItemQuantity"></span></p>
-                    </div>
-                </div>
- 
-                <form id="update-menu" asp-action="UpdateOrderItemQuantity" asp-controller="Consumer" method="post">
-                    <label for="quantity">Quantity:</label>
-                    @*<div class="form-group">
-                    <label for="quantity" class="col-form-label">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="@ViewBag.maxQuantity" required>
-                    </div>*@
-                    <div class="form-group quantity-input">
-
-                        <a style="text-decoration:none;" href="#" class="minus-btn">
-                            <i class="material-icons bi bi-dash" data-toggle="tooltip" title="Remove">remove</i>
-                        </a>
-                        <span type="number" id="modal-order-quantity" name="orderItemQuantity"></span>
-
-                        <a href="#" class="plus-btn">
-                            <i class="material-icons bi bi-plus" data-toggle="tooltip" title="Add">add</i>
-                        </a>
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" id="itemId" name="itemId">
-                    </div>
-
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeUpdateModal()">
-                        <input type="submit" id="update-MenuInventory" class="btn btn-primary" value="Update">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="placeOrderModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Item to Menu</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                            <p>Item ID: <span id="modal-item-id" name="itemId"></span></p>
-                            <p>Item Name: <span id="modal-item-name" name="itemName"></span></p>
-                            <p>Item Quantity: <span id="modal-item-quantity" name="itemQuantity"></span></p>
-                     </div>
-                </div>
-                 <form id="add-to-menu-form" asp-action="AddToMenu" asp-controller="Rider" method="post">
-                                <div class="form-group">
-                                    <label for="quantity" class="col-form-label">Quantity:</label>
-                                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="@ViewBag.maxQuantity" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" id="itemId" name="itemId">
-                                </div>
-
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="closeEditModal()">
-                     <input type="submit" id="add-menuItem" class="btn btn-primary" value="Add to Menu">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/consumer/order.js"></script>
-
-
 
 <script>
+    function openEditModal(itemId) {
+        // Get the item details from the table row
+        var itemRow = $('tr').filter(function () {
+            return $(this).find('td').eq(0).text() === itemId.toString();
+        });
 
-     function openPlaceOrderModal() {
-        var modal = document.getElementById("placeOrderModal");
-        modal.style.display = "block";
-    }
-    function openEditOrderModal() {
-        console.log("here");
-        $('#edit-order-modal').modal('show');
-    }
-    function openEditModal() {
+        var itemName = itemRow.find('td').eq(1).text();
+        var itemQuantity = itemRow.find('td').eq(3).text();
+        var menuId = itemRow.find('.edit-btn').data('menu-id');
+
+        // Set the item details in the edit modal
+        $('#modal-item-id').text(itemId);
+        $('#modal-menu-id').text(menuId);
+        $('#modal-item-name').text(itemName);
+        $('#modal-item-quantity').text(itemQuantity);
+
+        // Set the hidden input values in the form
+        $('#itemId').val(itemId);
+        $('#menuId').val(menuId);
+
+        // Show the edit modal
         $('#edit-modal').modal('show');
     }
 
-    function openEditModal(id) {
-        $('#edit-modal').modal('show');
-        /** var itemId = $(this).data('item-id');
-         var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-         console.log("itemNAme"+ itemName)**/
-        // Update modal content with item details
-        var itemId = $(this).data('item-id');
-
-        var itemName = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(2)").text();
-        var itemQuantity = $(".edit-btn[data-item-id='" + itemId + "']").closest("tr").find("td:nth-child(4)").text();
-        var itemQuantityOfMenu = $(this).closest("tr").find("td:nth-child(2)").text();
-        console.log("itemNAme" + itemName)
-
-        $("#modal-item-id").text(itemId);
-        $("#modal-item-name").text(itemName);
-        $("#modal-item-quantity").text(itemQuantity);
-        //    $("#modal-menu-itemquantity").text(itemQuantityOfMenu);
-        //  $("#modal-menu-quantity").text(itemQuantityOfMenu);
-    }
     function closeEditModal() {
-        // Clear the form inputs
-        $('#edit-description').val('');
-        $('#edit-quantity').val('');
-        $('#edit-price').val('');
-
-        // Hide the modal
+        // Hide the edit modal
         $('#edit-modal').modal('hide');
     }
-    function closeUpdateModal() {
-        $('#edit-menu-modal').modal('hide');
+
+    function openEditOrderModal() {
+        // TODO: Implement the functionality to edit the order item
     }
 
     function deleteItem(itemId, quantity) {
+        // TODO: Implement the functionality to delete the order item
+    }
 
-        if (confirm("Are you sure you want to delete this item from the menu?")) {
-            var url = "/Consumer/DeleteItemFromOrder?itemId=" + itemId + "&quantity=" + quantity;
-            window.location.href = url;
-        }
+    $('#add-to-menu-form').submit(function (event) {
+        event.preventDefault();
+
+        // Get the form data
+        var formData = $(this).serialize();
+
+        // Make the AJAX request to add the item to the cart
+        $.ajax({
+            url: '/Consumer/AddToCart',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Handle the success response
+                if (response.success) {
+                    // Close the edit modal
+                    closeEditModal();
+
+                    // Refresh the order items table
+                    refreshOrderItemsTable();
+                } else {
+                    // Show an error message
+                    alert('Failed to add the item to the cart. Please try again.');
+                }
+            },
+            error: function () {
+                // Show an error message
+                alert('An error occurred while adding the item to the cart. Please try again.');
+            }
+        });
+    });
+
+    function refreshOrderItemsTable() {
+        // Make the AJAX request to get the updated order items
+        $.ajax({
+            url: '/Consumer/GetOrderItems',
+            type: 'GET',
+            success: function (response) {
+                // Replace the order items table with the updated content
+                $('#menu-table-body').html(response);
+            },
+            error: function () {
+                // Show an error message
+                alert('An error occurred while refreshing the order items. Please try again.');
+            }
+        });
     }
 </script>
+*@
+@model MenuConsumer
+
+@using (Html.BeginForm("PlaceOrder", "Consumer", FormMethod.Post))
+{
+    <!-- Display the menu items -->
+    <h2>Menu</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
 
 
+            @for(int i=0;i<Model.MenuDetails.Count;i++)
+            {
+                <tr>
+                    <td>@Model.Items[i].ItemId</td>
+                    <td>@Model.Items[i].Name</td>
+                    <td>@Model.Items[i].Description</td>
+                    <td>@Model.MenuDetails[i].Quantity</td>
+                    <td>@Model.Items[i].Price</td>
+                    <td>
+                        <input type="number" name="orderQuantities[@Model.Items[i].ItemId]" min="0" max="@Model.MenuDetails[i].Quantity" />
+                    </td>
+                </tr>
+            }
+
+           @* @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <input type="number" name="orderQuantities[@item.ItemId]" min="0" max="@item.Quantity" />
+                    </td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+
+    <!-- Hidden field for menuId -->
+    <input type="hidden" name="menuId" value="@ViewBag.menuId" />
+
+    <!-- Submit button to place the order -->
+    <input type="submit" value="Place order" class="btn btn-primary" />
+}
+
+<script>
+    $('#add-to-menu-form').submit(function (event) {
+        event.preventDefault();
+
+        // Get the menuId from the hidden field
+        var menuId = $('[name="menuId"]').val();
+
+        // Get the order quantities
+        var orderQuantities = {};
+        $('[name^="orderQuantities"]').each(function () {
+            var itemId = $(this).attr('name').match(/\d+/)[0];
+            var quantity = $(this).val();
+            orderQuantities[itemId] = quantity;
+        });
+
+        // Make the AJAX request to add the item to the cart
+        $.ajax({
+            url: '/Consumer/PlaceOrder',
+            type: 'POST',
+            data: { menuId: menuId, orderQuantities: orderQuantities },
+            success: function (response) {
+                // Handle the success response
+                if (response.success) {
+                    // Perform any necessary actions after placing the order
+                } else {
+                    // Show an error message
+                    alert('Failed to place the order. Please try again.');
+                }
+            },
+            error: function () {
+                // Show an error message
+                alert('An error occurred while placing the order. Please try again.');
+            }
+        });
+    });
+</script>

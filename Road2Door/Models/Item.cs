@@ -19,5 +19,5 @@ public partial class Item
 
     public virtual ICollection<MenuDetail> MenuDetails { get; } = new List<MenuDetail>();
 
-    public virtual ICollection<Order> Orders { get; } = new List<Order>();
+    public virtual ICollection<OrderDetail> OrderDetails { get; } = new List<OrderDetail>();
 }

@@ -22,15 +22,17 @@ CREATE TABLE [dbo].[Rider] (
     [police_record] VARCHAR (30) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
-
 CREATE TABLE [dbo].[Item] (
     [itemId]      INT           IDENTITY (1, 1) NOT NULL,
     [name]        VARCHAR (20)  NOT NULL,
     [quantity]    INT           NOT NULL,
     [price]       FLOAT (53)    NOT NULL,
     [description] VARCHAR (100) NULL,
-    PRIMARY KEY CLUSTERED ([itemId] ASC)
+    PRIMARY KEY CLUSTERED ([itemId] ASC),
+    CONSTRAINT [CHK_Quantity_NonNegative] CHECK ([quantity]>=(0))
 );
+
+
 
 CREATE TABLE [dbo].[Menue_Master] (
     [MenueId]        INT          IDENTITY (1, 1) NOT NULL,
@@ -110,3 +112,14 @@ CREATE TABLE [dbo].[Order] (
     CONSTRAINT [FK_Order_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [dbo].[Rider] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Order_ConsumerId_To_ConsumerTable] FOREIGN KEY ([ConsumerId]) REFERENCES [dbo].[Consumer] ([Id]) ON DELETE CASCADE
 );
+
+CREATE TABLE [dbo].[OrderDetails] (
+    [Sr]         INT IDENTITY (1, 1) NOT NULL,
+    [OrderId]    INT NOT NULL,
+    [ItemId]     INT NOT NULL,
+    [quantity]   INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Sr] ASC),
+    CONSTRAINT [FK_OrderId_ToOrderss] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[Order] ([OrderId]),
+    CONSTRAINT [FK_ItemId_ToItemss] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId])
+);
+
