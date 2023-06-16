@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    .menu-container {
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .menu-number {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .menu-table {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 10px;
+    }
+
+    .menu-row {
+        display: table-row;
+    }
+
+    .menu-cell {
+        display: table-cell;
+        padding: 5px;
+        vertical-align: top;
+    }
+</style>
+@model List<RiderOrder>
+@{
+    int menuNumber = 0;
+    int i = 0;
+}
+
+@foreach (RiderOrder singleOrder in Model)
+{
+    <div class="menu-container">
+        <div class="menu-number">
+            Menu @menuNumber
+        </div>
+        <div class="menu-table">
+            <h1>Order is by  @singleOrder.Consumer.Name </h1>
+
+            @for (i = 0; i < singleOrder.OrderDetails.Count; i++)
+            {
+
+                <div class="menu-row">
+                    <div class="menu-cell">
+                        <h1>@singleOrder.OrderDetails[i].Item.Name</h1>
+                    </div>
+                    <div class="menu-cell">
+                        <h2>@singleOrder.OrderDetails[i].Item.Description</h2>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Quantity: @singleOrder.OrderDetails[i].Quantity</p>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Price: @singleOrder.OrderDetails[i].Item.Price</p>
+                    </div>
+                </div>
+
+
+            }
+            <button>Accept order</button><br>
+
+
+        </div>
+    </div>
+    menuNumber++;
+}

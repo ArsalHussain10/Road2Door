@@ -1,6 +1,7 @@
 ﻿using Microsoft.Ajax.Utilities;
 using Microsoft.Ajax.Utilities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Road2Door.Models.Repository
 {
@@ -319,6 +320,57 @@ namespace Road2Door.Models.Repository
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             List<OrderNotification> orderNotifications = road2DoorContext.OrderNotifications.Where(o => o.RiderId == riderId && o.View == 0).ToList();
             return orderNotifications.Count;
+        }
+        public List<RiderOrder> GetOrders(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+           List<OrderNotification> orders=  road2DoorContext.OrderNotifications.Where(o => o.RiderId == riderId && o.View == 0).ToList();
+            List<RiderOrder> riderOrders = new List<RiderOrder>();
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            foreach(OrderNotification order in orders)
+            {
+                RiderOrder singleOrder = new RiderOrder();
+                singleOrder.OrderId=order.OrderId;
+                singleOrder.RiderId = riderId;
+                List<OrderDetail> orderDetails = GetOrderDetails(singleOrder.OrderId);
+                List<OrderDetail> completeOrderDetails = PopulateOrderItems(orderDetails);
+                singleOrder.OrderDetails = completeOrderDetails;
+                Consumer consumer = GetConsumerThroughOrderId(singleOrder.OrderId);
+                singleOrder.Consumer = consumer;
+                riderOrders.Add(singleOrder);
+
+            }
+            return riderOrders;
+        }
+        public Consumer GetConsumerThroughOrderId(int orderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Order order = road2DoorContext.Orders.FirstOrDefault(o => o.OrderId == orderId);
+            int consumerId = order.ConsumerId;
+            Consumer consumer = road2DoorContext.Consumers.FirstOrDefault(c => c.Id == consumerId);
+            return consumer;
+        }
+        
+        private List<OrderDetail> GetOrderDetails(int orderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.OrderDetails.Where(o => o.OrderId == orderId).ToList();
+        }
+
+        private List<OrderDetail> PopulateOrderItems(List<OrderDetail> orderDetails)
+        {
+            Road2DoorContext road2DoorContext= new Road2DoorContext();
+            List<OrderDetail> completeOrderDetails = new List<OrderDetail>();
+            foreach(OrderDetail o in orderDetails)
+            {
+                
+                o.Item = GetItem(o.ItemId);
+                
+                completeOrderDetails.Add(o);
+
+            }
+            return completeOrderDetails;
+
         }
     }
     

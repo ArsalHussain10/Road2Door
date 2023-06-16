@@ -499,6 +499,19 @@ namespace Road2Door.Controllers
             return new JsonResult(count);
         }
 
+        public IActionResult ViewOrders()
+        {
+            RiderRepository riderRepository = new RiderRepository();
+            string email = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(email);
+            List<RiderOrder> riderOrders=riderRepository.GetOrders(riderId);
+            riderOrders.Reverse();
+
+            return View(riderOrders);
+
+
+        }
+
 
 
     }
