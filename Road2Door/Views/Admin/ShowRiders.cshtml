@@ -3,25 +3,50 @@
 <head>
     <link href="/css/admin/showRider.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    
+    <style>
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+            .search-bar input[type="text"] {
+                border: none;
+                background-color: transparent;
+                outline: none;
+                width: 200px;
+                padding: 5px;
+                border-bottom: 1px solid #ccc;
+            }
+
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Show Riders</h1>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search rider by name">
+        </div>
+
         <div class="row">
             @foreach (Rider r in Model)
             {
                 <div class="col-md-6">
                     <div class="box">
                         <p>Rider ID: <span>@r.Id</span></p>
-                        <p>Name: <span>@r.Name</span></p>
+                        <p>Name: <span class="name">@r.Name</span></p>
                         <p>Email: <span>@r.Email</span></p>
                         <p>CNIC: <span>@r.Cnic</span></p>
                         <p>Phone: <span>@r.Phone</span></p>
                         <p>Account Status: <span class="account-status @((r.Status == 1) ? "active" : "inactive")">@((r.Status == 1) ? "Active" : "Inactive")</span></p>
-                        <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
-                        <a href="#" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
-                        <button class="btn btn-primary" onclick="toggleAccountStatus('@r.Id', '@r.Status')">Activate/Deactivate Account</button>
+                        <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
+                        <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
+                        <button class="btn btn-secondary" onclick="toggleAccountStatus('@r.Id', '@r.Status')">Activate/Deactivate Account</button>
                     </div>
                 </div>
             }
@@ -34,10 +59,36 @@
             <iframe id="licenseImage" src="" alt="Image not found"></iframe>
         </div>
     </div>
-    
+    <a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>
+
 </body>
 <script src="/js/admin/showRiders.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('input', function () {
+            var searchText = $(this).val().toLowerCase();
+            $('.box').each(function () {
+                var riderName = $(this).find('.name').text().toLowerCase();
+                var originalText = $(this).find('.name').data('original-text');
+                if (originalText === undefined) {
+                    $(this).find('.name').data('original-text', riderName);
+                    originalText = riderName;
+                }
+                if (riderName.includes(searchText)) {
+                    $(this).show();
+                    var highlightedText = originalText.replace(new RegExp(searchText, 'gi'), function (match) {
+                        return '<span class="highlight">' + match + '</span>';
+                    });
+                    $(this).find('.name').html(highlightedText);
+                } else {
+                    $(this).hide();
+                    $(this).find('.name').html(originalText);
+                }
+            });
+        });
+    });
+</script>
 </html>

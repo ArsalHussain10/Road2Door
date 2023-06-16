@@ -23,8 +23,8 @@
                             <p class="card-text">CNIC: @r.Cnic</p>
                             <p class="card-text">Phone: @r.Phone</p>
                             <p class="card-text">Account Status: <span class="badge @((r.Status == 1) ? "badge-success" : "badge-danger")">@((r.Status == 1) ? "Active" : "Inactive")</span></p>
-                            <a href="#" class="btn btn-primary" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
-                            <a href="#" class="btn btn-primary" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
+                            <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
+                            <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
                             <button class="btn btn-success" onclick="acceptRequest(@r.Id)">Accept Request</button>
                             <button class="btn btn-danger" onclick="rejectRequest(@r.Id)">Reject Request</button>
                         </div>
@@ -40,6 +40,8 @@
             <iframe id="licenseImage" src="" alt="Image not found" width="100%" height="100%"></iframe>
         </div>
     </div>
+    <a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>
+
 
     <script src="/js/admin/riderAccountRequest.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

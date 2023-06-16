@@ -1,12 +1,127 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model List<Consumer>
+﻿@model List<Consumer>
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s;
+    }
 
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-@foreach (Consumer c in Model)
-{
-    <h2>  @c.Name  </h2>
+    .card-header {
+        background-color: #f5f5f5;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .card-body {
+        padding: 20px;
+        width: 100%;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    .search-bar {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        padding: 5px;
+    }
+
+        .search-bar input[type="text"] {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search consumer by name">
+</div>
+
+<div class="row justify-content-center">
+    @foreach (Consumer c in Model)
+    {
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>@Html.Raw(HighlightText(c.Name, ViewBag.SearchText))</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Email:</strong> @c.Email</p>
+                    <p><strong>ID:</strong> @c.Id</p>
+                    <p><strong>Phone Number:</strong> @c.Phone</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('input', function () {
+            var searchText = $(this).val().toLowerCase();
+            $('.card').each(function () {
+                var cardName = $(this).find('h2').text().toLowerCase();
+                if (cardName.includes(searchText)) {
+                    $(this).show();
+                    var highlightedText = cardName.replace(new RegExp(searchText, 'gi'), function (match) {
+                        return '<span class="highlight">' + match + '</span>';
+                    });
+                    $(this).find('h2').html(highlightedText);
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+@functions {
+    public string HighlightText(string text, string searchText)
+    {
+        if (!string.IsNullOrEmpty(searchText))
+        {
+            return text.Replace(searchText, "<span class='highlight'>" + searchText + "</span>", StringComparison.OrdinalIgnoreCase);
+        }
+        return text;
+    }
 }

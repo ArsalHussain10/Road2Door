@@ -41,6 +41,9 @@
         .card {
             margin-bottom: 20px;
         }
+
+        
+
     </style>
 </head>
 <body>
@@ -76,7 +79,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Show Consumers</h5>
                         <p class="card-text">View and manage consumer information.</p>
-                        <a href="/Admin/ShowConsumers" class="btn btn-primary">Go to Consumers</a>
+                        <a href="/Admin/ShowConsumers" class="btn btn-outline-warning">Go to Consumers</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +88,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Show Account Request</h5>
                         <p class="card-text">Approve or reject rider signup requests.</p>
-                        <a href="/Admin/RiderAccountRequest" class="btn btn-primary">Go to Account Requests</a>
+                        <a href="/Admin/RiderAccountRequest" class="btn btn-outline-warning">Go to Account Requests</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +100,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Logout</h5>
                         <p class="card-text">Sign out from the admin panel.</p>
-                        <a href="/Admin/SignIn" class="btn btn-primary">Logout</a>
+                        <a href="/Admin/SignIn" class="btn btn-outline-warning">Logout</a>
                     </div>
                 </div>
             </div>
@@ -106,12 +109,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Show Riders</h5>
                         <p class="card-text">View and manage rider information.</p>
-                        <a href="/Admin/ShowRiders" class="btn btn-primary">Go to Riders</a>
+                        <a href="/Admin/ShowRiders" class="btn btn-outline-warning">Go to Riders</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <marquee behavior="scroll" direction="left">
+        As an Admin, make sure to properly check riders criminal record and driving license before activating the account.
+    </marquee>
+   
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

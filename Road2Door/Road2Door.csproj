@@ -31,5 +31,10 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\CriminalRecord\" />
+    <Folder Include="wwwroot\uploads\Licnese\" />
+  </ItemGroup>
 	
 </Project>
