@@ -29,5 +29,7 @@ public partial class Rider
 
     public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 
+    public virtual ICollection<OrderNotification> OrderNotifications { get; } = new List<OrderNotification>();
+
     public virtual RiderLocation? RiderLocation { get; set; }
 }

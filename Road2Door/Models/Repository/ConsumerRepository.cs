@@ -223,7 +223,25 @@ public class ConsumerRepository
     public Item GetItem(int itemId)
     {
         Road2DoorContext road2DoorContext = new Road2DoorContext();
-        return road2DoorContext.Items.FirstOrDefault(i=> i.ItemId==itemId);
+        Item i= road2DoorContext.Items.Find(itemId);
+        return i;
+    }
+    public void MakeOrderNotification(OrderNotification orderNotification)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        road2DoorContext.OrderNotifications.Add(orderNotification);
+        road2DoorContext.SaveChanges();
+    }
+
+    public void AddOrderDetails(List<OrderDetail> orderList)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+
+        foreach (OrderDetail o in orderList)
+        {
+            road2DoorContext.OrderDetails.Add(o);
+            road2DoorContext.SaveChanges();
+        }
     }
 }
 

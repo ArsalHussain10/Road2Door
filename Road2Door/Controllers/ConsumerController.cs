@@ -199,7 +199,8 @@ namespace Road2Door.Controllers
 
 
             MenuConsumer singleMenuConsumer = consumerRepository.GetSingleMenuConsumer(menuId);
-
+            RiderRepository riderRepository = new RiderRepository();
+           int riderId= riderRepository.GetRiderIdFromMenuId(menuId);
             
             foreach (MenuDetail menuDetail in singleMenuConsumer.MenuDetails)
             {
@@ -214,7 +215,7 @@ namespace Road2Door.Controllers
                         singleOrderDetail.ItemId = menuDetail.ItemId;
                         singleOrderDetail.Quantity = quantity;
                         singleOrderDetail.OrderId = orderId;
-                        singleOrderDetail.Item = item;
+                        //singleOrderDetail.Item = item;
                         orderList.Add(singleOrderDetail);
 
                         menuDetail.Quantity -= quantity;
@@ -226,6 +227,13 @@ namespace Road2Door.Controllers
 
             // Save the updated menu consumer in the database
             //consumerRepository.UpdateMenuConsumer(singleMenuConsumer);
+            consumerRepository.AddOrderDetails(orderList);
+            OrderNotification orderNotification = new OrderNotification();
+            orderNotification.OrderId = orderId;
+            orderNotification.RiderId = riderId;
+            orderNotification.View = 0;
+            consumerRepository.MakeOrderNotification(orderNotification);
+
 
             return View("OrderDetails",orderList);
         }

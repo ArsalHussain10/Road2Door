@@ -120,4 +120,13 @@ CREATE TABLE [dbo].[OrderDetails] (
     CONSTRAINT [FK_OrderId_ToOrderss] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[Order] ([OrderId]),
     CONSTRAINT [FK_ItemId_ToItemss] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId])
 );
+CREATE TABLE [dbo].[OrderNotification]
+(
+	[Sr] INT  IDENTITY (1, 1) NOT NULL PRIMARY KEY, 
+    [OrderId] INT NOT NULL, 
+    [RiderId] INT NOT NULL, 
+    [View] INT NOT NULL, 
+    CONSTRAINT [FK_OrderId_Order] FOREIGN KEY ([OrderId]) REFERENCES [Order]([OrderId]),
+    CONSTRAINT [FK_RiderId_Rider] FOREIGN KEY ([RiderId]) REFERENCES [Rider]([Id]),
 
+)

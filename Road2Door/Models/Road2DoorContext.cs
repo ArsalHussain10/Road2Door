@@ -33,6 +33,8 @@ public partial class Road2DoorContext : DbContext
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
+    public virtual DbSet<OrderNotification> OrderNotifications { get; set; }
+
     public virtual DbSet<Rider> Riders { get; set; }
 
     public virtual DbSet<RiderLocation> RiderLocations { get; set; }
@@ -215,6 +217,23 @@ public partial class Road2DoorContext : DbContext
                 .HasForeignKey(d => d.OrderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_OrderId_ToOrderss");
+        });
+
+        modelBuilder.Entity<OrderNotification>(entity =>
+        {
+            entity.HasKey(e => e.Sr).HasName("PK__OrderNot__32151FB80F8D5F59");
+
+            entity.ToTable("OrderNotification");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderNotifications)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_OrderId_Order");
+
+            entity.HasOne(d => d.Rider).WithMany(p => p.OrderNotifications)
+                .HasForeignKey(d => d.RiderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_RiderId_Rider");
         });
 
         modelBuilder.Entity<Rider>(entity =>

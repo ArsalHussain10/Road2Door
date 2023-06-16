@@ -18,4 +18,6 @@ public partial class Order
     public virtual MenueMaster Menu { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetails { get; } = new List<OrderDetail>();
+
+    public virtual ICollection<OrderNotification> OrderNotifications { get; } = new List<OrderNotification>();
 }
