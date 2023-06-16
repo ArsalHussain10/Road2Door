@@ -47,6 +47,13 @@ namespace Road2Door.Models.Repository
             Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email);
             return rider.Id;
         }
+        public string GetRiderName(string email)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Rider rider = road2DoorContext.Riders.FirstOrDefault(r => r.Email == email);
+            return rider.Name;
+        }
+
         public int GetRiderIdFromMenuId(int menuId)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();

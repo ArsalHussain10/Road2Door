@@ -295,7 +295,20 @@ namespace Road2Door.Controllers
             //return View("PlaceOrder", menuConsumer);
         }
 
-       // [HttpPost]
+        public IActionResult ChatBox()
+        {
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+            string email = Request.Cookies["email"];
+            Consumer consumer=consumerRepository.GetConsumer(email);
+            string name=consumer.Name;
+            ViewBag.Name = name;
+            Console.Write("here in Chat Box");
+            return View("ChatBox");
+        }
+
+
+
+        // [HttpPost]
         //public IActionResult UpdateOrderItemQuantity(int itemId, int orderItemQuantity, int updatedQuantity, int menuId)
         //{
         //    ConsumerRepository consumerRepository = new ConsumerRepository();

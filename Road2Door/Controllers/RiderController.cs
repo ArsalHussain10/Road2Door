@@ -511,7 +511,16 @@ namespace Road2Door.Controllers
 
 
         }
+        public IActionResult ChatBox()
+        {
 
+            RiderRepository riderRepository = new RiderRepository();
+            string riderEmail = Request.Cookies["email"];
+            string riderName=riderRepository.GetRiderName(riderEmail);
+            Console.Write("here in Chat Box");
+            ViewBag.Name=riderName;
+            return View();
+        }
 
 
     }

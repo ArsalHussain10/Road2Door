@@ -47,7 +47,7 @@ public partial class Road2DoorContext : DbContext
     {
         modelBuilder.Entity<Consumer>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC07DE46406F");
+            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC078618EC5B");
 
             entity.ToTable("Consumer");
 
@@ -71,7 +71,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<ConsumerLocation>(entity =>
         {
-            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C811EA7D0EB");
+            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C81F85C6F62");
 
             entity.ToTable("ConsumerLocation");
 
@@ -92,7 +92,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<InventoryItem>(entity =>
         {
-            entity.HasKey(e => e.Srno);
+            entity.HasKey(e => e.Srno).HasName("PK__tmp_ms_x__C3A7DF84C3C713E9");
 
             entity.ToTable("Inventory_Items");
 
@@ -102,12 +102,13 @@ public partial class Road2DoorContext : DbContext
 
             entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
                 .HasForeignKey(d => d.RiderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable");
         });
 
         modelBuilder.Entity<Item>(entity =>
         {
-            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA8414D997");
+            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA919E0DCC");
 
             entity.ToTable("Item");
 
@@ -142,7 +143,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<MenueMaster>(entity =>
         {
-            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0C1062D17F");
+            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0CBE1F1454");
 
             entity.ToTable("Menue_Master");
 
@@ -152,11 +153,6 @@ public partial class Road2DoorContext : DbContext
             entity.Property(e => e.ExpirationDate)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Rider).WithMany(p => p.MenueMasters)
-                .HasForeignKey(d => d.RiderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Menue_Master_ToRider");
         });
 
         modelBuilder.Entity<Notification>(entity =>
@@ -185,7 +181,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__tmp_ms_x__C3905BCFCDCB9873");
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCF12DE7AD2");
 
             entity.ToTable("Order");
 
@@ -204,7 +200,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.Sr).HasName("PK__OrderDet__32151FB8472A1D6F");
+            entity.HasKey(e => e.Sr).HasName("PK__OrderDet__32151FB895EA568B");
 
             entity.Property(e => e.Quantity).HasColumnName("quantity");
 
@@ -221,7 +217,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<OrderNotification>(entity =>
         {
-            entity.HasKey(e => e.Sr).HasName("PK__OrderNot__32151FB80F8D5F59");
+            entity.HasKey(e => e.Sr).HasName("PK__OrderNot__32151FB882554452");
 
             entity.ToTable("OrderNotification");
 
@@ -238,7 +234,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<Rider>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC071B53E1F5");
+            entity.HasKey(e => e.Id).HasName("PK__Rider__3214EC07761E4734");
 
             entity.ToTable("Rider");
 
@@ -277,7 +273,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<RiderLocation>(entity =>
         {
-            entity.HasKey(e => e.RiderId).HasName("PK__tmp_ms_x__DB1C01CD181797B7");
+            entity.HasKey(e => e.RiderId).HasName("PK__RiderLoc__DB1C01CD3F72DB54");
 
             entity.ToTable("RiderLocation");
 

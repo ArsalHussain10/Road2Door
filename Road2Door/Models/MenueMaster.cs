@@ -16,6 +16,4 @@ public partial class MenueMaster
     public virtual ICollection<MenuDetail> MenuDetails { get; } = new List<MenuDetail>();
 
     public virtual ICollection<Order> Orders { get; } = new List<Order>();
-
-    public virtual Rider Rider { get; set; } = null!;
 }
