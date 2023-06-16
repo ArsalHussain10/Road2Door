@@ -313,6 +313,13 @@ namespace Road2Door.Models.Repository
             road2DoorContext.Notifications.RemoveRange(notificationsToDelete);
             road2DoorContext.SaveChanges();
         }
+
+        public int GetOrderNotificationsLength(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            List<OrderNotification> orderNotifications = road2DoorContext.OrderNotifications.Where(o => o.RiderId == riderId && o.View == 0).ToList();
+            return orderNotifications.Count;
+        }
     }
     
 }

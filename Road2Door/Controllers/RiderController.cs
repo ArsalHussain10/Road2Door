@@ -486,6 +486,19 @@ namespace Road2Door.Controllers
 
         }
 
+        public IActionResult CheckForNotification()
+        {
+            // Retrieve the notifications from the database or any other data source
+            RiderRepository riderRepository = new RiderRepository();
+            string email = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(email);
+            //List<MenuDetail> menuDetails = consumerRepository.GetNotifications(consumer.Id);
+            int count = riderRepository.GetOrderNotificationsLength(riderId);
+
+            // Return the notifications as JSON
+            return new JsonResult(count);
+        }
+
 
 
     }
