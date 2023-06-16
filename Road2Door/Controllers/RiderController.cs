@@ -522,6 +522,18 @@ namespace Road2Door.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult RejectOrders(int orderId)
+        {
+            RiderRepository riderRepository = new RiderRepository();
+            string email = Request.Cookies["email"];
+            int riderId = riderRepository.GetRiderId(email);
+            riderRepository.RejectOrders(riderId, orderId);
+
+
+            return RedirectToAction("HomePage");
+        }
+
 
     }
 }

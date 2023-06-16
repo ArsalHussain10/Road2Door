@@ -1,0 +1,87 @@
+﻿
+
+<style>
+    .menu-container {
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .menu-number {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .menu-table {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 10px;
+    }
+
+    .menu-row {
+        display: table-row;
+    }
+
+    .menu-cell {
+        display: table-cell;
+        padding: 5px;
+        vertical-align: top;
+    }
+</style>
+
+@model List<RiderOrder>
+
+@{
+    int menuNumber = 1;
+    int i = 0;
+    double totalAmount = 0;
+
+}
+
+
+@foreach (RiderOrder singleOrder in Model)
+{
+    <div class="menu-container">
+        <div class="menu-number">
+            Order# @menuNumber
+        </div>
+        <div class="menu-table">
+            <h1>Order is by @singleOrder.Consumer.Name</h1>
+            <h1>Rider is  @singleOrder.RiderId</h1>
+
+            @foreach (var orderDetail in singleOrder.OrderDetails)
+            {
+                <div class="menu-row">
+                    <div class="menu-cell">
+                        <h1>@orderDetail.Item.Name</h1>
+                    </div>
+                    <div class="menu-cell">
+                        <h2>@orderDetail.Item.Description</h2>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Quantity: @orderDetail.Quantity</p>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Price: @orderDetail.Item.Price</p>
+                    </div>
+                    <div class="menu-cell">
+                        <p>Amount: @(orderDetail.Item.Price * orderDetail.Quantity)</p>
+                    </div>
+                    @(totalAmount += orderDetail.Item.Price * orderDetail.Quantity)
+
+                </div>
+            }
+            <p style="color:red" >Total Bill @totalAmount</p>
+            @{
+                totalAmount = 0;
+            }
+
+        </div>
+    </div>
+    menuNumber++;
+}
+
+<a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>

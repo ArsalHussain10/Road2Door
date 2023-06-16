@@ -358,13 +358,13 @@ namespace Road2Door.Models.Repository
             return consumer;
         }
         
-        private List<OrderDetail> GetOrderDetails(int orderId)
+        public List<OrderDetail> GetOrderDetails(int orderId)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             return road2DoorContext.OrderDetails.Where(o => o.OrderId == orderId).ToList();
         }
 
-        private List<OrderDetail> PopulateOrderItems(List<OrderDetail> orderDetails)
+        public List<OrderDetail> PopulateOrderItems(List<OrderDetail> orderDetails)
         {
             Road2DoorContext road2DoorContext= new Road2DoorContext();
             List<OrderDetail> completeOrderDetails = new List<OrderDetail>();
@@ -379,6 +379,31 @@ namespace Road2Door.Models.Repository
             return completeOrderDetails;
 
         }
+        public void RejectOrders(int riderId, int orderId)
+        {
+            using (var road2DoorContext = new Road2DoorContext())
+            {
+                List<OrderNotification> notificationsToUpdate = road2DoorContext.OrderNotifications
+                    .Where(notification => notification.RiderId == riderId && notification.OrderId != orderId && notification.View==0 )
+                    .ToList();
+
+                foreach (OrderNotification notification in notificationsToUpdate)
+                {
+                    notification.View = 1;
+                }
+
+                var orderNotification = road2DoorContext.OrderNotifications
+                    .FirstOrDefault(notification => notification.RiderId == riderId && notification.OrderId == orderId);
+
+                if (orderNotification != null)
+                {
+                    orderNotification.View = 2;
+                }
+
+                road2DoorContext.SaveChanges();
+            }
+        }
+
     }
-    
+
 }

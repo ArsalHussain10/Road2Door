@@ -12,7 +12,7 @@ namespace Road2Door.Controllers
         {
             return View();
         }
-
+       
         public IActionResult ShowRiders()
         {
             AdminRepository adminRepository = new AdminRepository();
@@ -52,6 +52,26 @@ namespace Road2Door.Controllers
             AdminRepository adminRepository = new AdminRepository();
             adminRepository.AccountRequest(riderId,accountRequest);
             return RedirectToAction("RiderAccountRequest");
+        }
+
+        public IActionResult ViewOrders()
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            List<OrderNotification> approvedOrders = adminRepository.GetApprovedOrders();
+            RiderRepository riderRepository= new RiderRepository();
+            List<RiderOrder> orders = new List<RiderOrder>();
+            foreach(OrderNotification singleApprovedOrder in approvedOrders)
+            {
+                RiderOrder riderOrder = new RiderOrder();
+                riderOrder.RiderId = singleApprovedOrder.RiderId;
+                riderOrder.OrderId=singleApprovedOrder.OrderId;
+                riderOrder.OrderDetails=riderRepository.GetOrderDetails(riderOrder.OrderId);
+                riderOrder.OrderDetails=riderRepository.PopulateOrderItems(riderOrder.OrderDetails);
+                riderOrder.Consumer = riderRepository.GetConsumerThroughOrderId(riderOrder.OrderId);
+                orders.Add(riderOrder);
+            }
+            orders.Reverse();
+            return View(orders);
         }
     }
 }

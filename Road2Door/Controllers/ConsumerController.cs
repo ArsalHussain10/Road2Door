@@ -195,47 +195,63 @@ namespace Road2Door.Controllers
             order.MenuId = menuId;
             order.Date = DateTime.Now.ToString("yyyy-MM-dd");
             int orderId=consumerRepository.MakeOrder(order);
-            List<OrderDetail> orderList = new List<OrderDetail>();
 
-
-            MenuConsumer singleMenuConsumer = consumerRepository.GetSingleMenuConsumer(menuId);
-            RiderRepository riderRepository = new RiderRepository();
-           int riderId= riderRepository.GetRiderIdFromMenuId(menuId);
-            
-            foreach (MenuDetail menuDetail in singleMenuConsumer.MenuDetails)
+            if (orderId > 0)
             {
-                if (orderQuantities.TryGetValue(menuDetail.ItemId, out int quantity))
+
+
+
+                List<OrderDetail> orderList = new List<OrderDetail>();
+
+
+                MenuConsumer singleMenuConsumer = consumerRepository.GetSingleMenuConsumer(menuId);
+                RiderRepository riderRepository = new RiderRepository();
+                int riderId = riderRepository.GetRiderIdFromMenuId(menuId);
+
+                foreach (MenuDetail menuDetail in singleMenuConsumer.MenuDetails)
                 {
-                    if (quantity != 0)
+                    if (orderQuantities.TryGetValue(menuDetail.ItemId, out int quantity))
                     {
+                        if (quantity != 0)
+                        {
 
 
-                        OrderDetail singleOrderDetail = new OrderDetail();
-                        Item item = consumerRepository.GetItem(menuDetail.ItemId);
-                        singleOrderDetail.ItemId = menuDetail.ItemId;
-                        singleOrderDetail.Quantity = quantity;
-                        singleOrderDetail.OrderId = orderId;
-                        //singleOrderDetail.Item = item;
-                        orderList.Add(singleOrderDetail);
+                            OrderDetail singleOrderDetail = new OrderDetail();
+                            Item item = consumerRepository.GetItem(menuDetail.ItemId);
+                            singleOrderDetail.ItemId = menuDetail.ItemId;
+                            singleOrderDetail.Quantity = quantity;
+                            singleOrderDetail.OrderId = orderId;
+                            //singleOrderDetail.Item = item;
+                            orderList.Add(singleOrderDetail);
 
-                        menuDetail.Quantity -= quantity;
-                        consumerRepository.UpdateMenuDetail(menuDetail);
+                            menuDetail.Quantity -= quantity;
+                            consumerRepository.UpdateMenuDetail(menuDetail);
+                        }
                     }
                 }
+
+
+                // Save the updated menu consumer in the database
+                //consumerRepository.UpdateMenuConsumer(singleMenuConsumer);
+                consumerRepository.AddOrderDetails(orderList);
+                OrderNotification orderNotification = new OrderNotification();
+                orderNotification.OrderId = orderId;
+                orderNotification.RiderId = riderId;
+                orderNotification.View = 0;
+                consumerRepository.MakeOrderNotification(orderNotification);
+               // return Json(new { success = true });
+                return RedirectToAction("HomePage");
+
+            }
+            else
+            {
+                return RedirectToAction("HomePage");
+
+               // return Json(new { success = false });
             }
 
 
-            // Save the updated menu consumer in the database
-            //consumerRepository.UpdateMenuConsumer(singleMenuConsumer);
-            consumerRepository.AddOrderDetails(orderList);
-            OrderNotification orderNotification = new OrderNotification();
-            orderNotification.OrderId = orderId;
-            orderNotification.RiderId = riderId;
-            orderNotification.View = 0;
-            consumerRepository.MakeOrderNotification(orderNotification);
-
-
-            return View("OrderDetails",orderList);
+            // return View("OrderDetails",orderList);
         }
 
 

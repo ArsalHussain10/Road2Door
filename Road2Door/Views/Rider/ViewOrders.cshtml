@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@{
+﻿@{
     ViewData["Title"] = "Chat Box";
 }
 
@@ -37,12 +32,39 @@
         padding: 5px;
         vertical-align: top;
     }
+
+    .bill-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .bill-modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+    }
 </style>
+
 @model List<RiderOrder>
 @{
     int menuNumber = 1;
     int i = 0;
+    var serializedModel = Newtonsoft.Json.JsonConvert.SerializeObject(Model, new Newtonsoft.Json.JsonSerializerSettings
+            {
+                PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
 }
+
 
 @foreach (RiderOrder singleOrder in Model)
 {
@@ -51,33 +73,100 @@
             Menu @menuNumber
         </div>
         <div class="menu-table">
-            <h1>Order is by  @singleOrder.Consumer.Name </h1>
+            <h1>Order is by @singleOrder.Consumer.Name</h1>
 
-            @for (i = 0; i < singleOrder.OrderDetails.Count; i++)
+            @foreach (var orderDetail in singleOrder.OrderDetails)
             {
-
                 <div class="menu-row">
                     <div class="menu-cell">
-                        <h1>@singleOrder.OrderDetails[i].Item.Name</h1>
+                        <h1>@orderDetail.Item.Name</h1>
                     </div>
                     <div class="menu-cell">
-                        <h2>@singleOrder.OrderDetails[i].Item.Description</h2>
+                        <h2>@orderDetail.Item.Description</h2>
                     </div>
                     <div class="menu-cell">
-                        <p>Quantity: @singleOrder.OrderDetails[i].Quantity</p>
+                        <p>Quantity: @orderDetail.Quantity</p>
                     </div>
                     <div class="menu-cell">
-                        <p>Price: @singleOrder.OrderDetails[i].Item.Price</p>
+                        <p>Price: @orderDetail.Item.Price</p>
                     </div>
                 </div>
-
-
             }
-            <button class="btn btn-primary">Generate Bill</button> <br><br>
+
+            <button class="btn btn-primary generate-bill-btn">Generate Bill</button><br><br>
             <a href="/Rider/ChatBox" class="btn btn-primary">Message</a>
-
-
         </div>
     </div>
     menuNumber++;
 }
+
+<div id="billModal" class="bill-modal">
+    <div class="bill-modal-content">
+        <span class="close" onclick="closeBillModal()">&times;</span>
+        <h2>Order Details</h2>
+        <div id="billDetails"></div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    var currentOrderDetails;
+
+    $('.generate-bill-btn').click(function () {
+        var orderContainer = $(this).closest('.menu-container');
+        var orderIndex = $('.menu-container').index(orderContainer);
+        currentOrderDetails = JSON.parse('@Html.Raw(serializedModel)')[orderIndex].OrderDetails;
+        displayBillModal();
+    });
+
+    var orderDetail;
+
+        function displayBillModal() {
+            var modal = document.getElementById("billModal");
+            var billDetails = document.getElementById("billDetails");
+            var totalBill = 0; // Initialize total bill to 0
+
+            billDetails.innerHTML = "";
+            for (var i = 0; i < currentOrderDetails.length; i++) {
+                 orderDetail = currentOrderDetails[i];
+
+                var itemRow = document.createElement("div");
+                itemRow.className = "menu-row";
+                var amount = orderDetail.Quantity * orderDetail.Item.Price; // Calculate amount for the item
+                totalBill += amount; // Add the amount to the total bill
+                itemRow.innerHTML = "<div class='menu-cell'><h1>" + orderDetail.Item.Name + "</h1></div>" +
+                    "<div class='menu-cell'><h2>" + orderDetail.Item.Description + "</h2></div>" +
+                    "<div class='menu-cell'><p>Quantity: " + orderDetail.Quantity + "</p></div>" +
+                    "<div class='menu-cell'><p>Price: " + orderDetail.Item.Price + "</p></div>" +
+                    "<div class='menu-cell'><p>Amount: " + amount + "</p></div>"; // Display the amount
+
+                billDetails.appendChild(itemRow);
+            }
+
+            // Display the total bill
+            var totalBillElement = document.createElement("div");
+            totalBillElement.className = "menu-row";
+            totalBillElement.innerHTML = "<div class='menu-cell'><h3>Total Bill: " + totalBill + "</h3></div>";
+            billDetails.appendChild(totalBillElement);
+        var msg = document.createElement("div");
+        msg.className = "menu-row";
+        msg.innerHTML = "<div class='menu-cell'><p style='color: red;'>Please show this bill to the consumer and collect your amount</p></div>";
+        billDetails.appendChild(msg);
+
+
+            modal.style.display = "block";
+        
+
+        }
+
+
+    function closeBillModal() {
+        var modal = document.getElementById("billModal");
+        modal.style.display = "none";
+        var orderId = orderDetail.OrderId
+        var url = "/Rider/RejectOrders?orderId=" + orderId; // Replace "YourController" with your actual controller name
+        window.location.href = url;
+       
+    }
+</script>

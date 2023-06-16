@@ -64,5 +64,12 @@ namespace Road2Door.Models.Repository
             }
         }
 
+        public List<OrderNotification> GetApprovedOrders()
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.OrderNotifications.Where(o=> o.View==2).ToList();
+
+        }
+
     }
 }
