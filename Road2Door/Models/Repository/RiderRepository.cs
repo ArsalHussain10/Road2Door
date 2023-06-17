@@ -17,6 +17,12 @@ namespace Road2Door.Models.Repository
             road2Door.SaveChanges();
 
         }
+        public bool CheckIfEmailExist(string email)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            bool hasRider = road2DoorContext.Riders.Any(r => r.Email == email);
+            return hasRider;
+        }
         public bool CheckAccount(string email, string password)
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();

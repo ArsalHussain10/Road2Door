@@ -19,6 +19,10 @@
 
 
 <body>
+    <div id="displayViewBag">
+
+        <h3 style="color:red">@ViewBag.accountError</h3>
+    </div>
     <div class="container mt-5 mb-6">
         @*        <img src="/assets/img/delivery.gif" alt="Image" class="riderConsumerGif" />
         *@
@@ -78,3 +82,15 @@
 </body>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var displayElement = $("#displayViewBag");
+
+        // Show the value for 3 seconds
+        setTimeout(function () {
+            displayElement.fadeOut(1000); // 1000 milliseconds = 1 second
+        }, 3000); // 3000 milliseconds = 3 seconds
+    });
+</script>

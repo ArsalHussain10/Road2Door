@@ -18,17 +18,26 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult SignUp(string name, string email, string password, string phoneNumber)
         {
-
-            Consumer consumer = new Consumer
-            {
-                Name = name,
-                Email = email,
-                Password = password,
-                Phone = phoneNumber
-            };
             ConsumerRepository consumerRepository = new ConsumerRepository();
-            consumerRepository.SignUp(consumer);
-            return View();
+            if (consumerRepository.CheckIfEmailExist(email) == false)
+            {
+
+
+                Consumer consumer = new Consumer
+                {
+                    Name = name,
+                    Email = email,
+                    Password = password,
+                    Phone = phoneNumber
+                };
+                consumerRepository.SignUp(consumer);
+                return View("SignIn");
+            }
+            else
+            {
+                ViewBag.accountError = "Account with this email already exist";
+                return View("SignUp");
+            }
         }
         [HttpGet]
         public IActionResult SignIn()

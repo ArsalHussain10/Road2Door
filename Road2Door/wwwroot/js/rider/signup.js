@@ -6,3 +6,4 @@ function showUploadSlide() {
     document.getElementById("signup-slide").style.display = "none";
     document.getElementById("upload-slide").style.display = "block";
 }
+  

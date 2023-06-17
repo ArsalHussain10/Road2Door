@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VBouVYAg8U2daa28fkDiDUwEtsv79OeXeuryeO7WVQQ=",
+  "Hash": "eJoWmAdJrTsBW5AILF2KC+PSjKRGACINV4NK9AaROZ0=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -4792,6 +4792,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/CriminalRecord/Arsal-Resume (1).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CriminalRecord\\Arsal-Resume (1).pdf"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal_Resume.pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/Arsal_Resume.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\Arsal_Resume.pdf"
+    },
+    {
+      "Identity": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\MyWork\\semester8\\FYP\\Road2Door\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "uploads/Licnese/Arsal-Resume (1).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Licnese\\Arsal-Resume (1).pdf"
     }
   ]
 }

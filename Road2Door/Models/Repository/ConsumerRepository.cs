@@ -28,6 +28,12 @@ public class ConsumerRepository
         return hasConsumer;
 
     }
+    public bool CheckIfEmailExist(string email)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        bool hasConsumer = road2DoorContext.Consumers.Any(c => c.Email == email);
+        return hasConsumer;
+    }
 
     public Consumer GetConsumer(string email)
     {

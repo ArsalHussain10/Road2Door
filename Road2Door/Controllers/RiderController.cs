@@ -27,6 +27,11 @@ namespace Road2Door.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult ShowSignUpPage()
+        {
+            return View("SignUp");
+        }
+
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -36,89 +41,101 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult SignUp([FromForm] Rider r)
         {
-
-            var name = r.Name;
-            var email = r.Email;
-            var password = r.Password;
-            var cnic = r.Cnic;
-            var phone = r.Phone;
-            var file1 = Request.Form.Files.GetFile("License");
-            var file2 = Request.Form.Files.GetFile("CriminalRecord");
-
-
-            //IFormFile license = form.Files.FirstOrDefault(x => x.Name == "License");
-            //IFormFile policeRecord = form.Files.FirstOrDefault(x => x.Name == "CriminalRecord");
-
-            string wwwPath = this.Environment.WebRootPath;
-            string subPath1 = "uploads\\Licnese\\";
-            string subPath2 = "uploads\\CriminalRecord\\";
-            string path1 = Path.Combine(wwwPath, subPath1);
-            string path2 = Path.Combine(wwwPath, subPath2);
-
-
-            if (!Directory.Exists(path1))
+            RiderRepository riderRepository= new RiderRepository();
+            if (riderRepository.CheckIfEmailExist(r.Email) == false)
             {
-                Directory.CreateDirectory(path1);
+
+                Console.WriteLine("no account does not exist");
+
+
+                var name = r.Name;
+                var email = r.Email;
+                var password = r.Password;
+                var cnic = r.Cnic;
+                var phone = r.Phone;
+                var file1 = Request.Form.Files.GetFile("License");
+                var file2 = Request.Form.Files.GetFile("CriminalRecord");
+
+
+                //IFormFile license = form.Files.FirstOrDefault(x => x.Name == "License");
+                //IFormFile policeRecord = form.Files.FirstOrDefault(x => x.Name == "CriminalRecord");
+
+                string wwwPath = this.Environment.WebRootPath;
+                string subPath1 = "uploads\\Licnese\\";
+                string subPath2 = "uploads\\CriminalRecord\\";
+                string path1 = Path.Combine(wwwPath, subPath1);
+                string path2 = Path.Combine(wwwPath, subPath2);
+
+
+                if (!Directory.Exists(path1))
+                {
+                    Directory.CreateDirectory(path1);
+                }
+                if (!Directory.Exists(path2))
+                {
+                    Directory.CreateDirectory(path2);
+                }
+                int i = 0;
+                var license = "";
+                var policeRecord = "";
+                license = Path.GetFileName(file1.FileName);
+
+                var pathWithFileName = Path.Combine(path1, license);
+                i++;
+                using (FileStream stream = new
+                    FileStream(pathWithFileName,
+                    FileMode.Create))
+                {
+                    file1.CopyTo(stream);
+                }
+
+
+
+                policeRecord = Path.GetFileName(file2.FileName);
+
+                var pathWithFileName2 = Path.Combine(path2, policeRecord);
+                using (FileStream stream = new
+                    FileStream(pathWithFileName2,
+                    FileMode.Create))
+                {
+                    file2.CopyTo(stream);
+                }
+
+
+                Rider rider = new Rider();
+                rider.Name = name;
+                rider.Email = email;
+                rider.Password = password;
+                rider.Cnic = cnic;
+                rider.Phone = phone;
+                rider.License = license;
+                rider.PoliceRecord = policeRecord;
+                rider.Status = 2;   //request will be send to admin
+
+                /*   Rider rider1 = new Rider {
+                       Name = name,
+                       Email = email,
+                       Password = password,
+                       Cnic = cnic,
+                       Phone = phone,
+                       License = license,
+                       PoliceRecord = policeRecord,
+                       Status = 0
+
+                   };
+
+                */
+                riderRepository.SignUp(rider);
+
+
+                return View("SignIn");
             }
-            if (!Directory.Exists(path2))
+            else
             {
-                Directory.CreateDirectory(path2);
+                Console.WriteLine("oops account already exist");
+                ViewBag.accountError = "account with this email already exist";
+                return View("SignUp");
             }
-            int i = 0;
-            var license = "";
-            var policeRecord = "";
-            license = Path.GetFileName(file1.FileName);
-
-            var pathWithFileName = Path.Combine(path1, license);
-            i++;
-            using (FileStream stream = new
-                FileStream(pathWithFileName,
-                FileMode.Create))
-            {
-                file1.CopyTo(stream);
-            }
-
-
-
-            policeRecord = Path.GetFileName(file2.FileName);
-
-            var pathWithFileName2 = Path.Combine(path2, policeRecord);
-            using (FileStream stream = new
-                FileStream(pathWithFileName2,
-                FileMode.Create))
-            {
-                file2.CopyTo(stream);
-            }
-
-
-            Rider rider = new Rider();
-            rider.Name = name;
-            rider.Email = email;
-            rider.Password = password;
-            rider.Cnic = cnic;
-            rider.Phone = phone;
-            rider.License = license;
-            rider.PoliceRecord = policeRecord;
-            rider.Status = 2;   //request will be send to admin
-
-            /*   Rider rider1 = new Rider {
-                   Name = name,
-                   Email = email,
-                   Password = password,
-                   Cnic = cnic,
-                   Phone = phone,
-                   License = license,
-                   PoliceRecord = policeRecord,
-                   Status = 0
-
-               };
-
-            */
-            RiderRepository riderRepository = new RiderRepository();
-            riderRepository.SignUp(rider);
-
-
-            return View();
         }
 
         [HttpGet]
