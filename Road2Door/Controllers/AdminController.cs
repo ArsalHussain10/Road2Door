@@ -7,12 +7,34 @@ namespace Road2Door.Controllers
 {
     public class AdminController : Controller
     {
-        [HttpGet]
+       /* [HttpGet]
         public IActionResult AdminHome()
         {
             return View();
         }
-       
+*/
+        //[HttpGet]
+        public IActionResult AdminHome()
+        {
+
+            AdminRepository adminRepository = new AdminRepository();
+            List<Consumer> consumers = adminRepository.GetConsumers();
+            int consumerCount = consumers.Count();
+            ViewBag.consumerCount = consumerCount;
+            List<Rider> riders = adminRepository.GetRiders();
+            int riderCount = riders.Count();
+            ViewBag.riderCount = riderCount;
+            List<Rider> pendingReq = adminRepository.GetRidersRequest();
+            int pendingRequests = pendingReq.Count();
+            ViewBag.pendingRequests = pendingRequests;
+            int acceptedReq = adminRepository.RidersAcceptedRequest();
+            ViewBag.acceptedRequests = acceptedReq;
+            int deactivatedRiders = adminRepository.DeactivatedAccountsRider();
+            ViewBag.deactivatedRiders = deactivatedRiders;
+
+            return View();
+        }
+
         public IActionResult ShowRiders()
         {
             AdminRepository adminRepository = new AdminRepository();
@@ -29,6 +51,25 @@ namespace Road2Door.Controllers
             
             return View(consumers);
         }
+
+       /* public IActionResult SetCount()
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            List<Consumer> consumers = adminRepository.GetConsumers();
+            int consumerCount = consumers.Count();    
+            ViewBag.consumerCount= consumerCount;
+            List<Rider> riders = adminRepository.GetRiders();
+            int riderCount = riders.Count();
+            ViewBag.riderCount = riderCount;
+            List<Rider> pendingReq = adminRepository.GetRidersRequest();
+            int pendingRequests=pendingReq.Count();
+            ViewBag.pendingRequests= pendingRequests;
+            int acceptedReq = adminRepository.RidersAcceptedRequest();
+            ViewBag.acceptedRequests= acceptedReq;
+
+            return View("AdminHome");
+        }
+       */
 
         [HttpGet]
         public IActionResult ChangeAccountStatusRider(int riderId, int accountStatus)
@@ -52,26 +93,6 @@ namespace Road2Door.Controllers
             AdminRepository adminRepository = new AdminRepository();
             adminRepository.AccountRequest(riderId,accountRequest);
             return RedirectToAction("RiderAccountRequest");
-        }
-
-        public IActionResult ViewOrders()
-        {
-            AdminRepository adminRepository = new AdminRepository();
-            List<OrderNotification> approvedOrders = adminRepository.GetApprovedOrders();
-            RiderRepository riderRepository= new RiderRepository();
-            List<RiderOrder> orders = new List<RiderOrder>();
-            foreach(OrderNotification singleApprovedOrder in approvedOrders)
-            {
-                RiderOrder riderOrder = new RiderOrder();
-                riderOrder.RiderId = singleApprovedOrder.RiderId;
-                riderOrder.OrderId=singleApprovedOrder.OrderId;
-                riderOrder.OrderDetails=riderRepository.GetOrderDetails(riderOrder.OrderId);
-                riderOrder.OrderDetails=riderRepository.PopulateOrderItems(riderOrder.OrderDetails);
-                riderOrder.Consumer = riderRepository.GetConsumerThroughOrderId(riderOrder.OrderId);
-                orders.Add(riderOrder);
-            }
-            orders.Reverse();
-            return View(orders);
         }
     }
 }

@@ -37,6 +37,11 @@ namespace Road2Door.Models.Repository
             return road2DoorContext.Riders.Where(r => r.Status == 2).ToList();
 
         }
+        public int DeactivatedAccountsRider()
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.Riders.Where(r => r.Status == 3).ToList().Count;
+        }
 
         public void AccountRequest(int riderId, int accountRequest)
         {
@@ -68,6 +73,13 @@ namespace Road2Door.Models.Repository
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             return road2DoorContext.OrderNotifications.Where(o=> o.View==2).ToList();
+
+        }
+
+        public int RidersAcceptedRequest()
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.Riders.Where(r => r.Status == 1).ToList().Count;
 
         }
 
