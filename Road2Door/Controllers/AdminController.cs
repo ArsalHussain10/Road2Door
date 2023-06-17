@@ -52,24 +52,7 @@ namespace Road2Door.Controllers
             return View(consumers);
         }
 
-       /* public IActionResult SetCount()
-        {
-            AdminRepository adminRepository = new AdminRepository();
-            List<Consumer> consumers = adminRepository.GetConsumers();
-            int consumerCount = consumers.Count();    
-            ViewBag.consumerCount= consumerCount;
-            List<Rider> riders = adminRepository.GetRiders();
-            int riderCount = riders.Count();
-            ViewBag.riderCount = riderCount;
-            List<Rider> pendingReq = adminRepository.GetRidersRequest();
-            int pendingRequests=pendingReq.Count();
-            ViewBag.pendingRequests= pendingRequests;
-            int acceptedReq = adminRepository.RidersAcceptedRequest();
-            ViewBag.acceptedRequests= acceptedReq;
-
-            return View("AdminHome");
-        }
-       */
+     
 
         [HttpGet]
         public IActionResult ChangeAccountStatusRider(int riderId, int accountStatus)

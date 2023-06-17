@@ -40,7 +40,7 @@ namespace Road2Door.Models.Repository
         public int DeactivatedAccountsRider()
         {
             Road2DoorContext road2DoorContext = new Road2DoorContext();
-            return road2DoorContext.Riders.Where(r => r.Status == 3).ToList().Count;
+            return road2DoorContext.Riders.Where(r => r.Status == 0).ToList().Count;
         }
 
         public void AccountRequest(int riderId, int accountRequest)
