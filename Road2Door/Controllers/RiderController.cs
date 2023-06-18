@@ -146,6 +146,8 @@ namespace Road2Door.Controllers
 
         public IActionResult HomePage()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -187,6 +189,8 @@ namespace Road2Door.Controllers
         [HttpGet]
         public IActionResult Inventory()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             string riderEmail = Request.Cookies["email"];
             RiderRepository riderRepository = new RiderRepository();
             int riderId = riderRepository.GetRiderId(riderEmail);
@@ -198,6 +202,7 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult Inventory(string name, string description, string quantity, string price)
         {
+
             Item item = new Item
             {
                 Description = description,
@@ -229,6 +234,8 @@ namespace Road2Door.Controllers
 
         public IActionResult EditItem(int itemId, string description, double price, int quantity)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             Item originalItem = road2DoorContext.Items.Find(itemId);
 
@@ -253,6 +260,8 @@ namespace Road2Door.Controllers
 
         public IActionResult DeleteItem(int itemId)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             riderRepository.DeleteItem(itemId);
             return RedirectToAction("Inventory");
@@ -260,6 +269,8 @@ namespace Road2Door.Controllers
 
         public IActionResult Menu()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             string riderEmail = Request.Cookies["email"];
             int riderId = riderRepository.GetRiderId(riderEmail);
@@ -293,6 +304,8 @@ namespace Road2Door.Controllers
         }
         public IActionResult AddToMenu(int itemId, int quantity)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
 
             RiderRepository riderRepository = new RiderRepository();
             string riderEmail = Request.Cookies["email"];
@@ -335,6 +348,8 @@ namespace Road2Door.Controllers
 
         public IActionResult DeleteItemFromMenu(int itemId, int quantity)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
 
             Item itemFound = riderRepository.GetItem(itemId);
@@ -350,6 +365,8 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult UpdateMenuItemQuantity(int itemId, int menuItemQuantity, int updatedQuantity)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             string riderEmail = Request.Cookies["email"];
             int riderId = riderRepository.GetRiderId(riderEmail);
@@ -441,6 +458,8 @@ namespace Road2Door.Controllers
         //[HttpPost]
         public ActionResult UpdateLocation(decimal latitude, decimal longitude)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             // Store the latitude and longitude in your database
             // You can use Entity Framework or any other data access method
 
@@ -457,6 +476,8 @@ namespace Road2Door.Controllers
         [HttpPost]
         public ActionResult SendMenu()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             string riderEmail = Request.Cookies["email"];
             RiderRepository riderRepository = new RiderRepository();
             int riderId = riderRepository.GetRiderId(riderEmail);
@@ -468,6 +489,8 @@ namespace Road2Door.Controllers
         [HttpPost]
         public ActionResult NotificationCleanup()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             Console.WriteLine("inside cleanup");
             DateTime threshold = DateTime.Now.AddMinutes(-1); //jis notification ko 1 min se zada hogya delete that.
 
@@ -495,6 +518,8 @@ namespace Road2Door.Controllers
         // if rider want's his menu to be hidden, then delete all the notification of riders menue which is sne dto the consumers
         public IActionResult DeleteNotifications()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             string riderEmail = Request.Cookies["email"];
             RiderRepository riderRepository = new RiderRepository();
             int riderId = riderRepository.GetRiderId(riderEmail);
@@ -505,6 +530,8 @@ namespace Road2Door.Controllers
 
         public IActionResult CheckForNotification()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             // Retrieve the notifications from the database or any other data source
             RiderRepository riderRepository = new RiderRepository();
             string email = Request.Cookies["email"];
@@ -518,6 +545,8 @@ namespace Road2Door.Controllers
 
         public IActionResult ViewOrders()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             string email = Request.Cookies["email"];
             int riderId = riderRepository.GetRiderId(email);
@@ -530,6 +559,8 @@ namespace Road2Door.Controllers
         }
         public IActionResult ChatBox()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
 
             RiderRepository riderRepository = new RiderRepository();
             string riderEmail = Request.Cookies["email"];
@@ -542,6 +573,8 @@ namespace Road2Door.Controllers
         [HttpGet]
         public IActionResult RejectOrders(int orderId)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             string email = Request.Cookies["email"];
             int riderId = riderRepository.GetRiderId(email);

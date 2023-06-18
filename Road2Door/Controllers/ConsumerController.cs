@@ -70,6 +70,8 @@ namespace Road2Door.Controllers
 
         public IActionResult Settings()
         {
+            if (Request.Cookies["email"]==null)
+                return RedirectToAction("Index","Home");
             string userEmail = Request.Cookies["email"];
             ConsumerRepository consumerRepository = new ConsumerRepository();
             Consumer consumer = consumerRepository.GetConsumer(userEmail);
@@ -79,6 +81,8 @@ namespace Road2Door.Controllers
 
         public IActionResult EditSettings(int id, string name, string email, string password, string contact)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             Road2DoorContext road2DoorContext = new Road2DoorContext();
             Consumer originalConsumer = road2DoorContext.Consumers.Find(id);
             if (originalConsumer != null)
@@ -104,6 +108,8 @@ namespace Road2Door.Controllers
 
         public IActionResult HomePage()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             string email = Request.Cookies["email"];
             ConsumerRepository consumerRepository = new ConsumerRepository();
             Consumer consumer = consumerRepository.GetConsumer(email);
@@ -117,6 +123,8 @@ namespace Road2Door.Controllers
             // You can use Entity Framework or any other data access method
 
             // Return a response if needed
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             string consumerEmail = Request.Cookies["email"];
             ConsumerRepository consumerRepository = new ConsumerRepository();
             Consumer consumer = consumerRepository.GetConsumer(consumerEmail);
@@ -129,6 +137,8 @@ namespace Road2Door.Controllers
 
         public IActionResult CheckForNotification()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             // Retrieve the notifications from the database or any other data source
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
@@ -142,6 +152,8 @@ namespace Road2Door.Controllers
 
         public IActionResult ShowMenus()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
             Consumer consumer = consumerRepository.GetConsumer(email); ;
@@ -161,6 +173,8 @@ namespace Road2Door.Controllers
         [HttpGet]
         public IActionResult PlaceOrder(int menuId)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             Console.WriteLine(menuId);
             ConsumerRepository consumerRepository = new ConsumerRepository();
             MenuConsumer singleMenuConsumer = consumerRepository.GetSingleMenuConsumer(menuId);
@@ -196,6 +210,8 @@ namespace Road2Door.Controllers
         [HttpPost]
         public IActionResult PlaceOrder(int menuId, Dictionary<int, int> orderQuantities)
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
             Consumer consumer = consumerRepository.GetConsumer(email);
@@ -322,6 +338,8 @@ namespace Road2Door.Controllers
 
         public IActionResult ChatBox()
         {
+            if (Request.Cookies["email"] == null)
+                return RedirectToAction("Index", "Home");
             ConsumerRepository consumerRepository = new ConsumerRepository();
             string email = Request.Cookies["email"];
             Consumer consumer=consumerRepository.GetConsumer(email);
