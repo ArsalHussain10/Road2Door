@@ -2,7 +2,7 @@
     ViewData["Title"] = "Chat Box";
 }
 
-<style>
+@*<style>
     .menu-container {
         border: 1px solid black;
         border-radius: 10px;
@@ -53,7 +53,175 @@
         width: 60%;
     }
 </style>
+*@
 
+<style>
+  body{
+       background-color: #0f172b !important;
+       font-family: "Poppins",sans-serif  !important;
+
+  }
+  .custom-btn{
+      margin-top: 10px;
+  }
+    .menu-container {
+        margin-bottom: 20px;
+   }
+
+    .menu-number {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    .menu-table {
+          background-color: #d4def7;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .custom-btn{
+    }
+
+    .menu-row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .menu-cell {
+        flex: 1;
+        padding: 5px;
+    }
+
+    .menu-cell h1,
+    .menu-cell h2 {
+        margin: 0;
+    }
+
+    .menu-cell h1 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .menu-cell h2 {
+        font-size: 16px;
+        font-weight: normal;
+        color: black;
+    }
+
+    .menu-cell p {
+        margin: 0;
+        font-size: 14px;
+        color: black;
+    }
+
+    .btn-alert {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-alert:hover {
+        background-color: #0056b3;
+    }
+
+        /* Style for the modal container */
+    #billModal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+    }
+
+    /* Style for the modal content */
+    .bill-modal-content {
+        background-color: #f9f9f9; /* Beautiful color for the modal content */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%; /* Width set to half of the page */
+        max-width: 600px; /* Maximum width for the modal */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Style for the close button */
+    .bill-modal-content .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Style for the title */
+    .bill-modal-content h2 {
+        text-align: center;
+    }
+
+    /* Style for the bill details */
+    .bill-modal-content #billDetails {
+        margin-top: 20px;
+    }
+
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-width: 800px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #888;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #000;
+    }
+
+    #billDetails {
+        margin-top: 20px;
+    }
+
+    body {
+        /*overflow: hidden; Prevent scrolling when modal is open */
+    }
+
+
+</style>
 @model List<RiderOrder>
 @{
     int menuNumber = 1;
@@ -65,62 +233,93 @@
             });
 }
 
+   
+<body>
+<div class="menu-container">
+        
+  <div class="menu-table">
 
-@foreach (RiderOrder singleOrder in Model)
-{
-    <div class="menu-container">
-        <div class="menu-number">
-            Menu @menuNumber
-        </div>
-        <div class="menu-table">
-            <h1>Order is by @singleOrder.Consumer.Name</h1>
+      @foreach (RiderOrder singleOrder in Model)
+      {
+                <div class="card">
 
-            @foreach (var orderDetail in singleOrder.OrderDetails)
-            {
-                <div class="menu-row">
-                    <div class="menu-cell">
-                        <h1>@orderDetail.Item.Name</h1>
-                    </div>
-                    <div class="menu-cell">
-                        <h2>@orderDetail.Item.Description</h2>
-                    </div>
-                    <div class="menu-cell">
-                        <p>Quantity: @orderDetail.Quantity</p>
-                    </div>
-                    <div class="menu-cell">
-                        <p>Price: @orderDetail.Item.Price</p>
+                    <div class="card-body">
+                        <div class="menu-number">
+                            Menu @menuNumber
+                        </div>
+                        <h4><u>Order is by <b>@singleOrder.Consumer.Name</b></u></h4>
+                        
+                        <div class="menu-row">
+                            <div class="menu-cell">
+                                <h5>Item Name</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Description</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Quantity</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Price</h5>
+                            </div>
+                        </div>
+                        @foreach (var orderDetail in singleOrder.OrderDetails)
+                        {
+                            <div class="menu-row">
+                                <div class="menu-cell">
+                                    <h1>@orderDetail.Item.Name</h1>
+                                </div>
+                                <div class="menu-cell">
+                                    <h2>@orderDetail.Item.Description</h2>
+                                </div>
+                                <div class="menu-cell">
+                                    <p>@orderDetail.Quantity</p>
+                                </div>
+                                <div class="menu-cell">
+                                    <p> @orderDetail.Item.Price</p>
+                                </div>
+                            </div>
+                        }
+
+                        <button class="btn btn-warning generate-bill-btn custom-btn">Generate Bill</button>
+                        <a href="/Rider/ChatBox" class="btn btn-warning custom-btn">Message</a>
                     </div>
                 </div>
-            }
-
-            <button class="btn btn-primary generate-bill-btn">Generate Bill</button><br><br>
-            <a href="/Rider/ChatBox" class="btn btn-primary">Message</a>
-        </div>
-    </div>
-    menuNumber++;
-}
-
-<div id="billModal" class="bill-modal">
-    <div class="bill-modal-content">
-        <span class="close" onclick="closeBillModal()">&times;</span>
-        <h2>Order Details</h2>
-        <div id="billDetails"></div>
+                menuNumber++;
+                <br />
+      }
+       </div>
     </div>
 </div>
+
+
+    <div id="billModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBillModal()">&times;</span>
+            <h2>Order Details</h2>
+            <div id="billDetails">
+                <!-- Bill details will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 <script>
-    var currentOrderDetails;
+    
 
-    $('.generate-bill-btn').click(function () {
-        var orderContainer = $(this).closest('.menu-container');
-        var orderIndex = $('.menu-container').index(orderContainer);
-        currentOrderDetails = JSON.parse('@Html.Raw(serializedModel)')[orderIndex].OrderDetails;
-        displayBillModal();
-    });
+        var currentOrderDetails;
 
-    var orderDetail;
+        $('.generate-bill-btn').click(function () {
+            var orderContainer = $(this).closest('.menu-container');
+            var orderIndex = $('.menu-container').index(orderContainer);
+            currentOrderDetails = JSON.parse('@Html.Raw(serializedModel)')[orderIndex].OrderDetails;
+            displayBillModal();
+        });
+
+        var orderDetail;
 
         function displayBillModal() {
             var modal = document.getElementById("billModal");
@@ -129,7 +328,7 @@
 
             billDetails.innerHTML = "";
             for (var i = 0; i < currentOrderDetails.length; i++) {
-                 orderDetail = currentOrderDetails[i];
+                orderDetail = currentOrderDetails[i];
 
                 var itemRow = document.createElement("div");
                 itemRow.className = "menu-row";
@@ -149,24 +348,21 @@
             totalBillElement.className = "menu-row";
             totalBillElement.innerHTML = "<div class='menu-cell'><h3>Total Bill: " + totalBill + "</h3></div>";
             billDetails.appendChild(totalBillElement);
-        var msg = document.createElement("div");
-        msg.className = "menu-row";
-        msg.innerHTML = "<div class='menu-cell'><p style='color: red;'>Please show this bill to the consumer and collect your amount</p></div>";
-        billDetails.appendChild(msg);
-
+            var msg = document.createElement("div");
+            msg.className = "menu-row";
+            msg.innerHTML = "<div class='menu-cell'><p style='color: red;'>Please show this bill to the consumer and collect your amount</p></div>";
+            billDetails.appendChild(msg);
 
             modal.style.display = "block";
-        
-
         }
 
+        function closeBillModal() {
+            var modal = document.getElementById("billModal");
+            modal.style.display = "none";
+            var orderId = orderDetail.OrderId;
+            var url = "/Rider/RejectOrders?orderId=" + orderId; // Replace "RejectOrders" with the appropriate action method in your Rider controller
+            window.location.href = url;
+        }
 
-    function closeBillModal() {
-        var modal = document.getElementById("billModal");
-        modal.style.display = "none";
-        var orderId = orderDetail.OrderId
-        var url = "/Rider/RejectOrders?orderId=" + orderId; // Replace "YourController" with your actual controller name
-        window.location.href = url;
-       
-    }
-</script>
+    </script>
+</body>

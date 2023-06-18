@@ -5,46 +5,16 @@
 }
 
 @model List<MenuConsumer>
-<style>
-    .menu-container {
-        border: 1px solid black;
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
 
-    .menu-number {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .menu-table {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-        margin-bottom: 10px;
-    }
-
-    .menu-row {
-        display: table-row;
-    }
-
-    .menu-cell {
-        display: table-cell;
-        padding: 5px;
-        vertical-align: top;
-    }
-</style>
 
 @{
-    int menuNumber = 0;
+    int menuNumber = 1;
     int i = 0;
 }
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
 
-@foreach (MenuConsumer singleMenuConsumer in Model)
+@*@foreach (MenuConsumer singleMenuConsumer in Model)
 {
     <div class="menu-container">
         <div class="menu-number">
@@ -73,12 +43,175 @@
             }
             <button>Alert the rider</button><br>
 
-            <a href="#" class="nav-item nav-link" onclick="sendSingleMenuConsumer('@singleMenuConsumer.MenuDetails[menuNumber].MenueId')">Place Order</a>
 
         </div>
     </div>
     menuNumber++;
-}
+}*@
+
+@*
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            @foreach (MenuConsumer singleMenuConsumer in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Menu @menuNumber</h4>
+                            <div class="menu-table">
+                                @for (i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
+                                {
+                                    <div class="menu-item">
+                                        <h5 class="item-name">@singleMenuConsumer.Items[i].Name</h5>
+                                        <p class="item-description">@singleMenuConsumer.Items[i].Description</p>
+                                        <p class="item-quantity">Quantity: @singleMenuConsumer.MenuDetails[i].Quantity</p>
+                                        <p class="item-price">Price: @singleMenuConsumer.Items[i].Price</p>
+                                    </div>
+                                }
+                            </div>
+                            <button class="btn btn-primary">Alert the rider</button>
+                        </div>
+                    </div>
+                </div>
+                menuNumber++;
+            }
+        </div>
+    </div>
+</div>
+*@
+
+
+<style>
+  body{
+       background-color: #0f172b !important;
+       font-family: "Poppins",sans-serif  !important;
+
+  }
+  .custom-btn{
+      margin-top: 10px;
+  }
+    .menu-container {
+        margin-bottom: 20px;
+   }
+
+    .menu-number {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    .menu-table {
+          background-color: #d4def7;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .custom-btn{
+    }
+
+    .menu-row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .menu-cell {
+        flex: 1;
+        padding: 5px;
+    }
+
+    .menu-cell h1,
+    .menu-cell h2 {
+        margin: 0;
+    }
+
+    .menu-cell h1 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .menu-cell h2 {
+        font-size: 16px;
+        font-weight: normal;
+        color: black;
+    }
+
+    .menu-cell p {
+        margin: 0;
+        font-size: 14px;
+        color: black;
+    }
+
+    .btn-alert {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-alert:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    <div class="menu-container">
+        
+      <div class="menu-table">
+            @foreach (MenuConsumer singleMenuConsumer in Model)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <div class="menu-number">
+                        
+                        Menu# @menuNumber
+                        </div>
+                                 <div class="menu-row">
+                            <div class="menu-cell">
+                                <h5>Item Name</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Description</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Quantity</h5>
+                            </div>
+                            <div class="menu-cell">
+                                <h5>Price</h5>
+                            </div>
+                        </div>
+
+                        @for (i = 0; i < singleMenuConsumer.MenuDetails.Count; i++)
+                        {
+                            <div class="menu-row">
+                                <div class="menu-cell">
+                                    <h1>@singleMenuConsumer.Items[i].Name</h1>
+                                </div>
+                                <div class="menu-cell">
+                                    <h2>@singleMenuConsumer.Items[i].Description</h2>
+                                </div>
+                                <div class="menu-cell">
+                                    <h2> @singleMenuConsumer.MenuDetails[i].Quantity</h2>
+                                </div>
+                                <div class="menu-cell">
+                                    <h2> @singleMenuConsumer.Items[i].Price</h2>
+                                </div>
+                            </div>
+                        }
+                   
+            <button class="btn custom-btn btn-warning" onclick="sendSingleMenuConsumer('@singleMenuConsumer.MenuDetails[menuNumber].MenueId')">Place Order</button>
+                    </div>
+                </div>
+    menuNumber++;
+    <br />
+    }
+        </div>
+    </div>
+</body>
+
 
 <script>
        $(document).ready(function() {
