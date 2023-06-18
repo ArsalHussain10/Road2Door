@@ -1,11 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Poppins, sans-serif;
     margin: 0;
     padding: 20px;
 }
@@ -26,6 +22,10 @@ h2 {
 
 .field {
     margin-bottom: 15px;
+}
+
+.cus-container {
+    background-color: #e7f4ff;
 }
 
 label {

@@ -5,133 +5,132 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Road2Door
 build_property.RootNamespace = Road2Door
-build_property.ProjectDir = D:\MyWork\semester8\FYP\Road2Door\Road2Door\
+build_property.ProjectDir = E:\Komal Afzaal BSCS\Semester 8\FYP Prjoect\FYP 18 june\Road2Door\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\MyWork\semester8\FYP\Road2Door\Road2Door
+build_property.MSBuildProjectDirectory = E:\Komal Afzaal BSCS\Semester 8\FYP Prjoect\FYP 18 june\Road2Door
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/AdminHome.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/AdminHome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Ib21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/AdminProfile.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/AdminProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Qcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/RiderAccountRequest.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/RiderAccountRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmlkZXJBY2NvdW50UmVxdWVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/ShowConsumers.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/ShowConsumers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0NvbnN1bWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/ShowRiders.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/ShowRiders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1JpZGVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/SignIn.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Admin/ViewOrders.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Admin/ViewOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld09yZGVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/ChatBox.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/ChatBox.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcQ2hhdEJveC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/HomePage.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcSG9tZVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/OrderDetails.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/OrderDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcT3JkZXJEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/PlaceOrder.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/PlaceOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcUGxhY2VPcmRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/Settings.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/Settings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2V0dGluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/ShowMenus.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/ShowMenus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2hvd01lbnVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/SignIn.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Consumer/SignUp.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Consumer/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtZXJcU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Home/Index.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Home/Privacy.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/ChatBox.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/ChatBox.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcQ2hhdEJveC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/HomePage.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcSG9tZVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/Inventory.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/Inventory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcSW52ZW50b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/MenuPage.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/MenuPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcTWVudVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/SignIn.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/SignUp.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/Snapshots.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/Snapshots.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcU25hcHNob3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Rider/ViewOrders.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Rider/ViewOrders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmlkZXJcVmlld09yZGVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Shared/Error.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/_ViewImports.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/_ViewStart.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MyWork/semester8/FYP/Road2Door/Road2Door/Views/Shared/_Layout.cshtml]
+[E:/Komal Afzaal BSCS/Semester 8/FYP Prjoect/FYP 18 june/Road2Door/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-r0slk1t9jd

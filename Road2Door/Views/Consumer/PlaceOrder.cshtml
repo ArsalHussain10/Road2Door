@@ -1,48 +1,52 @@
-﻿
-@model MenuConsumer
+﻿@model MenuConsumer
+
+<body>
+
 
 @using (Html.BeginForm("PlaceOrder", "Consumer", FormMethod.Post))
 {
     <!-- Display the menu items -->
     <h2>Menu</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-
-
-            @for(int i=0;i<Model.MenuDetails.Count;i++)
-            {
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead style="background-color: #0f172b !important; color: #fff;">
                 <tr>
-                    <td>@Model.Items[i].ItemId</td>
-                    <td>@Model.Items[i].Name</td>
-                    <td>@Model.Items[i].Description</td>
-                    <td>@Model.MenuDetails[i].Quantity</td>
-                    <td>@Model.Items[i].Price</td>
-                    <td>
-                        <input type="number" name="orderQuantities[@Model.Items[i].ItemId]" min="0" max="@Model.MenuDetails[i].Quantity" />
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Order Quantity</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-          
-        </tbody>
-    </table>
+                @for (int i = 0; i < Model.MenuDetails.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Items[i].ItemId</td>
+                        <td>@Model.Items[i].Name</td>
+                        <td>@Model.Items[i].Description</td>
+                        <td>@Model.MenuDetails[i].Quantity</td>
+                        <td>@Model.Items[i].Price</td>
+                        <td>
+                            <input type="number" name="orderQuantities[@Model.Items[i].ItemId]" min="0" max="@Model.MenuDetails[i].Quantity" class="form-control" />
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
 
     <!-- Hidden field for menuId -->
     <input type="hidden" name="menuId" value="@ViewBag.menuId" />
 
     <!-- Submit button to place the order -->
-    <input type="submit" value="Place order" class="btn btn-primary" />
-    <a href="/Consumer/ChatBox" class="btn btn-primary">Message</a>
+    <input type="submit" value="Place order" class="btn btn-warning" />
+    <a href="/Consumer/ChatBox" class="btn btn-warning">Message</a>
+
 
 }
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -94,3 +98,4 @@
         });
     });
 </script>
+</body>
