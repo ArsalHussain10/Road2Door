@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ypzLypKrFVODjhH2jz5KuDKHhsd8MCZ6f1WEthSLlH4=",
+  "Hash": "0HgyBQNSsD5PTklRJmtoYjcptyEXulTSueyvqGPn6f4=",
   "Source": "Road2Door",
   "BasePath": "_content/Road2Door",
   "Mode": "Default",
@@ -3041,6 +3041,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\admin\\style.css"
+    },
+    {
+      "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\wwwroot\\css\\consumer\\bootstrap.min.css",
+      "SourceId": "Road2Door",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\wwwroot\\",
+      "BasePath": "_content/Road2Door",
+      "RelativePath": "css/consumer/bootstrap.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\consumer\\bootstrap.min.css"
     },
     {
       "Identity": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\wwwroot\\css\\consumer\\font-awesome.min.css",
