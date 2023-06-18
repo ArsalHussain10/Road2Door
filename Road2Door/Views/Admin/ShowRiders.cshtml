@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <link href="/css/admin/showRider.css" rel="stylesheet">
@@ -72,7 +73,8 @@
 
                         <li><a href="/Admin/ShowRiders"><i class="fa fa-biking blue1_color"></i> <span>Show Riders</span></a></li>
 
-                        <li><a href="/Admin/"><i class="fas fa-clock" style="color:#e91e63"></i> <span>Rider Account Requests</span></a></li>
+                        <li><a href="/Admin/RiderAccountRequest"><i class="fas fa-clock" style="color:#e91e63"></i> <span>Rider Account Requests</span></a></li>
+                        <li><a href="/Admin/ViewOrders"><i class="fas fa-list-alt" style="color:#009688"></i> <span>View Orders</span></a></li>
 
                     </ul>
                 </div>
@@ -95,7 +97,7 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="name_user">Muhammad Arsal</span></a>
 
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                                        <a class="dropdown-item" href="/Admin/AdminProfile">My Profile</a>
                                         <!-- <a class="dropdown-item" href="help.html">Help</a> -->
                                         <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
@@ -123,32 +125,31 @@
                 </div>
 
                 <div class="row">
-                     @foreach (Rider r in Model)
-                     {
-                    <div class="col-md-6 col-lg-6">
-                        <div class="full white_shd margin_bottom_30">
-                            <div class="info_people">
-                                <div class="user_info_cont">
-                                    <p>Rider ID: <span style="font-weight: bold; color: black;">@r.Id</span></p>
-                                    <p>Name: <span class="name" style="font-weight: bold; color: black;">@r.Name</span></p>
-                                    <p>Email: <span style="font-weight: bold; color: black;">@r.Email</span></p>
-                                    <p>CNIC: <span style="font-weight: bold; color: black;">@r.Cnic</span></p>
-                                    <p>Phone: <span style="font-weight: bold; color: black;">@r.Phone</span></p>
-                                    <p>Account Status: <span class="account-status @((r.Status == 1) ? "active" : "inactive")" style="font-weight: bold; color: black;">@((r.Status == 1) ? "Active" : "Inactive")</span></p>
-                                    <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/Licnese/")' + '@r.License')">View Driving License</a>
-                                    <a href="#" class="btn btn-link" onclick="showLicenseModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
-                                    <button style="background-color:steelblue; color: white;" class="btn " onclick="toggleAccountStatus('@r.Id', '@r.Status')">Activate/Deactivate Account</button>
-
+                    @foreach (Rider r in Model)
+                    {
+                        <div class="col-md-6 col-lg-6">
+                            <div class="full white_shd margin_bottom_30">
+                                <div class="info_people">
+                                    <div class="user_info_cont">
+                                        <p>Rider ID: <span style="font-weight: bold; color: black;">@r.Id</span></p>
+                                        <p>Name: <span class="name" style="font-weight: bold; color: black;">@r.Name</span></p>
+                                        <p>Email: <span style="font-weight: bold; color: black;">@r.Email</span></p>
+                                        <p>CNIC: <span style="font-weight: bold; color: black;">@r.Cnic</span></p>
+                                        <p>Phone: <span style="font-weight: bold; color: black;">@r.Phone</span></p>
+                                        <p>Account Status: <span class="account-status @((r.Status == 1) ? "active" : "inactive")" style="font-weight: bold; color: black;">@((r.Status == 1) ? "Active" : "Inactive")</span></p>
+                                        <a href="#" class="btn btn-link" onclick="showDocumentModal('@Url.Content("~/uploads/Licnese/")'+'@r.License')">View Driving License</a>
+                                        <a href="#" class="btn btn-link" onclick="showDocumentModal('@Url.Content("~/uploads/CriminalRecord/")' + '@r.PoliceRecord')">View Police Record</a>
+                                        <button style="background-color:steelblue; color: white;" class="btn" onclick="toggleAccountStatus('@r.Id', '@r.Status')">Activate/Deactivate Account</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     }
                     </div>
             </div>
         </div>
         
-        <div class="modal fade" id="licenseModal">
+        @*<div class="modal fade" id="licenseModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -165,15 +166,22 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @*<div id="licenseModal" class="modal">
+        </div>*@
+    <div id="documentModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="hideLicenseModal()">&times;</span>
-            <iframe id="licenseImage" src="" alt="Image not found"></iframe>
-        </div>
+                    <!-- Modal Header -->
+                    
+                    <!-- Modal body -->
+                    <iframe id="documentImage"  src="" alt="Image not found"></iframe>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" onclick=" hideLicenseModal()" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                  </div>
     </div>
-    <a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>*@
-        <div class="container-fluid" style="background-color: #f8f8f8;">
+@*    <a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>
+*@        <div class="container-fluid" style="background-color: #f8f8f8;">
             <div class="footer">
                 <p>
                     Copyright 2023 © Road2Door . All rights reserved.<br><br>
@@ -184,21 +192,21 @@
     </div>
     </div>
 
-<script src="/js/admin/showRiders.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/js/admin/custom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@*    <script src="/js/admin/showRiders.js"></script>
+*@
 
 <script>
     $(document).ready(function () {
         $('#searchInput').on('input', function () {
             var searchText = $(this).val().toLowerCase();
-            $('.box').each(function () {
+                $('.info_people').each(function () {
                 var riderName = $(this).find('.name').text().toLowerCase();
                 var originalText = $(this).find('.name').data('original-text');
                 if (originalText === undefined) {
@@ -219,18 +227,17 @@
         });
     });
 
-        function showLicenseModal(license) {
+        function showDocumentModal(license) {
+                console.log("here in liscence func");
             var imageUrl = license;
             console.log(imageUrl);
-            document.getElementById("licenseModal").style.display = "block";
-            document.getElementById("licenseImage").src = imageUrl;
+            document.getElementById("documentModal").style.display = "block";
+            document.getElementById("documentImage").src = imageUrl;
         }
 
         function hideLicenseModal() {
-            document.getElementById("licenseModal").style.display = "none";
+            document.getElementById("documentModal").style.display = "none";
         }
-
-
         function toggleAccountStatus(riderId, accountStatus) {
 
             if (accountStatus === "1") {

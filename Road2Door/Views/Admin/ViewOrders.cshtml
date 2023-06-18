@@ -1,4 +1,4 @@
-﻿
+﻿@*
 
 <style>
     .menu-container {
@@ -85,3 +85,204 @@
 }
 
 <a asp-controller="Admin" asp-action="AdminHome" class="btn btn-warning"> Back to home </a>
+*@
+@model List<RiderOrder>
+
+@{
+    int menuNumber = 1;
+    int i = 0;
+    int count = 1;
+    double totalAmount = 0;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Orders</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link href="~/css/admin/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+   
+
+</head>
+<body class="dashboard dashboard_1 " style="background-color: #f8f8f8;">
+    <div class="full_container">
+        <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div class="sidebar_blog_1">
+                    <div class="sidebar-header">
+                        <div class="logo_section">
+                            <a href="/Admin/AdminHome"><img class="logo_icon img-responsive" src="~/assets/img/riderOnBike.png" alt="#" /></a>
+                        </div>
+                    </div>
+                    <div class="sidebar_user_info">
+                        <div class="icon_setting"></div>
+                        <div class="user_profle_side">
+                            <!-- <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div> -->
+                            <div class="user_info">
+                                <h6>Muhammad Arsal</h6>
+                                <p><span class="online_animation"></span> Online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar_blog_2">
+                    <h4>Dashboard</h4>
+                    <ul class="list-unstyled components">
+
+                        <li><a href="/Admin/ShowConsumers"><i class="fa fa-users orange_color"></i> <span>Show Consumers</span></a></li>
+
+                        <li><a href="/Admin/ShowRiders"><i class="fa fa-biking blue1_color"></i> <span>Show Riders</span></a></li>
+
+                        <li><a href="/Admin/RiderAccountRequest"><i class="fas fa-clock" style="color:#e91e63"></i> <span>Rider Account Requests</span></a></li>
+                        <li><a href="/Admin/ViewOrders"><i class="fas fa-list-alt" style="color:#009688"></i> <span>View Orders</span></a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid" style="padding-left:11rem; background-color:#f8f8f8">
+        <div class="topbar">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#15283C; padding:0;">
+                <div class="full">
+                    <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                    <div class="logo_section">
+                        <a style="color: white;font-size: 2rem;" href="/Admin/AdminHome"><img class="img-responsive" src="~/assets/img/riderOnBike.png" alt="#" />Road2Door</a>
+                    </div>
+                    <div class="right_topbar">
+                        <div class="icon_info">
+
+                            <ul class="user_profile_dd">
+                                <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="name_user">Muhammad Arsal</span></a>
+
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/Admin/AdminProfile">My Profile</a>
+                                        <!-- <a class="dropdown-item" href="help.html">Help</a> -->
+                                        <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="midde_cont">
+            <div class="container-fluid">
+                <div class="row column_title">
+                    <div class="col-md-12">
+                        <div class="page_title" style="display: flex;
+                              justify-content: space-between;
+                              align-items: center;">
+                            <h3>Order History</h3>
+                            <div class="search-bar" style="
+                                 margin-left: auto;">
+                                <input type="text" id="searchInput" placeholder="Search By Rider Id">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Orders</h2>
+                            </div>
+                        </div>
+                        <div class="table_section padding_infor_info">
+                            <div class="table-responsive-sm">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Order#</th>
+                                            <th>RiderId</th>
+                                            <th>Consumer Name</th>
+                                            <th>Order Details</th>
+                                            <th>Total Amount</th>
+                                           
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (RiderOrder singleOrder in Model)
+                                        {
+                                            
+                                                <tr>
+                                                    <td>@menuNumber</td>
+                                                <td>@singleOrder.RiderId</td>
+                                                <td>@singleOrder.Consumer.Name</td>
+
+                                                    <td>
+                                                    @foreach (var orderDetail in singleOrder.OrderDetails)
+                                                    {
+                                                        <li>@orderDetail.Item.Name  Qty<strong>(@orderDetail.Quantity)</strong> @orderDetail.Item.Price</li>
+                                                        totalAmount += orderDetail.Item.Price * orderDetail.Quantity;
+                                                    }
+                                                    </td>
+
+                                                    <td>@totalAmount</td>
+
+                                            </tr>
+                                            menuNumber++;
+                                        }
+                                            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+         
+    <div class="container-fluid" style="background-color: #f8f8f8;">
+
+        <div class="footer" style="margin-left:6rem;">
+            <p>
+                Copyright 2023 © Road2Door . All rights reserved.<br><br>
+            </p>
+        </div>
+    </div>
+    </div>
+ 
+    </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="~/js/admin/custom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            const searchInput = document.getElementById('searchInput');
+            const tableRows = document.querySelectorAll('.table tbody tr');
+
+            searchInput.addEventListener('input', function () {
+                const searchValue = this.value.trim().toLowerCase();
+
+                tableRows.forEach(function (row) {
+                    const riderId = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    if (riderId.includes(searchValue)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+            "use strict";
+
+          
+        </script>
+
+
+</body>
+</html>

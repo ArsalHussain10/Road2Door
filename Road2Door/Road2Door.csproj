@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Admin\AdminProfile.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Admin\AdminProfile.cshtml" />
     <None Include="wwwroot\assets\img\Arsal.jpg" />
   </ItemGroup>
 
@@ -34,7 +39,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\uploads\CriminalRecord\" />
-    <Folder Include="wwwroot\uploads\Licnese\" />
   </ItemGroup>
 	
 </Project>

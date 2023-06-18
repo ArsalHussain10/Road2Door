@@ -1,4 +1,5 @@
-﻿function showLicenseModal(license) {
+﻿function showDocumentModal(license) {
+    console.log("here in liscence func");
     var imageUrl = license;
     console.log(imageUrl);
     document.getElementById("licenseModal").style.display = "block";

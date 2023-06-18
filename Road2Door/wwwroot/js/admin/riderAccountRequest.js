@@ -1,11 +1,11 @@
-﻿function showLicenseModal(license) {
+﻿function showDocumentModal(license) {
     var imageUrl = license;
     console.log(imageUrl);
     document.getElementById("licenseModal").style.display = "block";
     document.getElementById("licenseImage").src = imageUrl;
 }
 
-function hideLicenseModal() {
+function hideDocumentModal() {
     document.getElementById("licenseModal").style.display = "none";
 }
 function acceptRequest(riderId) {

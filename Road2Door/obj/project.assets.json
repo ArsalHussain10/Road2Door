@@ -4046,23 +4046,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\komal afzaal\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\Road2Door.csproj",
+      "projectUniqueName": "D:\\FYP\\FYP_Project\\Road2Door\\Road2Door.csproj",
       "projectName": "Road2Door",
-      "projectPath": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\Road2Door.csproj",
-      "packagesPath": "C:\\Users\\komal afzaal\\.nuget\\packages\\",
-      "outputPath": "E:\\Komal Afzaal BSCS\\Semester 8\\FYP Prjoect\\FYP 18 june\\Road2Door\\obj\\",
+      "projectPath": "D:\\FYP\\FYP_Project\\Road2Door\\Road2Door.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\FYP\\FYP_Project\\Road2Door\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\komal afzaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4136,7 +4132,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   },

@@ -7,12 +7,7 @@ namespace Road2Door.Controllers
 {
     public class AdminController : Controller
     {
-       /* [HttpGet]
-        public IActionResult AdminHome()
-        {
-            return View();
-        }
-*/
+       
         //[HttpGet]
         public IActionResult AdminHome()
         {
@@ -95,6 +90,10 @@ namespace Road2Door.Controllers
             }
             orders.Reverse();
             return View(orders);
+        }
+        public IActionResult AdminProfile()
+        {
+            return View("AdminProfile");
         }
     }
 }
