@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Admin\AdminProfile.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Admin\AdminProfile.cshtml" />
     <None Include="wwwroot\assets\img\Arsal.jpg" />
   </ItemGroup>
 

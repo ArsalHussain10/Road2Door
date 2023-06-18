@@ -9,6 +9,10 @@ namespace Road2Door.Controllers
     {
        
         //[HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
         public IActionResult AdminHome()
         {
 
@@ -93,7 +97,7 @@ namespace Road2Door.Controllers
         }
         public IActionResult AdminProfile()
         {
-            return View("AdminProfile");
+            return View();
         }
     }
 }
