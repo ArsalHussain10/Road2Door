@@ -41,13 +41,13 @@ public partial class Road2DoorContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Road2Door;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Road2Door;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Consumer>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC078618EC5B");
+            entity.HasKey(e => e.Id).HasName("PK__Consumer__3214EC07788B365E");
 
             entity.ToTable("Consumer");
 
@@ -71,7 +71,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<ConsumerLocation>(entity =>
         {
-            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C81F85C6F62");
+            entity.HasKey(e => e.ConsumerId).HasName("PK__Consumer__B9581C819206F21C");
 
             entity.ToTable("ConsumerLocation");
 
@@ -92,7 +92,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<InventoryItem>(entity =>
         {
-            entity.HasKey(e => e.Srno).HasName("PK__tmp_ms_x__C3A7DF84C3C713E9");
+            entity.HasKey(e => e.Srno);
 
             entity.ToTable("Inventory_Items");
 
@@ -102,13 +102,12 @@ public partial class Road2DoorContext : DbContext
 
             entity.HasOne(d => d.Rider).WithMany(p => p.InventoryItems)
                 .HasForeignKey(d => d.RiderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Items_RiderId_To_RiderTable");
         });
 
         modelBuilder.Entity<Item>(entity =>
         {
-            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA919E0DCC");
+            entity.HasKey(e => e.ItemId).HasName("PK__Item__56A128AA9678DB37");
 
             entity.ToTable("Item");
 
@@ -143,7 +142,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<MenueMaster>(entity =>
         {
-            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0CBE1F1454");
+            entity.HasKey(e => e.MenueId).HasName("PK__Menue_Ma__5C325F0C1AD9EE62");
 
             entity.ToTable("Menue_Master");
 
@@ -181,7 +180,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCF12DE7AD2");
+            entity.HasKey(e => e.OrderId).HasName("PK__Order__C3905BCF89E1510E");
 
             entity.ToTable("Order");
 
@@ -200,7 +199,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.Sr).HasName("PK__OrderDet__32151FB895EA568B");
+            entity.HasKey(e => e.Sr).HasName("PK__OrderDet__32151FB815DCB82F");
 
             entity.Property(e => e.Quantity).HasColumnName("quantity");
 
@@ -217,7 +216,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<OrderNotification>(entity =>
         {
-            entity.HasKey(e => e.Sr).HasName("PK__OrderNot__32151FB882554452");
+            entity.HasKey(e => e.Sr).HasName("PK__OrderNot__32151FB8D7BADCBF");
 
             entity.ToTable("OrderNotification");
 
@@ -234,7 +233,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<Rider>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Rider__3214EC07761E4734");
+            entity.HasKey(e => e.Id).HasName("PK__Rider__3214EC076EC9EB2E");
 
             entity.ToTable("Rider");
 
@@ -273,7 +272,7 @@ public partial class Road2DoorContext : DbContext
 
         modelBuilder.Entity<RiderLocation>(entity =>
         {
-            entity.HasKey(e => e.RiderId).HasName("PK__RiderLoc__DB1C01CD3F72DB54");
+            entity.HasKey(e => e.RiderId).HasName("PK__RiderLoc__DB1C01CD5195C1BC");
 
             entity.ToTable("RiderLocation");
 

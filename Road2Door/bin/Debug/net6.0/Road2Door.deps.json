@@ -89,7 +89,7 @@
         },
         "resources": {
           "lib/netstandard2.0/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll": {
-            "locale": "ru-RU"
+            "locale": "ru-ru"
           }
         }
       },

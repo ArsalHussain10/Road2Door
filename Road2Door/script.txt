@@ -98,16 +98,12 @@ CREATE TABLE [dbo].[Notification]
 )
 
 CREATE TABLE [dbo].[Order] (
-    [OrderId]    INT IDENTITY (1, 1) NOT NULL,
-    [MenuId]     INT NOT NULL,
-    [ItemId]     INT NOT NULL,
-    [RiderId]    INT NOT NULL,
-    [ConsumerId] INT NOT NULL,
-    [Quantity]   INT NOT NULL,
+    [OrderId]    INT        IDENTITY (1, 1) NOT NULL,
+    [MenuId]     INT        NOT NULL,
+    [ConsumerId] INT        NOT NULL,
+    [Date]       NCHAR (10) NULL,
     PRIMARY KEY CLUSTERED ([OrderId] ASC),
     CONSTRAINT [FK_Order_Menu_To_MenueMasterTable] FOREIGN KEY ([MenuId]) REFERENCES [dbo].[Menue_Master] ([MenueId]) ON DELETE CASCADE,
-    CONSTRAINT [FK_Order_Item_To_ItemTable] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([itemId]) ON DELETE CASCADE,
-    CONSTRAINT [FK_Order_RiderId_To_RiderTable] FOREIGN KEY ([RiderId]) REFERENCES [dbo].[Rider] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Order_ConsumerId_To_ConsumerTable] FOREIGN KEY ([ConsumerId]) REFERENCES [dbo].[Consumer] ([Id]) ON DELETE CASCADE
 );
 
