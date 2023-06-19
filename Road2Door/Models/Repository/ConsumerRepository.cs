@@ -249,5 +249,10 @@ public class ConsumerRepository
             road2DoorContext.SaveChanges();
         }
     }
+    public List<Order> GetOrders(int consumerId)
+    {
+        Road2DoorContext road2DoorContext = new Road2DoorContext();
+        return road2DoorContext.Orders.Where(o => o.ConsumerId == consumerId).ToList();
+    }
 }
 

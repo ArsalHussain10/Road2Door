@@ -403,7 +403,7 @@ namespace Road2Door.Models.Repository
 
                 if (orderNotification != null)
                 {
-                    orderNotification.View = 2;
+                    orderNotification.View = 2; 
                 }
 
                 road2DoorContext.SaveChanges();
@@ -415,6 +415,19 @@ namespace Road2Door.Models.Repository
             return road2DoorContext.MenuDetails.FirstOrDefault(m => m.ItemId == itemId);
         }
         
+        public int GetRiderIdFromOrderId(int orderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            OrderNotification o = road2DoorContext.OrderNotifications.FirstOrDefault(o => o.OrderId == orderId);
+            return o.RiderId;
+
+        }
+        public Rider GetRider(int riderId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            Rider rider= road2DoorContext.Riders.FirstOrDefault(r => r.Id == riderId);
+            return rider;
+        }
 
     }
 

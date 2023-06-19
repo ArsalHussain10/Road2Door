@@ -82,6 +82,25 @@ namespace Road2Door.Models.Repository
             return road2DoorContext.Riders.Where(r => r.Status == 1).ToList().Count;
 
         }
+        public List<RiderOrder> GetOrders()
+        {
+            AdminRepository adminRepository = new AdminRepository();
+            List<OrderNotification> approvedOrders = adminRepository.GetApprovedOrders();
+            RiderRepository riderRepository = new RiderRepository();
+            List<RiderOrder> orders = new List<RiderOrder>();
+            foreach (OrderNotification singleApprovedOrder in approvedOrders)
+            {
+                RiderOrder riderOrder = new RiderOrder();
+                riderOrder.RiderId = singleApprovedOrder.RiderId;
+                riderOrder.OrderId = singleApprovedOrder.OrderId;
+                riderOrder.OrderDetails = riderRepository.GetOrderDetails(riderOrder.OrderId);
+                riderOrder.OrderDetails = riderRepository.PopulateOrderItems(riderOrder.OrderDetails);
+                riderOrder.Consumer = riderRepository.GetConsumerThroughOrderId(riderOrder.OrderId);
+                orders.Add(riderOrder);
+            }
+            orders.Reverse();
+            return orders;
+        }
 
     }
 }

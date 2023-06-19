@@ -148,6 +148,10 @@ namespace Road2Door.Controllers
         {
             if (Request.Cookies["email"] == null)
                 return RedirectToAction("Index", "Home");
+            string riderEmail = Request.Cookies["email"];
+            RiderRepository riderRepository = new RiderRepository();
+            string riderName = riderRepository.GetRiderName(riderEmail);
+            ViewBag.riderName = riderName;
             return View();
         }
 
@@ -171,7 +175,10 @@ namespace Road2Door.Controllers
                 }
 
                 HttpContext.Response.Cookies.Append("email", email, new Microsoft.AspNetCore.Http.CookieOptions() { SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, IsEssential = true });
+                string riderEmail = Request.Cookies["email"];
 
+                string riderName = riderRepository.GetRiderName(email);
+                ViewBag.riderName = riderName;
                 return View("HomePage");
             }
 
