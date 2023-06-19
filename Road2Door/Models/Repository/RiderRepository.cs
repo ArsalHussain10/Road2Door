@@ -409,6 +409,12 @@ namespace Road2Door.Models.Repository
                 road2DoorContext.SaveChanges();
             }
         }
+        public MenuDetail GetMenuDetailFromItemId(int itemId)
+        {
+            Road2DoorContext road2DoorContext = new Road2DoorContext();
+            return road2DoorContext.MenuDetails.FirstOrDefault(m => m.ItemId == itemId);
+        }
+        
 
     }
 

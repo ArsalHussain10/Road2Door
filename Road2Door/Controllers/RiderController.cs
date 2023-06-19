@@ -577,6 +577,23 @@ namespace Road2Door.Controllers
                 return RedirectToAction("Index", "Home");
             RiderRepository riderRepository = new RiderRepository();
             string email = Request.Cookies["email"];
+
+            List<OrderDetail> acceptedOrder = riderRepository.GetOrderDetails(orderId);
+
+            ConsumerRepository consumerRepository = new ConsumerRepository();
+
+            foreach (OrderDetail orderDetail in acceptedOrder)
+            {
+
+                MenuDetail menuDetail = riderRepository.GetMenuDetailFromItemId(orderDetail.ItemId);
+                menuDetail.Quantity = menuDetail.Quantity - orderDetail.Quantity;
+                consumerRepository.UpdateMenuDetail(menuDetail);
+
+
+            }
+
+
+
             int riderId = riderRepository.GetRiderId(email);
             riderRepository.RejectOrders(riderId, orderId);
 

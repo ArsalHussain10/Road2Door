@@ -249,8 +249,8 @@ namespace Road2Door.Controllers
                             //singleOrderDetail.Item = item;
                             orderList.Add(singleOrderDetail);
 
-                            menuDetail.Quantity -= quantity;
-                            consumerRepository.UpdateMenuDetail(menuDetail);
+                            //menuDetail.Quantity -= quantity;
+                            //consumerRepository.UpdateMenuDetail(menuDetail);
                         }
                     }
                 }
@@ -274,7 +274,7 @@ namespace Road2Door.Controllers
 
                // return Json(new { success = false });
             }
-
+            return RedirectToAction("HomePage");
 
             // return View("OrderDetails",orderList);
         }
@@ -331,6 +331,11 @@ namespace Road2Door.Controllers
             //List<Order> orderitem = orderRepository.GetOrderItem(menuId);
             //ViewBag.orderItems = orderitem;
             //ViewBag.menuId = menuId;
+
+
+
+
+
 
             return View("PlaceOrder");
             //return View("PlaceOrder", menuConsumer);
